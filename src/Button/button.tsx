@@ -1,9 +1,7 @@
-import { tag, h, WeElement } from "omi";
+import { h, tag, Component } from "omi";
 
 @tag("t-button")
-export default class Button extends WeElement {
-  static css = [];
-
+export default class Button extends Component {
   render(props: any) {
     console.log(props);
     const { children, msg } = props;

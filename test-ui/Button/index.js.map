@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sources":["../../src/Button/index.ts"],"sourcesContent":["import _Button from \"./button\";\r\n\r\nexport const Button = _Button;\r\nexport default Button;\r\n"],"names":["Button","_Button"],"mappings":";;AAEO,IAAMA,MAAS,GAAAC;;;;"}

@@ -1,25 +1,46 @@
 {
   "compilerOptions": {
-    "target": "ES5",
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
+    "target": "esnext",
+    "outDir": "lib",
+    "declaration": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "isolatedModules": false,
     "experimentalDecorators": true,
-    "useDefineForClassFields": true,
-    "lib": ["ES6", "DOM", "DOM.Iterable"],
-    "skipLibCheck": true,
-
-    /* Bundler mode */
-    "allowImportingTsExtensions": true,
-    "isolatedModules": true,
-    "noEmit": true,
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": false,
+    "removeComments": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
     "jsx": "preserve",
-    "jsxFactory": "h",
-    "jsxFragmentFactory": "h.f",
-
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "baseUrl": "./",
+    "paths": {
+      "@src/*": ["src/*"],
+      "tdesign-vue-next": ["src"],
+      "tdesign-vue-next/es/locale/*": ["src/locale/*"],
+      "@common/*": ["src/_common/*"],
+      "@test/utils": ["test/utils"]
+    }
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "./**/*.ts",
+    "./**/*.tsx",
+    "src/**/*.vue",
+    "scripts/rollup.config.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "src/_common",
+    "dist",
+    "lib",
+    "cjs",
+    "esm",
+    "es",
+    "global.d.ts"
+  ],
+  "compileOnSave": false
 }
