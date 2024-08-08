@@ -3,6 +3,7 @@ module.exports = {
     [
       "@babel/preset-env",
       {
+        modules: false, // 禁用模块转换
         targets: {
           browsers: [
             "last 3 Chrome versions",
