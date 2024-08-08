@@ -7,38 +7,46 @@ import nodeResolve from "@rollup/plugin-node-resolve";
 import url from "@rollup/plugin-url";
 import esbuild from "rollup-plugin-esbuild";
 import { DEFAULT_EXTENSIONS } from "@babel/core";
+import multiInput from "rollup-plugin-multi-input";
+import json from "@rollup/plugin-json";
+import { resolve } from "path";
 
-const extensions = [".ts", ".tsx", ".js", ".jsx"];
+import pkg from "../package.json";
+/* 包列表 */
+const externalDeps = Object.keys(pkg.dependencies || {});
+const externalPeerDeps = Object.keys(pkg.peerDependencies || {});
 
 // commonjs 导出规范
 const cjsConfig = {
   input: "src/index-lib.ts",
+  treeshake: false,
+  external: externalDeps.concat(externalPeerDeps),
+  plugins: [
+    multiInput(),
+    nodeResolve(),
+    commonjs(),
+    esbuild({
+      include: /\.[jt]sx?$/,
+      target: "esnext",
+      minify: false,
+      loader: "tsx",
+      jsxFactory: "h",
+      jsxFragment: "h.f",
+      tsconfig: resolve(__dirname, "../tsconfig.build.json"),
+    }),
+    babel({
+      babelHelpers: "runtime",
+      extensions: [...DEFAULT_EXTENSIONS, ".ts", ".tsx"],
+    }),
+    json(),
+    url(),
+  ],
   output: {
     dir: "test-ui",
     format: "esm",
     sourcemap: true,
-    // exports: "named",
     preserveModules: true, // 保持模块分离
-    entryFileNames: "[name].js",
     chunkFileNames: "_chunks/dep-[hash].js",
-  },
-  plugins: [
-    esbuild({
-      target: "esnext",
-      minify: false,
-      jsx: "preserve",
-      tsconfig: "tsconfig.build.json",
-    }),
-    nodeResolve({ extensions }),
-    commonjs(),
-    babel({
-      extensions: [...DEFAULT_EXTENSIONS, ".ts", ".tsx"],
-    }),
-    url(),
-  ],
-  external: ["omi"], // 列出所有外部依赖
-  optimization: {
-    minimize: false, // 关闭代码压缩
   },
 };
 

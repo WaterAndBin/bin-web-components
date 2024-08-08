@@ -1,4 +1,6 @@
-import _Button from "./button";
+import _TButton from "./button";
 
-export const Button = _Button;
-export default Button;
+export const TButton = _TButton;
+export default TButton;
+
+export * from "./type";

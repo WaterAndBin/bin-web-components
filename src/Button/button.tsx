@@ -1,15 +1,16 @@
 import { h, tag, Component } from "omi";
+import { TButtonProps } from "./type";
 
 @tag("t-button")
-export default class Button extends Component {
-  render(props: any) {
+export default class TButton extends Component<TButtonProps> {
+  render(props: TButtonProps) {
     console.log(props);
-    const { children, msg } = props;
+    const { msg, children } = props;
 
     return (
       <div>
         <button>
-          hallo,{msg},{children},!!!
+          hallo,---{msg}---,---{children}---,!!!
         </button>
       </div>
     );

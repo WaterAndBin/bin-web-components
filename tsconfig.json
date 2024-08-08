@@ -1,46 +1,47 @@
 {
   "compilerOptions": {
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
+    "isolatedModules": false, // 设置为true时，每个文件都将被视为单独的编译单元
+    "noImplicitAny": true, // 不允许隐式的any类型
+    "noImplicitThis": true, // 不允许this的类型为any
+    "strictNullChecks": true, // 启用严格的null检查（推荐开启）
+    "resolveJsonModule": true, // 允许导入.json文件
+
+    "experimentalDecorators": true, // 启用实验性的装饰器
+    "moduleResolution": "node", // 模块解析策略
+    "module": "esnext", // 模块系统，esnext 通常用于现代打包工具
     "target": "esnext",
-    "outDir": "lib",
-    "declaration": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "isolatedModules": false,
-    "experimentalDecorators": true,
-    "esModuleInterop": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "strictNullChecks": false,
-    "removeComments": true,
-    "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true,
-    "allowJs": true,
-    "jsx": "preserve",
+    "outDir": "test-ui",
+    "declaration": true, // 生成.d.ts文件
+    "sourceMap": true,
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
+    "allowSyntheticDefaultImports": true, // 允许从没有默认导出的模块中默认导入
     "baseUrl": "./",
     "paths": {
-      "@src/*": ["src/*"],
-      "tdesign-vue-next": ["src"],
-      "tdesign-vue-next/es/locale/*": ["src/locale/*"],
-      "@common/*": ["src/_common/*"],
-      "@test/utils": ["test/utils"]
-    }
+      "@": ["src"]
+    },
+    "jsx": "react", // 保留JSX，不转换为JavaScript
+    "jsxFactory": "h", // JSX工厂函数，用于Vue 3等框架
+    "jsxFragmentFactory": "h.f", // JSX Fragment工厂函数
+    "allowJs": true, // 通常不建议在TypeScript项目中允许JavaScript文件（除非有特殊需求）
+    "checkJs": true, // 不检查.js文件（除非allowJs为true）
+    "downlevelIteration": true,
+    "esModuleInterop": true, // 为for...of, spread, 和解构提供完全支持
+    "removeComments": true // 移除注释
   },
-  "include": [
-    "./**/*.ts",
-    "./**/*.tsx",
-    "src/**/*.vue",
-    "scripts/rollup.config.js"
-  ],
+  "include": ["src", "typings.d.ts"], // 明确指定要包含的文件模式
   "exclude": [
+    "**/*.jsx",
+    "**/*.tsx",
+    "**/**/_usage/*",
+    "**/**/__tests__/*",
     "node_modules",
     "src/_common",
     "dist",
     "lib",
-    "cjs",
     "esm",
-    "es",
-    "global.d.ts"
-  ],
-  "compileOnSave": false
+    "cjs",
+    "es"
+  ], // 明确指定要排除的文件或目录
+  "types": ["node", "vitest/globals"], // 引入额外的全局类型定义
+  "compileOnSave": false // 不在保存时自动编译TypeScript文件（通常由构建工具处理）
 }

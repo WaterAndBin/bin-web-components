@@ -1,4 +1,4 @@
 import { render, h } from "omi";
-import "./app.tsx";
+import "./app";
 
 render(<my-app />, document.getElementById("app")!);

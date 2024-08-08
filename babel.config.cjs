@@ -13,16 +13,13 @@ module.exports = {
           ],
           esmodules: true,
         },
-        modules: false,
       },
     ],
     "@babel/preset-typescript",
-    "@vue/babel-preset-jsx",
   ],
   plugins: [
     ["@babel/plugin-proposal-decorators", { legacy: true }],
     ["@babel/plugin-proposal-class-properties", { loose: true }],
-    // "@babel/plugin-transform-runtime",
-    "@babel/plugin-transform-class-properties",
+    "@babel/plugin-transform-runtime",
   ],
 };

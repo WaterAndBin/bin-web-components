@@ -1,6 +1,21 @@
 {
-  "extends": "./tsconfig"
-  // "exclude": [
-  //   "common/utils/index.ts"
-  // ]
+  "extends": "./tsconfig",
+  "compilerOptions": {
+    "allowImportingTsExtensions": false,
+    "noEmit": false
+  },
+  "include": ["./src", "typings.d.ts"],
+  "exclude": [
+    "**/**/__tests__/*",
+    "**/**/_example/*",
+    "**/**/_usage/*",
+    "node_modules",
+    "src/_common",
+    "dist",
+    "lib",
+    "esm",
+    "cjs",
+    "es",
+    "**/*.tsx"
+  ]
 }
