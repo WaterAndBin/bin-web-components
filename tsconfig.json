@@ -20,7 +20,7 @@
     "paths": {
       "@": ["src"]
     },
-    "jsx": "preserve", // 保留JSX，不转换为JavaScript
+    "jsx": "react", // 保留JSX，不转换为JavaScript
     "jsxFactory": "h", // JSX工厂函数，用于Vue 3等框架
     "jsxFragmentFactory": "h.f", // JSX Fragment工厂函数
     "allowJs": true, // 通常不建议在TypeScript项目中允许JavaScript文件（除非有特殊需求）

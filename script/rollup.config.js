@@ -28,6 +28,9 @@ const inputList = [
   "!src/**/*.d.ts",
   "!src/**/__tests__",
   "!src/**/_usage",
+  "!play/**",
+  "!src/**/type.ts",
+  "!src/common.ts",
 ];
 
 const getPlugins = ({ isProd = false, ignoreLess = false } = {}) => {
@@ -78,13 +81,13 @@ const getPlugins = ({ isProd = false, ignoreLess = false } = {}) => {
 
 // commonjs 导出规范
 const esmConfig = {
-  input: inputList.concat("!src/index-lib.ts"),
+  input: inputList,
   treeshake: false,
   external: externalDeps.concat(externalPeerDeps),
   plugins: [multiInput()].concat(getPlugins()),
   output: {
-    dir: "test-ui",
-    format: "es",
+    dir: "test-ui/lib",
+    format: "esm",
     sourcemap: true,
     // preserveModules: true, // 保持模块分离
     chunkFileNames: "_chunks/dep-[hash].js",

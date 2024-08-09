@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sources":["../../../src/Button/index.ts"],"sourcesContent":["import _TButton from \"./button\";\n\nexport const TButton = _TButton;\nexport default TButton;\n\nexport * from \"./type\";\n"],"names":["TButton","_TButton"],"mappings":";;;;AAEO,IAAMA,OAAU,GAAAC;;;;"}

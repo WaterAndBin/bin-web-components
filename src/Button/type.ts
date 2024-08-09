@@ -1,5 +1,8 @@
 export interface TButtonProps {
-  //   size: "Big" | "middle" | "small";
-  msg: string;
-  children: any;
+  msg: String;
+  /**
+   * 点击事件
+   * @param e Event
+   */
+  onClick?: (e: MouseEvent) => void;
 }

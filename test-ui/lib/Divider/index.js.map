@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sources":["../../../src/Divider/index.ts"],"sourcesContent":["import _Divider from \"./divider\";\n\nexport const Divider = _Divider;\nexport default Divider;\n"],"names":["Divider","_Divider"],"mappings":";;;;AAEO,IAAMA,OAAU,GAAAC;;;;"}
