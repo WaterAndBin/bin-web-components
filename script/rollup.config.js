@@ -31,6 +31,9 @@ const inputList = [
   "!play/**",
   "!src/**/type.ts",
   "!src/common.ts",
+  "!src/main.tsx",
+  "!src/app.tsx",
+  "!src/vite-env.d.ts",
 ];
 
 const getPlugins = ({ isProd = false, ignoreLess = false } = {}) => {

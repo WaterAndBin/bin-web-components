@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import 'test-ui'
 import { ref } from 'vue'
 
+const asd = ref(123)
+
 const a = () => {
-  asd.value = 456
+  asd.value++
   console.log(asd.value)
 }
-
-const asd = ref(123)
 </script>
 
 <template>
   <div>
-    hallo,world
-    <t-button @click="a" :msg="asd">asdasdasd</t-button>
+    hallo,world123
+    <t-button :msg="asd">asdasdasd</t-button>
+    <button @click="a">测试</button>
   </div>
 </template>

@@ -1,5 +1,5 @@
 export interface TButtonProps {
-  msg: String;
+  msg: string;
   /**
    * 点击事件
    * @param e Event

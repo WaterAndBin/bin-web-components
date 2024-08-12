@@ -1,4 +1,4 @@
 export interface TButtonProps {
-    msg: String;
+    msg: string;
     onClick?: (e: MouseEvent) => void;
 }

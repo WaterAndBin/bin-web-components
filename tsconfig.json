@@ -1,10 +1,9 @@
 {
   "compilerOptions": {
-    // "isolatedModules": false, // 设置为true时，每个文件都将被视为单独的编译单元
-    // "noImplicitAny": true, // 不允许隐式的any类型
-    // "noImplicitThis": true, // 不允许this的类型为any
-    // "strictNullChecks": true, // 启用严格的null检查（推荐开启）
-    // "resolveJsonModule": true, // 允许导入.json文件
+    "noImplicitAny": true, // 不允许隐式的any类型
+    "noImplicitThis": true, // 不允许this的类型为any
+    "strictNullChecks": true, // 启用严格的null检查（推荐开启）
+    "resolveJsonModule": true, // 允许导入.json文件
 
     "experimentalDecorators": true, // 启用实验性的装饰器
     "emitDecoratorMetadata": true,
@@ -14,27 +13,36 @@
     "outDir": "test-ui",
     "declaration": true, // 生成.d.ts文件
     "sourceMap": true,
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost", "ES5"],
     "allowSyntheticDefaultImports": true, // 允许从没有默认导出的模块中默认导入
     "baseUrl": "./",
     "paths": {
       "@": ["src"]
     },
-    "jsx": "react", // 保留JSX，不转换为JavaScript
+    "jsx": "preserve", // 保留JSX，不转换为JavaScript
     "jsxFactory": "h", // JSX工厂函数，用于Vue 3等框架
     "jsxFragmentFactory": "h.f", // JSX Fragment工厂函数
     "allowJs": true, // 通常不建议在TypeScript项目中允许JavaScript文件（除非有特殊需求）
     "checkJs": true, // 不检查.js文件（除非allowJs为true）
     "downlevelIteration": true,
-    "esModuleInterop": true, // 为for...of, spread, 和解构提供完全支持
-    "removeComments": true // 移除注释
+    "esModuleInterop": true, // 允许 export = 导出，由import from 导入
+    "removeComments": true, // 移除注释
+
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true, // 设置为true时，每个文件都将被视为单独的编译单元
+    "noEmit": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "useDefineForClassFields": true,
+    "skipLibCheck": true
   },
-  "include": ["src", "typings.d.ts"], // 明确指定要包含的文件模式
+  "include": ["src"], // 明确指定要包含的文件模式
   "exclude": [
-    "**/*.jsx",
-    "**/*.tsx",
-    "**/**/_usage/*",
     "**/**/__tests__/*",
+    "**/**/_example/*",
+    "**/**/_usage/*",
     "node_modules",
     "src/_common",
     "dist",
@@ -44,5 +52,6 @@
     "es"
   ], // 明确指定要排除的文件或目录
   "types": ["node", "vitest/globals"], // 引入额外的全局类型定义
-  "compileOnSave": false // 不在保存时自动编译TypeScript文件（通常由构建工具处理）
+  "compileOnSave": false, // 不在保存时自动编译TypeScript文件（通常由构建工具处理）
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

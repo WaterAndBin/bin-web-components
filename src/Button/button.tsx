@@ -18,23 +18,35 @@ export default class TButton extends Component<ButtonProps> {
       margin: 4px 2px;  
       cursor: pointer;  
   }  
-`;
+ `;
 
-  static propTypes = {
-    msg: String,
+  static props = {
+    msg: {
+      type: String,
+      default: "Omi",
+      changed() {
+        (this as any).updateData();
+      },
+    },
   };
 
-  clickHandle = (props) => {
+  updateData = () => {
+    /* 中间有比较多的逻辑。。。可以多个地方需要调用 */
+    this.update();
+  };
+
+  clickHandle = (props: any) => {
     console.log("这是Omi内部的点击事件");
     console.log(props);
   };
 
   render(props: ButtonProps) {
     const { msg } = props;
+    console.log("===render===");
     console.log(props);
 
     return (
-      <button onClick={() => this.clickHandle(props)}>
+      <button style="border: solid;" onClick={() => this.clickHandle(props)}>
         hallo,{msg},<slot></slot>
       </button>
     );

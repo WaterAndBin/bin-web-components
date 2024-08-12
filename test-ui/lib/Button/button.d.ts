@@ -4,9 +4,14 @@ export interface ButtonProps extends TButtonProps {
 }
 export default class TButton extends Component<ButtonProps> {
     static css: string;
-    static propTypes: {
-        msg: StringConstructor;
+    static props: {
+        msg: {
+            type: StringConstructor;
+            default: string;
+            changed(): void;
+        };
     };
+    updateData: () => void;
     clickHandle: (props: any) => void;
     render(props: ButtonProps): JSX.Element;
 }

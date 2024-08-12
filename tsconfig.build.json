@@ -15,6 +15,9 @@
     "lib",
     "esm",
     "cjs",
-    "es"
+    "es",
+    "src/main.tsx",
+    "src/app.tsx",
+    "src/vite-env.d.ts"
   ]
 }
