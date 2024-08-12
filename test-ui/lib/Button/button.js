@@ -40,7 +40,6 @@ var TButton = (_dec = tag("t-button"), _dec(_class = (_TButton = /*#__PURE__*/fu
 }(Component), _TButton.css = "  \n  button {  \n      background-color: #4CAF50; /* Green */  \n      border: none;  \n      color: white;  \n      padding: 15px 32px;  \n      text-align: center;  \n      text-decoration: none;  \n      display: inline-block;  \n      font-size: 16px;  \n      margin: 4px 2px;  \n      cursor: pointer;  \n  }  \n ", _TButton.props = {
   msg: {
     type: String,
-    "default": "Omi",
     changed: function changed() {
       this.updateData();
     }

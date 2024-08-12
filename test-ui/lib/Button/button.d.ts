@@ -7,7 +7,6 @@ export default class TButton extends Component<ButtonProps> {
     static props: {
         msg: {
             type: StringConstructor;
-            default: string;
             changed(): void;
         };
     };

@@ -13,7 +13,7 @@
     "outDir": "test-ui",
     "declaration": true, // 生成.d.ts文件
     "sourceMap": true,
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost", "ES5"],
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
     "allowSyntheticDefaultImports": true, // 允许从没有默认导出的模块中默认导入
     "baseUrl": "./",
     "paths": {
@@ -50,6 +50,7 @@
     "esm",
     "cjs",
     "es"
+    // "global.d.ts"
   ], // 明确指定要排除的文件或目录
   "types": ["node", "vitest/globals"], // 引入额外的全局类型定义
   "compileOnSave": false, // 不在保存时自动编译TypeScript文件（通常由构建工具处理）

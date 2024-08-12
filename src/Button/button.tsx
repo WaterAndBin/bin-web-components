@@ -23,7 +23,6 @@ export default class TButton extends Component<ButtonProps> {
   static props = {
     msg: {
       type: String,
-      default: "Omi",
       changed() {
         (this as any).updateData();
       },

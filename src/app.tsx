@@ -1,12 +1,14 @@
-import { h, tag, signal, Component } from "omi";
-
-const count = signal(0);
+import { h, tag, Component } from "omi";
+// import "./index";
+import "./Button";
 
 @tag("my-app")
 export default class extends Component {
-  static css = [];
-
   render() {
-    return <>123123</>;
+    return (
+      <div>
+        <t-button>123123213</t-button>
+      </div>
+    );
   }
 }

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-
+import { TButton } from 'test-ui'
 const asd = ref(123)
 
 const a = () => {
@@ -11,8 +11,9 @@ const a = () => {
 
 <template>
   <div>
-    hallo,world123
-    <t-button :msg="asd">asdasdasd</t-button>
-    <button @click="a">测试</button>
+    <t-button msg="123">asdasdasd</t-button>
+    <!-- <n-button>naive-ui</n-button> -->
+    <!-- <HelloWorld></HelloWorld> -->
+    <!-- <button @click="a">测试</button> -->
   </div>
 </template>
