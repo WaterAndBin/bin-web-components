@@ -1,0 +1,1 @@
+{"version":3,"file":"index-lib.js","sources":["../../src/index-lib.ts"],"sourcesContent":["import { h } from \"omi\";\n\n(window as any).h = h;\n\nexport * from \"./index\";\n"],"names":["window","h"],"mappings":";;;;;;;;;AAECA,MAAA,CAAeC,CAAI,GAAAA,KAAA;;;;"}

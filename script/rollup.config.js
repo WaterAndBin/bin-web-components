@@ -13,6 +13,7 @@ import { resolve } from "path";
 import staticImport from "rollup-plugin-static-import";
 import postcss from "rollup-plugin-postcss";
 import ignoreImport from "rollup-plugin-ignore-import";
+import analyzer from "rollup-plugin-analyzer";
 
 import pkg from "../package.json";
 /* 包列表 */
@@ -47,6 +48,9 @@ const getPlugins = ({ isProd = false, ignoreLess = false } = {}) => {
       loader: "tsx",
       jsxFactory: "h",
       jsxFragment: "h.f",
+      // jsx: "transform",
+      // jsxFactory: "React.createElement",
+      // jsxFragment: "React.Fragment",
       tsconfig: resolve(__dirname, "../tsconfig.build.json"),
     }),
     babel({
@@ -82,7 +86,6 @@ const getPlugins = ({ isProd = false, ignoreLess = false } = {}) => {
   return plugins;
 };
 
-// commonjs 导出规范
 const esmConfig = {
   input: inputList,
   treeshake: false,
@@ -98,4 +101,35 @@ const esmConfig = {
   },
 };
 
-export default [esmConfig];
+// commonjs 导出规范
+const cjsConfig = {
+  input: inputList,
+  external: externalDeps.concat(externalPeerDeps),
+  plugins: [multiInput()].concat(getPlugins()),
+  output: {
+    dir: "test-ui/cjs",
+    format: "cjs",
+    sourcemap: true,
+    exports: "named",
+    chunkFileNames: "_chunks/dep-[hash].js",
+    // intro: `var { h } = require('omi');`,
+  },
+};
+
+// const umdConfig = {
+//   input,
+//   external: externalPeerDeps,
+//   plugins: getPlugins({
+//     env: "development",
+//   }).concat(analyzer({ limit: 5, summaryOnly: true })),
+//   output: {
+//     name: "TDesign",
+//     format: "umd",
+//     exports: "named",
+//     globals: { omi: "omi", lodash: "_" },
+//     sourcemap: true,
+//     file: `test-ui/dist/Bin.js`,
+//   },
+// };
+
+export default [esmConfig, cjsConfig];
