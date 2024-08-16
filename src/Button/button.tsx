@@ -1,24 +1,12 @@
 import { h, tag, Component } from "omi";
 import { TButtonProps, TButtonEvent } from "./type";
+import { tailwind } from "../styles";
 
 export interface ButtonProps extends TButtonProps, TButtonEvent {}
 
 @tag("y-button")
 export default class YButton extends Component<ButtonProps> {
-  static css = `
-  button {
-      background-color: #4CAF50; /* Green */
-      border: none;
-      color: white;
-      padding: 15px 32px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 4px 2px;
-      cursor: pointer;
-  }
-  `;
+  static css = [tailwind];
 
   static props = {
     msg: {
@@ -37,7 +25,10 @@ export default class YButton extends Component<ButtonProps> {
   render(props: ButtonProps) {
     const { msg } = props;
     return (
-      <button style="border: solid;" onClick={() => this.clickHandle(props)}>
+      <button
+        className="size-20 bg-red-100"
+        onClick={() => this.clickHandle(props)}
+      >
         hallo,{msg},<slot></slot>
       </button>
     );

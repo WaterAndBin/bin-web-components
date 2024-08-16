@@ -1,5 +1,6 @@
 import { _ as _getPrototypeOf, a as _possibleConstructorReturn, b as _classCallCheck, c as _inherits, d as _createClass } from '../_chunks/dep-98153ab6.js';
 import { tag, h, Component } from 'omi';
+import { tailwind } from '../styles/index.js';
 
 var _dec, _class, _YButton;
 function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
@@ -25,14 +26,14 @@ var YButton = (_dec = tag("y-button"), _dec(_class = (_YButton = /*#__PURE__*/fu
       var _this2 = this;
       var msg = props.msg;
       return /* @__PURE__ */h("button", {
-        style: "border: solid;",
+        className: "size-20 bg-red-100",
         onClick: function onClick() {
           return _this2.clickHandle(props);
         }
       }, "hallo,", msg, ",", /* @__PURE__ */h("slot", null));
     }
   }]);
-}(Component), _YButton.css = "\n  button {\n      background-color: #4CAF50; /* Green */\n      border: none;\n      color: white;\n      padding: 15px 32px;\n      text-align: center;\n      text-decoration: none;\n      display: inline-block;\n      font-size: 16px;\n      margin: 4px 2px;\n      cursor: pointer;\n  }\n  ", _YButton.props = {
+}(Component), _YButton.css = [tailwind], _YButton.props = {
   msg: {
     type: String,
     changed: function changed() {

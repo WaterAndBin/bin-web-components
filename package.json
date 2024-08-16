@@ -2,7 +2,7 @@
   "name": "test-ui",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "type": "commonjs",
   "main": "index.js",
   "module": "index.js",
   "author": "WaterAndBin",
@@ -56,7 +56,6 @@
     "ts-node": "^10.9.1",
     "tslib": "^2.6.3",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5",
-    "vue": "^3.4.36"
+    "vite": "^4.4.5"
   }
 }

@@ -64,7 +64,7 @@ const getPlugins = ({ isProd = false, ignoreLess = false } = {}) => {
   if (!ignoreLess) {
     plugins.push(
       postcss({
-        extract: false,
+        extract: false, // 将CSS提取到单独的文件中
         minimize: isProd,
         sourceMap: !isProd,
         inject: false,

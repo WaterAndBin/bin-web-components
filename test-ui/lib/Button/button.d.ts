@@ -3,7 +3,7 @@ import { TButtonProps, TButtonEvent } from "./type";
 export interface ButtonProps extends TButtonProps, TButtonEvent {
 }
 export default class YButton extends Component<ButtonProps> {
-    static css: string;
+    static css: CSSStyleSheet[];
     static props: {
         msg: {
             type: StringConstructor;
