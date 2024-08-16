@@ -1,4 +1,4 @@
-import { _ as _getPrototypeOf, a as _possibleConstructorReturn, b as _classCallCheck, c as _inherits, d as _createClass } from '../_chunks/dep-105da581.js';
+import { _ as _getPrototypeOf, a as _possibleConstructorReturn, b as _classCallCheck, c as _inherits, d as _createClass } from '../_chunks/dep-98153ab6.js';
 import { tag, h, Component } from 'omi';
 
 var _dec, _class;

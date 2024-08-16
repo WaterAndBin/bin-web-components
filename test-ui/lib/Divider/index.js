@@ -1,5 +1,5 @@
 import Divider$1 from './divider.js';
-import '../_chunks/dep-105da581.js';
+import '../_chunks/dep-98153ab6.js';
 import 'omi';
 
 var Divider = Divider$1;

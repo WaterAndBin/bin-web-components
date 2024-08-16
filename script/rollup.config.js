@@ -98,23 +98,24 @@ const esmConfig = {
     // preserveModules: true, // 保持模块分离
     chunkFileNames: "_chunks/dep-[hash].js",
     // intro: `import { h } from 'omi';`,
+    // intro: `import React from "react";`,
   },
 };
 
 // commonjs 导出规范
-const cjsConfig = {
-  input: inputList,
-  external: externalDeps.concat(externalPeerDeps),
-  plugins: [multiInput()].concat(getPlugins()),
-  output: {
-    dir: "test-ui/cjs",
-    format: "cjs",
-    sourcemap: true,
-    exports: "named",
-    chunkFileNames: "_chunks/dep-[hash].js",
-    // intro: `var { h } = require('omi');`,
-  },
-};
+// const cjsConfig = {
+//   input: inputList,
+//   external: externalDeps.concat(externalPeerDeps),
+//   plugins: [multiInput()].concat(getPlugins()),
+//   output: {
+//     dir: "test-ui/cjs",
+//     format: "cjs",
+//     sourcemap: true,
+//     exports: "named",
+//     chunkFileNames: "_chunks/dep-[hash].js",
+//     // intro: `var { h } = require('omi');`,
+//   },
+// };
 
 // const umdConfig = {
 //   input,
@@ -132,4 +133,4 @@ const cjsConfig = {
 //   },
 // };
 
-export default [esmConfig, cjsConfig];
+export default [esmConfig];

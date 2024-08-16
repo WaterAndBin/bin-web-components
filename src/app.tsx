@@ -1,13 +1,16 @@
 import { h, tag, Component } from "omi";
 // import "./index";
-import "./Button";
+import TButton from "./Button/TButton";
 
 @tag("my-app")
 export default class extends Component {
   render() {
     return (
       <div>
-        <t-button>123123213</t-button>
+        <TButton msg="31231">
+          <div>123123</div>
+          <span>hallo,world</span>
+        </TButton>
       </div>
     );
   }

@@ -10,7 +10,6 @@ export default class TButton extends Component<ButtonProps> {
             changed(): void;
         };
     };
-    updateData: () => void;
     clickHandle: (props: any) => void;
     render(props: ButtonProps): JSX.Element;
 }
