@@ -1,5 +1,6 @@
-import _TButton from "./button";
+import _YButton from "./button";
 export type { ButtonProps } from "./button";
-export declare const TButton: typeof _TButton;
-export default TButton;
+export declare const YButton: typeof _YButton;
+export default YButton;
+export * from "./RYButton";
 export * from "./type";

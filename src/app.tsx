@@ -1,6 +1,6 @@
 import { h, tag, Component } from "omi";
 // import "./index";
-import TButton from "./Button/TButton";
+import TButton from "./Button/RYButton";
 
 @tag("my-app")
 export default class extends Component {

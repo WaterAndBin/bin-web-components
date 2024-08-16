@@ -1,8 +1,10 @@
-import TButton$1 from './button.js';
+import YButton$1 from './button.js';
+export { RYButton } from './RYButton.js';
 import '../_chunks/dep-98153ab6.js';
 import 'omi';
+import 'react';
 
-var TButton = TButton$1;
+var YButton = YButton$1;
 
-export { TButton, TButton as default };
+export { YButton, YButton as default };
 //# sourceMappingURL=index.js.map

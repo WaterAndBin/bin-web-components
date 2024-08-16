@@ -1,10 +1,10 @@
 import { h, tag, Component } from "omi";
-import { TButtonProps } from "./type";
+import { TButtonProps, TButtonEvent } from "./type";
 
-export interface ButtonProps extends TButtonProps {}
+export interface ButtonProps extends TButtonProps, TButtonEvent {}
 
-@tag("t-button")
-export default class TButton extends Component<ButtonProps> {
+@tag("y-button")
+export default class YButton extends Component<ButtonProps> {
   static css = `
   button {
       background-color: #4CAF50; /* Green */
