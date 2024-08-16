@@ -1,13 +1,17 @@
 import { VNode } from "omi";
 import React from "react";
+import { SizeEnum } from "src/common";
 
 /**
  * 传参
  */
 export interface TButtonProps {
-  msg: string;
   /**
-   * 类
+   * 尺寸
+   */
+  size: SizeEnum;
+  /**
+   * 样式
    */
   class?: string;
   /**

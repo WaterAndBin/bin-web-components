@@ -9,8 +9,9 @@ export default class YButton extends Component<ButtonProps> {
   static css = [tailwind];
 
   static props = {
-    msg: {
+    size: {
       type: String,
+      default: "default",
       changed() {
         (this as any).update();
       },
@@ -23,13 +24,13 @@ export default class YButton extends Component<ButtonProps> {
   };
 
   render(props: ButtonProps) {
-    const { msg } = props;
+    const { size } = props;
     return (
       <button
         className="size-20 bg-red-100"
         onClick={() => this.clickHandle(props)}
       >
-        hallo,{msg},<slot></slot>
+        hallo,<slot></slot>
       </button>
     );
   }

@@ -1,1 +1,1 @@
-export type test = string;
+export type SizeEnum = "tiny" | "small" | "default" | "large";
