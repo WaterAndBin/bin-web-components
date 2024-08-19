@@ -2,7 +2,7 @@ import { t as toPropertyKey } from '../_chunks/dep-98153ab6.js';
 import { h } from 'omi';
 import './button.js';
 import React from 'react';
-import '../styles/index.js';
+import '../style/index.js';
 
 function _defineProperty(e, r, t) {
   return (r = toPropertyKey(r)) in e ? Object.defineProperty(e, r, {

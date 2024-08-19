@@ -37,6 +37,25 @@ const inputList = [
   "!src/vite-env.d.ts",
 ];
 
+const path = require("path");
+
+function removeCssQueryPlugin() {
+  return {
+    name: "remove-css-query",
+    resolveId(source, importer) {
+      if (importer && /\.css(\?.*)?$/.test(source)) {
+        // 移除 CSS 文件 URL 中的查询参数
+        const baseUrl = source.split("?")[0];
+        return resolve(
+          importer ? path.dirname(importer) : process.cwd(),
+          baseUrl
+        );
+      }
+      return null;
+    },
+  };
+}
+
 const getPlugins = ({ isProd = false, ignoreLess = false } = {}) => {
   const plugins = [
     nodeResolve(),
@@ -48,9 +67,6 @@ const getPlugins = ({ isProd = false, ignoreLess = false } = {}) => {
       loader: "tsx",
       jsxFactory: "h",
       jsxFragment: "h.f",
-      // jsx: "transform",
-      // jsxFactory: "React.createElement",
-      // jsxFragment: "React.Fragment",
       tsconfig: resolve(__dirname, "../tsconfig.build.json"),
     }),
     babel({
@@ -59,12 +75,14 @@ const getPlugins = ({ isProd = false, ignoreLess = false } = {}) => {
     }),
     json(),
     url(),
+    removeCssQueryPlugin(),
   ];
 
+  // css
   if (!ignoreLess) {
     plugins.push(
       postcss({
-        extract: false, // 将CSS提取到单独的文件中
+        extract: false,
         minimize: isProd,
         sourceMap: !isProd,
         inject: false,
@@ -74,7 +92,7 @@ const getPlugins = ({ isProd = false, ignoreLess = false } = {}) => {
   } else {
     plugins.push(
       staticImport({
-        include: ["src/**/style/index.js", "src/_common/style/web/**/*.less"],
+        include: ["src/**/style/index.js"],
       }),
       ignoreImport({
         include: ["src/*/style/*"],
@@ -98,39 +116,7 @@ const esmConfig = {
     // preserveModules: true, // 保持模块分离
     chunkFileNames: "_chunks/dep-[hash].js",
     // intro: `import { h } from 'omi';`,
-    // intro: `import React from "react";`,
   },
 };
-
-// commonjs 导出规范
-// const cjsConfig = {
-//   input: inputList,
-//   external: externalDeps.concat(externalPeerDeps),
-//   plugins: [multiInput()].concat(getPlugins()),
-//   output: {
-//     dir: "test-ui/cjs",
-//     format: "cjs",
-//     sourcemap: true,
-//     exports: "named",
-//     chunkFileNames: "_chunks/dep-[hash].js",
-//     // intro: `var { h } = require('omi');`,
-//   },
-// };
-
-// const umdConfig = {
-//   input,
-//   external: externalPeerDeps,
-//   plugins: getPlugins({
-//     env: "development",
-//   }).concat(analyzer({ limit: 5, summaryOnly: true })),
-//   output: {
-//     name: "TDesign",
-//     format: "umd",
-//     exports: "named",
-//     globals: { omi: "omi", lodash: "_" },
-//     sourcemap: true,
-//     file: `test-ui/dist/Bin.js`,
-//   },
-// };
 
 export default [esmConfig];

@@ -16,8 +16,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
     "omi": "latest",
-    "react": "^18.3.1"
+    "react": "^18.3.1",
+    "tailwind-merge": "^2.5.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

@@ -1,6 +1,6 @@
 import { h, tag, Component } from "omi";
 import "./";
-import { tailwind } from "./styles";
+import { tailwind } from "./style";
 import "./Button";
 
 @tag("my-app")
