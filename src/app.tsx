@@ -1,5 +1,4 @@
 import { h, tag, Component } from "omi";
-import "./";
 import { tailwind } from "./style";
 import "./Button";
 
@@ -10,8 +9,7 @@ export default class extends Component {
   render() {
     return (
       <div>
-        <div className="size-60 bg-red-400">hallo,world</div>
-        <y-button msg="13">333</y-button>
+        <y-button size="123123123"></y-button>
       </div>
     );
   }

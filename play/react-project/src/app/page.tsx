@@ -10,6 +10,7 @@ export default function Home() {
         <div className="bg-red-200 w-60 h-60">333</div>
         {/* <RYButton class="w-60 bg-red-700 h-60 block">12</RYButton> */}
         <y-button>123</y-button>
+        <div className="b-button-default">dasd</div>
       </div>
     </main>
   );

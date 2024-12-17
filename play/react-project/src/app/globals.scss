@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hallo {
+  background-color: skyblue;
+
+  .b-button-default {
+    background-color: red !important;
+  }
+}

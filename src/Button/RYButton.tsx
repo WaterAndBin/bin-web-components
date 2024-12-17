@@ -1,17 +1,12 @@
 import { h } from "omi";
 import "./button";
 import { ButtonProps } from "./button";
-import React, { ReactNode } from "react";
+import { newInstance } from "../utils/instance";
 
-function Button(props: ButtonProps) {
+function Button(props: ButtonProps): JSX.Element {
   return <y-button {...props}></y-button>;
 }
 
 export const RYButton = (props: ButtonProps) => {
-  const res = Button(props);
-  return React.createElement(
-    res.nodeName as string,
-    { ...res.attributes },
-    res.children as ReactNode | React.ReactElement
-  );
+  return newInstance(Button, props);
 };
