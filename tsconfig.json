@@ -38,7 +38,7 @@
     "useDefineForClassFields": true,
     "skipLibCheck": true
   },
-  "include": ["src"], // 明确指定要包含的文件模式
+  "include": ["src", "global.d.ts"],
   "exclude": [
     "**/**/__tests__/*",
     "**/**/_example/*",

@@ -5,15 +5,13 @@ import { SizeEnum } from "src/common";
 /**
  * 传参
  */
-export interface TButtonProps {
+export interface YButtonProps {
   /**
    * 尺寸
    */
   size: SizeEnum;
-  /**
-   * 样式
-   */
-  class?: string;
+  className?: string;
+  style?: CSSStyleDeclaration;
   /**
    * slot插槽专用
    */
@@ -29,7 +27,7 @@ export interface TButtonProps {
 /**
  * 事件
  */
-export interface TButtonEvent {
+export interface YButtonEvent {
   /**
    * 点击事件
    * @param e Event

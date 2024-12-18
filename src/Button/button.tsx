@@ -1,10 +1,11 @@
 import { h, tag, Component } from "omi";
-import { TButtonProps, TButtonEvent } from "./type";
+import { YButtonProps, YButtonEvent } from "./type";
 import { tailwind } from "../style";
 // @ts-ignore
 import buttonStyle from "./style/button.css?inline";
+import clsx from "clsx";
 
-export interface ButtonProps extends TButtonProps, TButtonEvent {}
+export interface ButtonProps extends YButtonProps, YButtonEvent {}
 
 @tag("y-button")
 export default class YButton extends Component<ButtonProps> {
@@ -20,28 +21,30 @@ export default class YButton extends Component<ButtonProps> {
     size: {
       type: String,
       default: "default",
-      changed(newValue: string) {
-        YButton.instance.update();
+      changed() {
+        if (this instanceof YButton) {
+          this.update();
+        }
       },
+    },
+    className: {
+      type: String,
+      default: "",
+    },
+    style: {
+      type: CSSStyleDeclaration,
+      default: "",
     },
   };
 
-  clickHandle = (props: any) => {
-    console.log("这是Omi内部的点击事件");
-    console.log(props);
-    this.update();
-  };
-
   render(props: ButtonProps) {
-    const { size } = props;
+    const { size, style, className } = props;
 
     return (
-      <div className="b-button-default">
-        <button className="" onClick={() => this.clickHandle(props)}>
-          hallo,{size}
-          <slot></slot>
-        </button>
-      </div>
+      <button style={style} className={clsx(className)}>
+        hallo,{size}
+        <slot></slot>
+      </button>
     );
   }
 }

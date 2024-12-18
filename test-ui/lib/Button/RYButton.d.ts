@@ -1,4 +1,3 @@
 import "./button";
 import { ButtonProps } from "./button";
-import React from "react";
-export declare const RYButton: (props: ButtonProps) => React.DOMElement<any, Element>;
+export declare const YButton: (props: ButtonProps) => import("react").ReactElement<any, string | import("react").JSXElementConstructor<any>>;

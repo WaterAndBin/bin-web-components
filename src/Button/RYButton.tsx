@@ -7,6 +7,6 @@ function Button(props: ButtonProps): JSX.Element {
   return <y-button {...props}></y-button>;
 }
 
-export const RYButton = (props: ButtonProps) => {
+export const YButton = (props: ButtonProps) => {
   return newInstance(Button, props);
 };
