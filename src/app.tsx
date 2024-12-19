@@ -9,7 +9,8 @@ export default class extends Component {
   render() {
     return (
       <div style>
-        <y-button size="small"></y-button>
+        123123
+        <y-button size="tiny"></y-button>
       </div>
     );
   }

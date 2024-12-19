@@ -32,14 +32,13 @@ var YButton = (_dec = tag("y-button"), _dec(_class = (_YButton = /*#__PURE__*/fu
         className = props.className;
       return /* @__PURE__ */h("button", {
         style: style,
-        className: clsx(className)
+        className: clsx(className, "bg-red-200")
       }, "hallo,", size, /* @__PURE__ */h("slot", null));
     }
   }]);
 }(Component), _YButton.css = [tailwind, css_248z], _YButton.instance = void 0, _YButton.props = {
   size: {
     type: String,
-    "default": "default",
     changed: function changed() {
       if (this instanceof _YButton) {
         this.update();

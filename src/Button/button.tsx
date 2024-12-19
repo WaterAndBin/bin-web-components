@@ -8,7 +8,7 @@ import clsx from "clsx";
 export interface ButtonProps extends YButtonProps, YButtonEvent {}
 
 @tag("y-button")
-export default class YButton extends Component<ButtonProps> {
+export default class YButton extends Component<{ size: string }> {
   static css = [tailwind, buttonStyle];
   static instance: YButton; // 存储组件实例的静态变量
 
@@ -20,7 +20,6 @@ export default class YButton extends Component<ButtonProps> {
   static props = {
     size: {
       type: String,
-      default: "default",
       changed() {
         if (this instanceof YButton) {
           this.update();
@@ -41,7 +40,7 @@ export default class YButton extends Component<ButtonProps> {
     const { size, style, className } = props;
 
     return (
-      <button style={style} className={clsx(className)}>
+      <button style={style} className={clsx(className, "bg-red-200")}>
         hallo,{size}
         <slot></slot>
       </button>

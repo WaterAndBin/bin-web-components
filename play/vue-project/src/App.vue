@@ -18,7 +18,6 @@ const a = () => {
     <y-button size="dasdasasfasfasf" class="test">
       <div>123123</div>
     </y-button>
-    <YButton>123</YButton>
     <!-- <n-button>naive-ui</n-button> -->
     <!-- <HelloWorld></HelloWorld> -->
     <!-- <button @click="a">测试</button> -->

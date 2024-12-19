@@ -32,6 +32,8 @@ const inputList = [
   "!src/main.tsx",
   "!src/app.tsx",
   "!src/vite-env.d.ts",
+  "!src/",
+  "!src/globals.ts",
 ];
 
 const path = require("path");
