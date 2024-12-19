@@ -1,11 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-
-const asd = ref(123)
-
-const a = () => {
-  asd.value++
-  console.log(asd.value)
+const asd = () => {
+  const type = typeof import('test-ui/lib')
 }
 </script>
 
@@ -15,7 +10,7 @@ const a = () => {
       <div>123123</div>
     </t-button> -->
     <!-- <ReactButton msg="123"></ReactButton> -->
-    <y-button size="dasdasasfasfasf" class="test">
+    <y-button size="dasdasasfasfasf" class="test" @click="asd">
       <div>123123</div>
     </y-button>
     <!-- <n-button>naive-ui</n-button> -->
