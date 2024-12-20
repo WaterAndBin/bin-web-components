@@ -1,7 +1,7 @@
 import { VNode } from "omi";
 import React from "react";
 import { SizeEnum } from "src/common";
-
+import YButton from './button'
 /**
  * 传参
  */
@@ -34,3 +34,6 @@ export interface YButtonEvent {
    */
   onClick?: (e: MouseEvent) => void;
 }
+
+
+export type ButtonInstance = InstanceType<typeof YButton>

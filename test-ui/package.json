@@ -17,6 +17,7 @@
   "dependencies": {
     "omi": "latest"
   },
+  "typings": "lib/index.d.ts",
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@babel/plugin-proposal-class-properties": "^7.18.6",
