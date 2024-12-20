@@ -1,8 +1,8 @@
-import { h, tag, Component } from "omi";
-import { tailwind } from "./style";
-import "./Button/button";
+import { h, tag, Component } from 'omi';
+import { tailwind } from './style';
+import './Button/button';
 
-@tag("my-app")
+@tag('my-app')
 export default class extends Component {
   static css = [tailwind];
 

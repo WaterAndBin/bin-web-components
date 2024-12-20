@@ -1,6 +1,6 @@
-import { h, tag, Component } from "omi";
+import { h, tag, Component } from 'omi';
 
-@tag("t-divider")
+@tag('t-divider')
 export default class Divider extends Component {
   render() {
     return (

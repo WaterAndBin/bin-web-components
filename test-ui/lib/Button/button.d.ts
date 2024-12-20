@@ -1,5 +1,5 @@
-import { Component } from "omi";
-import { YButtonProps, YButtonEvent } from "./type";
+import { Component } from 'omi';
+import { YButtonProps, YButtonEvent } from './type';
 export interface ButtonProps extends YButtonProps, YButtonEvent {
 }
 export default class YButton extends Component<{

@@ -1,0 +1,56 @@
+{
+  "root": true,
+  "extends": ["prettier", "plugin:prettier/recommended", "plugin:@typescript-eslint/recommended", "plugin:import/recommended", "plugin:promise/recommended", "eslint:recommended"],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "globals": {
+    "JSX": "readonly" // 告诉 ESLint JSX 是一个只读的全局变量
+  },
+  "parserOptions": {
+    "ecmaVersion": 13,
+    "sourceType": "module",
+    "project": ["./tsconfig.json"],
+    "ecmaFeatures": {
+      "jsx": true // 启用 JSX 支持
+    }
+  },
+  "plugins": ["prettier", "@typescript-eslint", "import", "promise"],
+  "rules": {
+    "prettier/prettier": "error",
+    "vue/multi-word-component-names": "off", // 禁用对 组件名字检查
+    "@typescript-eslint/semi": "off", // 禁用对函数最后的 ; 检查
+    "@typescript-eslint/space-before-function-paren": "off", // 禁用对 函数前面空一格检查
+    "no-console": "off", // 禁用对 console 的检查
+    "@typescript-eslint/member-delimiter-style": "off", // 禁用对 ; 检查
+    "@typescript-eslint/no-floating-promises": "off", // 禁用每个方法都需要async await
+    "@typescript-eslint/strict-boolean-expressions": "off", // 禁用不能直接 undefined
+    "@typescript-eslint/prefer-function-type": "off",
+    "no-lonely-if": "off", // 取消if但是没有else
+    "eqeqeq": "off", // 取消用 ==,
+    "array-callback-return": "off",
+    "import/named": "off", // 禁用 import/named 规则
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-explicit-any": "off", // 禁止使用any
+    "@typescript-eslint/explicit-function-return-type": "off", // 禁止 return 需要类型
+    "import/no-unresolved": "off", // 禁止导入的时候需要后缀
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_",
+        "destructuredArrayIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["./src/**/*.{.js,.ts,.tsx,.jsx}", "./src/*.{.js,.ts,.tsx,.jsx}"]
+    }
+  ],
+  "ignorePatterns": ["rollup.config.js"] // 排除该文件
+}

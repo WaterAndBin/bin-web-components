@@ -1,7 +1,6 @@
-import { css } from "omi";
+import { css } from 'omi';
 
-// @ts-ignore
-import tailwindStyle from "./tailwind.css?inline";
+import tailwindStyle from './tailwind.css';
 
 export const tailwind = css`
   ${tailwindStyle}

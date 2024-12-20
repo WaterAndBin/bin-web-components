@@ -1,2 +1,2 @@
-import { ReactElement } from "react";
-export declare const newInstance: <T extends {}>(Instance: (props: T) => JSX.Element, props: T) => ReactElement;
+import { type ReactElement } from 'react';
+export declare const newInstance: <T extends object>(Instance: (props: T) => JSX.Element, props: T) => ReactElement;

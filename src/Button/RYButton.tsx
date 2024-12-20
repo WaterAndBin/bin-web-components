@@ -1,7 +1,7 @@
-import { h } from "omi";
-import "./button";
-import { ButtonProps } from "./button";
-import { newInstance } from "../utils/instance";
+import { h } from 'omi';
+import { type ButtonProps } from './button';
+
+import { newInstance } from '../utils/instance';
 
 function Button(props: ButtonProps): JSX.Element {
   return <y-button {...props}></y-button>;
