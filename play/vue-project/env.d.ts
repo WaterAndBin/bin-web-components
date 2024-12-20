@@ -1,11 +1,8 @@
 /// <reference types="vite/client" />
 
-declare module '@vue/runtime-core' {
-  interface GlobalComponents {
-    YButton: String
-  }
+declare module "@vue/runtime-core" {
+    export interface GlobalComponents {
+      "YButton": Any;
+    }
 }
-
-declare interface Window {
-  webStorage: any
-}
+export {};
