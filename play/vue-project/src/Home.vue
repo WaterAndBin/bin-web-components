@@ -1,3 +1,1 @@
-<template>
-  123123
-</template>
+<template>123123</template>

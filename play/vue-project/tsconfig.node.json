@@ -8,7 +8,8 @@
     "playwright.config.*",
     "env.d.ts",
     "src/**/*",
-    "src/**/*.vue"
+    "src/**/*.vue",
+    "test-ui/lib/common.d.ts"
   ],
   "compilerOptions": {
     "composite": true,

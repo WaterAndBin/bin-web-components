@@ -26,12 +26,11 @@ const inputList = [
   '!src/**/__tests__',
   '!src/**/_usage',
   '!play/**',
-  '!src/**/type.ts',
+  // '!src/**/type.ts',
   '!src/common.ts',
   '!src/main.tsx',
   '!src/app.tsx',
   '!src/vite-env.d.ts',
-  '!src/',
   '!src/globals.ts'
 ];
 
@@ -106,8 +105,9 @@ const esmConfig = {
   plugins: [multiInput()].concat(getPlugins()),
   output: {
     dir: 'test-ui/lib',
-    format: 'esm',
-    sourcemap: true,
+    format: 'esm', // 输出格
+    // sourcemap: true,
+    sourcemap: false, // 禁用 source map 文件
     // preserveModules: true, // 保持模块分离
     chunkFileNames: '_chunks/dep-[hash].js'
     // intro: `import { h } from 'omi';`,

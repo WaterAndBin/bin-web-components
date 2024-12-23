@@ -4,7 +4,6 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import 'test-ui'
 
-
 import naive from 'naive-ui'
 
 import App from './App.vue'

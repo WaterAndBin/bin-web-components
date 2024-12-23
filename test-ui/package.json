@@ -52,8 +52,6 @@
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.1",
     "tslib": "^2.6.3",
-    "typescript": "^5.0.2",
-    "vite": "^4.4.5",
-    "vue": "^3.4.36"
+    "typescript": "^5.0.2"
   }
 }

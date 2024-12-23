@@ -1,7 +1,8 @@
 import { h, tag, Component } from 'omi';
 import { YButtonProps, YButtonEvent } from './type';
 import { tailwind } from '../style';
-import buttonStyle from './style/button.css';
+// @ts-ignore
+import buttonStyle from './style/button.css?inline';
 import clsx from 'clsx';
 
 export interface ButtonProps extends YButtonProps, YButtonEvent {}

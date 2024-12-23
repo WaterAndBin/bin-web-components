@@ -1,5 +1,6 @@
 {
   "files": [],
+  "include": ["test-ui/lib/common.d.ts"],
   "references": [
     {
       "path": "./tsconfig.node.json"
