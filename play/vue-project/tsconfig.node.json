@@ -1,5 +1,4 @@
 {
-  "extends": "@tsconfig/node20/tsconfig.json",
   "include": [
     "vite.config.*",
     "vitest.config.*",
@@ -9,7 +8,7 @@
     "env.d.ts",
     "src/**/*",
     "src/**/*.vue",
-    "test-ui/lib/common.d.ts"
+    "test-ui/lib/types/vue-shims.d.ts"
   ],
   "compilerOptions": {
     "composite": true,
@@ -17,6 +16,6 @@
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "types": ["node"]
+    "types": ["node", "test-ui/volar"]
   }
 }

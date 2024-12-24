@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import Home from './Home.vue'
-import 'test-ui/lib/common.d.ts'
 
 const asd = () => {
   // const type = typeof import('test-ui/lib')
@@ -15,6 +14,8 @@ const asd = () => {
     <!-- <ReactButton msg="123"></ReactButton> -->
     <Home></Home>
     <y-button>333311111111</y-button>
+    <YButton>13123123</YButton>
+    <n-button type="tertiary"> Tertiary </n-button>
     <!-- <n-button>naive-ui</n-button> -->
     <!-- <HelloWorld></HelloWorld> -->
     <!-- <button @click="a">测试</button> -->

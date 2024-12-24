@@ -26,12 +26,12 @@ const inputList = [
   '!src/**/__tests__',
   '!src/**/_usage',
   '!play/**',
-  // '!src/**/type.ts',
   '!src/common.ts',
   '!src/main.tsx',
   '!src/app.tsx',
   '!src/vite-env.d.ts',
-  '!src/globals.ts'
+  '!src/globals.ts',
+  '!src/types/**.ts'
 ];
 
 const path = require('path');

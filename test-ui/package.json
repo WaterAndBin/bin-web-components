@@ -5,6 +5,7 @@
   "type": "module",
   "main": "lib/index.js",
   "module": "lib/index.js",
+  "types": "lib/types/vue-shims.d.ts",
   "author": "WaterAndBin",
   "scripts": {
     "start": "vite",
@@ -14,10 +15,13 @@
     "tsc": "tsc --emitDeclarationOnly -d -p ./tsconfig.build.json --outDir test-ui/lib",
     "preview": "vite preview"
   },
+  "files": [
+    "README.md",
+    "lib"
+  ],
   "dependencies": {
     "omi": "latest"
   },
-  "typings": "lib/index.d.ts",
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@babel/plugin-proposal-class-properties": "^7.18.6",
