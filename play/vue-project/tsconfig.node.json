@@ -7,7 +7,8 @@
     "playwright.config.*",
     "env.d.ts",
     "src/**/*",
-    "src/**/*.vue"
+    "src/**/*.vue",
+    "node_modules/test-ui/lib/types/vue-shims.d.ts"
   ],
   "compilerOptions": {
     "composite": true,
