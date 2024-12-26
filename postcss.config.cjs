@@ -1,4 +1,4 @@
-/* eslint-disable global-require */
 module.exports = {
-  plugins: [require("tailwindcss"), require("autoprefixer")],
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  plugins: [require('tailwindcss'), require('autoprefixer')]
 };

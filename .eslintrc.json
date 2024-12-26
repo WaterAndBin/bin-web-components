@@ -13,7 +13,7 @@
   "parserOptions": {
     "ecmaVersion": 13,
     "sourceType": "module",
-    "project": ["./tsconfig.json"],
+    // "project": ["./tsconfig.json"],
     "ecmaFeatures": {
       "jsx": true // 启用 JSX 支持
     }
@@ -38,12 +38,18 @@
     "@typescript-eslint/explicit-function-return-type": "off", // 禁止 return 需要类型
     "import/no-unresolved": "off", // 禁止导入的时候需要后缀
     "@typescript-eslint/no-unused-vars": [
-      "warn",
+      "error",
       {
         "argsIgnorePattern": "^_",
         "caughtErrorsIgnorePattern": "^_",
         "destructuredArrayIgnorePattern": "^_",
-        "varsIgnorePattern": "^_"
+        "varsIgnorePattern": "^h$" // 忽略名为 'h' 的变量
+      }
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        "varsIgnorePattern": "^h$" // 忽略名为 'h' 的变量
       }
     ],
     "@typescript-eslint/ban-ts-comment": "off" // 禁止检测 @ts-ignore 等功能
