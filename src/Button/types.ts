@@ -1,15 +1,16 @@
 import { VNode } from 'omi';
 import React from 'react';
-import { SizeEnum } from 'src/common';
-import YButton from './button';
-/**
- * 传参
- */
+import { SizeEnum, TypeEnum } from 'src/common';
+
 export interface YButtonProps {
   /**
    * 尺寸
    */
-  size: SizeEnum;
+  size?: SizeEnum;
+  /**
+   * 类型
+   */
+  type?: TypeEnum;
   className?: string;
   style?: CSSStyleDeclaration;
   /**
@@ -18,9 +19,6 @@ export interface YButtonProps {
   children?: React.JSX.Element | React.JSX.Element[] | HTMLDivElement | HTMLDivElement[] | string | VNode<any>;
 }
 
-/**
- * 事件
- */
 export interface YButtonEvent {
   /**
    * 点击事件
@@ -28,5 +26,3 @@ export interface YButtonEvent {
    */
   onClick?: (e: MouseEvent) => void;
 }
-
-export type ButtonInstance = InstanceType<typeof YButton>;

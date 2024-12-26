@@ -10,7 +10,9 @@ export default class extends Component {
     return (
       <div style>
         123123
-        <y-button size="tiny"></y-button>
+        <y-button size="small"></y-button>
+        <y-button size="default"></y-button>
+        <y-button size="large"></y-button>
       </div>
     );
   }
