@@ -1,0 +1,16 @@
+@use './tailwind.scss';
+
+body {
+  --opacity-1: 0.85;
+  --primary-1: 70, 175, 198;
+  --primary-2: 143, 217, 227;
+  --primary-3: 39, 153, 184;
+}
+
+.y-theme {
+  &-dark {
+  }
+
+  &-light {
+  }
+}

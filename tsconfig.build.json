@@ -4,6 +4,21 @@
     "allowImportingTsExtensions": false,
     "noEmit": false
   },
-  "include": ["./src"],
-  "exclude": ["**/**/__tests__/*", "**/**/_example/*", "**/**/_usage/*", "node_modules", "src/_common", "dist", "lib", "esm", "cjs", "es", "src/main.tsx", "src/app.tsx", "src/vite-env.d.ts"]
+  "include": ["./src", "typings.d.ts"],
+  "exclude": [
+    "**/**/__tests__/*",
+    "**/**/_example/*",
+    "**/**/_usage/*",
+    "node_modules",
+    "src/_common",
+    "dist",
+    "lib",
+    "esm",
+    "cjs",
+    "es",
+    "src/main.tsx",
+    "src/app.tsx",
+    "src/vite-env.d.ts",
+    "src/**/style/index.js"
+  ]
 }

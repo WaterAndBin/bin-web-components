@@ -1,28 +1,28 @@
 import commonjs from '@rollup/plugin-commonjs';
-import babel from '@rollup/plugin-babel';
-import nodeResolve from '@rollup/plugin-node-resolve';
+import { babel } from '@rollup/plugin-babel';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 import url from '@rollup/plugin-url';
 import esbuild from 'rollup-plugin-esbuild';
 import { DEFAULT_EXTENSIONS } from '@babel/core';
 import multiInput from 'rollup-plugin-multi-input';
 import json from '@rollup/plugin-json';
-import { resolve } from 'path';
-import staticImport from 'rollup-plugin-static-import';
+import path, { resolve } from 'path';
 import postcss from 'rollup-plugin-postcss';
-import ignoreImport from 'rollup-plugin-ignore-import';
+import styles from 'rollup-plugin-styles';
 
 import pkg from '../package.json';
 /* 包列表 */
 const externalDeps = Object.keys(pkg.dependencies || {});
 const externalPeerDeps = Object.keys(pkg.peerDependencies || {});
 
-const input = 'src/index-lib.ts';
+// const input = 'src/index-lib.ts';
 const inputList = [
   'src/**/*.ts',
   'src/**/*.jsx',
   'src/**/*.tsx',
   '!src/**/_example',
   '!src/**/*.d.ts',
+  '!src/**/types.ts',
   '!src/**/__tests__',
   '!src/**/_usage',
   '!play/**',
@@ -31,16 +31,15 @@ const inputList = [
   '!src/app.tsx',
   '!src/vite-env.d.ts',
   '!src/globals.ts',
-  '!src/types/**.ts'
+  '!src/types/**.ts',
+  '!src/**/style/*'
 ];
-
-const path = require('path');
 
 function removeCssQueryPlugin() {
   return {
     name: 'remove-css-query',
     resolveId(source, importer) {
-      if (importer && /\.css(\?.*)?$/.test(source)) {
+      if ((importer && /\.css(\?.*)?$/.test(source)) || /\.scss(\?.*)?$/.test(source)) {
         // 移除 CSS 文件 URL 中的查询参数
         const baseUrl = source.split('?')[0];
         return resolve(importer ? path.dirname(importer) : process.cwd(), baseUrl);
@@ -50,7 +49,7 @@ function removeCssQueryPlugin() {
   };
 }
 
-const getPlugins = ({ isProd = false, ignoreLess = false } = {}) => {
+const getPlugins = () => {
   const plugins = [
     nodeResolve(),
     commonjs(),
@@ -69,44 +68,60 @@ const getPlugins = ({ isProd = false, ignoreLess = false } = {}) => {
     }),
     json(),
     url(),
-    removeCssQueryPlugin()
+    removeCssQueryPlugin(),
+    postcss({
+      extract: false,
+      minimize: false, // 在生产环境中压缩 CSS
+      sourceMap: false,
+      inject: false,
+      extensions: ['.sass', '.scss', '.css', '.less']
+    })
   ];
 
   // css
-  if (!ignoreLess) {
-    plugins.push(
-      postcss({
-        extract: false,
-        minimize: isProd,
-        sourceMap: !isProd,
-        inject: false,
-        extensions: ['.sass', '.scss', '.css', '.less']
-      })
-    );
-  } else {
-    plugins.push(
-      staticImport({
-        include: ['src/**/style/index.js']
-      }),
-      ignoreImport({
-        include: ['src/*/style/*'],
-        body: 'import "./style/index.js";'
-      })
-    );
-  }
+  // if (!ignoreLess) {
+  // plugins.push(
+  //   postcss({
+  //     extract: true,
+  //     minimize: isProd, // 在生产环境中压缩 CSS
+  //     sourceMap: false,
+  //     inject: false,
+  //     extensions: ['.sass', '.scss', '.css', '.less']
+  //   })
+  // );
+  // else {
+  // plugins.push(
+  //   staticImport({
+  //     include: ['src/**/style/index.js']
+  //   }),
+  //   ignoreImport({
+  //     include: ['src/*/style/*'],
+  //     body: 'import "./style/index.js";'
+  //   })
+  // );
+  // }
 
   return plugins;
 };
 
+const cssConfig = {
+  input: ['src/style/index.js'],
+  plugins: [multiInput(), styles({ mode: 'extract' }), removeCssQueryPlugin()],
+  output: {
+    dir: 'test-ui/lib',
+    sourcemap: true,
+    assetFileNames: '[name].css'
+  }
+};
+
 const esmConfig = {
   input: inputList,
-  treeshake: false,
+  treeshake: true,
   external: externalDeps.concat(externalPeerDeps),
   plugins: [multiInput()].concat(getPlugins()),
   output: {
     dir: 'test-ui/lib',
     format: 'esm', // 输出格
-    // sourcemap: true,
     sourcemap: false, // 禁用 source map 文件
     // preserveModules: true, // 保持模块分离
     chunkFileNames: '_chunks/dep-[hash].js'
@@ -114,4 +129,4 @@ const esmConfig = {
   }
 };
 
-export default [esmConfig];
+export default [cssConfig, esmConfig];

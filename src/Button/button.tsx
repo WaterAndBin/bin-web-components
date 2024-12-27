@@ -1,48 +1,77 @@
 import { h, tag, Component } from 'omi';
-import { YButtonProps, YButtonEvent } from './type';
+import { YButtonProps, YButtonEvent } from './types';
 import { tailwind } from '../style';
-// @ts-ignore
-import buttonStyle from './style/button.css?inline';
+import { styleSheet } from './style/index.js';
 import clsx from 'clsx';
 
 export interface ButtonProps extends YButtonProps, YButtonEvent {}
 
 @tag('y-button')
-export default class YButton extends Component<{ size: string }> {
-  static css = [tailwind, buttonStyle];
-  static instance: YButton; // 存储组件实例的静态变量
-
-  changeUpdate() {
-    this.update();
-    YButton.instance = this; // 初始化时保存当前实例
-  }
+export default class YButton extends Component<ButtonProps> {
+  static css = [tailwind, styleSheet];
 
   static props = {
+    /** 按钮大小 */
     size: {
       type: String,
+      default: 'default',
       changed() {
         if (this instanceof YButton) {
           this.update();
         }
       }
     },
+    /** 按钮类型 */
+    type: {
+      type: String,
+      default: 'primary',
+      changed() {
+        if (this instanceof YButton) {
+          this.update();
+        }
+      }
+    },
+    /** 样式 */
+    style: {
+      type: String,
+      default: '',
+      changed() {
+        if (this instanceof YButton) {
+          this.update();
+        }
+      }
+    },
+    /** 类 */
     className: {
       type: String,
-      default: ''
+      default: '',
+      changed() {
+        if (this instanceof YButton) {
+          this.update();
+        }
+      }
     },
-    style: {
-      type: CSSStyleDeclaration,
-      default: ''
+    /** 禁用 */
+    disabled: {
+      type: Boolean,
+      default: false,
+      changed() {
+        if (this instanceof YButton) {
+          this.update();
+        }
+      }
     }
   };
 
   render(props: ButtonProps) {
-    const { size, style, className } = props;
+    const { size, style, className, type, children, disabled } = props;
+
+    console.log(props);
+    console.log(style);
 
     return (
-      <button style={style} className={clsx(className, 'bg-red-200')}>
-        hallo,{size}
-        <slot></slot>
+      <button style={style} className={clsx(className, ['y-button-base', `y-button-type-${type}`, `y-button-size-${size}`], { [`y-button-is-disabled`]: disabled })}>
+        {children ? <slot></slot> : <span>Button</span>}
       </button>
     );
   }
