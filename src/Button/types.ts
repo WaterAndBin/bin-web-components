@@ -11,6 +11,10 @@ export interface YButtonProps {
    * 类型
    */
   type?: TypeEnum;
+  /**
+   * 是否禁用
+   */
+  disabled?: boolean;
   className?: string;
   style?: CSSStyleDeclaration;
   /**
