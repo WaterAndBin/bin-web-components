@@ -1,0 +1,4 @@
+@function button-bg($color-variable, $opacity: 1) {
+  // 使用 CSS 变量并提供透明度的默认值
+  @return rgba(var(--#{$color-variable}), $opacity);
+}

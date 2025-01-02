@@ -1,0 +1,53 @@
+@use './_var.scss' as *;
+@use '../variables.scss';
+
+.y-button {
+  &-base {
+    @apply rounded-[4px] transition-colors duration-300 ease-in-out box-border;
+    @apply m-1;
+  }
+
+  /* ---大小--- */
+  &-size {
+    &-small {
+      @apply text-[0.8rem] py-[0.2rem] px-[0.55rem];
+    }
+
+    &-default {
+      @apply text-[0.9rem] py-1 px-[0.6rem];
+    }
+
+    &-large {
+      @apply text-base py-1.5 px-3;
+    }
+  }
+  /* ---大小--- */
+
+  /* ---类型--- */
+  &-type {
+    &-primary {
+      @apply text-white border-[1px] border-solid border-transparent;
+      background-color: $primary-color-1;
+
+      &:hover {
+        @apply bg-[rgba(var(--primary-1),var(--opacity-1))];
+      }
+    }
+
+    &-outline {
+      @apply text-[rgb(var(--primary-3))] bg-transparent border-[1px] border-solid border-[rgb(var(--primary-3))];
+
+      &:hover {
+        @apply text-[rgba(var(--primary-3),var(--opacity-1))] border-[rgba(var(--primary-3),var(--opacity-1))];
+      }
+    }
+  }
+  /* ---类型--- */
+}
+
+/* ---禁用--- */
+.y-button-is-disabled {
+  @apply cursor-not-allowed;
+  background-color: inherit;
+}
+/* ---禁用--- */
