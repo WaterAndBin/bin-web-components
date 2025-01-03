@@ -1,10 +1,13 @@
-@use './tailwind.scss';
-@use './variables.scss';
-@use './button/_index.scss';
+@use './tailwind.scss' as *;
+@use './button/_index.scss' as *;
 
 body {
-  --opacity-1: 0.85;
+  --opacity-1: 0.75;
+
   --primary-1: 70, 175, 198;
-  --primary-2: 143, 217, 227;
-  --primary-3: 39, 153, 184;
+  --primary-2: 39, 153, 184;
+  --primary-3: 232, 254, 255;
+
+  --gray-1: 242, 243, 245;
+  --gray-2: 78, 89, 105;
 }

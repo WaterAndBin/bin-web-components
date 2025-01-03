@@ -1,4 +1,38 @@
-@function button-bg($color-variable, $opacity: 1) {
-  // 使用 CSS 变量并提供透明度的默认值
-  @return rgba(var(--#{$color-variable}), $opacity);
-}
+// 变黑比例
+$btn-hover-dark: 94%;
+
+// 透明度
+$btn-opacity-default: var(--opacity-1);
+$btn-disabled-opacity: var(--opacity-1);
+
+// 背景颜色
+$btn-color-primary: rgb(var(--primary-1));
+$btn-color-outline: transparent;
+$btn-color-secondary: rgb(var(--gray-1));
+$btn-color-text: transparent;
+
+// hover的背景颜色
+$btn-hover-color-text: rgb(var(--primary-3));
+
+// 字体颜色
+$btn-text-primary: #ffffff;
+$btn-text-outline: rgb(var(--primary-2));
+$btn-text-secondary: rgb(var(--gray-2));
+$btn-text-text: rgb(var(--primary-2));
+
+// 默认字体大小
+$btn-font-sm: 0.8rem;
+$btn-font-default: 0.9rem;
+$btn-font-lg: 1rem;
+
+// 动画时间
+$anim-duration-base: 300ms;
+
+// 边框宽度
+$btn-border-width: 1px;
+
+// 边框圆
+$btn-border-radius: 4px;
+
+// 边框颜色
+$btn-border-color-outline: rgb(var(--primary-2));

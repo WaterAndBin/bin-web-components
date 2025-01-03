@@ -8,7 +8,8 @@ export default class extends Component {
 
   render() {
     return (
-      <div>
+      <div className="flex justify-center items-center flex-col">
+        <h2 className="text-xl font-semibold my-3">按钮</h2>
         <text-button></text-button>
       </div>
     );

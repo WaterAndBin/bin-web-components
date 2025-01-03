@@ -1,24 +1,27 @@
 @use './_var.scss' as *;
-@use '../variables.scss';
+@use './_mixin.scss' as *;
 
 .y-button {
   &-base {
-    @apply rounded-[4px] transition-colors duration-300 ease-in-out box-border;
+    @include button();
     @apply m-1;
   }
 
   /* ---大小--- */
   &-size {
     &-small {
-      @apply text-[0.8rem] py-[0.2rem] px-[0.55rem];
+      font-size: $btn-font-sm;
+      @apply py-[0.2rem] px-[0.55rem];
     }
 
     &-default {
-      @apply text-[0.9rem] py-1 px-[0.6rem];
+      font-size: $btn-font-default;
+      @apply py-1 px-[0.6rem];
     }
 
     &-large {
-      @apply text-base py-1.5 px-3;
+      font-size: $btn-font-lg;
+      @apply py-1.5 px-3;
     }
   }
   /* ---大小--- */
@@ -26,28 +29,32 @@
   /* ---类型--- */
   &-type {
     &-primary {
-      @apply text-white border-[1px] border-solid border-transparent;
-      background-color: $primary-color-1;
+      color: $btn-text-primary;
+      background-color: $btn-color-primary;
+      @include button-disabled-state($btn-color-primary);
+      @include button-status($btn-color-primary);
+    }
 
-      &:hover {
-        @apply bg-[rgba(var(--primary-1),var(--opacity-1))];
-      }
+    &-secondary {
+      color: $btn-text-secondary;
+      background-color: $btn-color-secondary;
+      @include hoverDark();
+      @include button-disabled-state($btn-color-secondary);
     }
 
     &-outline {
-      @apply text-[rgb(var(--primary-3))] bg-transparent border-[1px] border-solid border-[rgb(var(--primary-3))];
+      color: $btn-text-outline;
+      background-color: $btn-color-outline;
+      border-color: $btn-border-color-outline;
+      @include button-disabled-state($btn-color-outline);
+    }
 
-      &:hover {
-        @apply text-[rgba(var(--primary-3),var(--opacity-1))] border-[rgba(var(--primary-3),var(--opacity-1))];
-      }
+    &-text {
+      color: $btn-text-text;
+      background-color: $btn-color-text;
+      @include hoverBg($btn-hover-color-text);
+      @include button-disabled-state($btn-color-text);
     }
   }
   /* ---类型--- */
 }
-
-/* ---禁用--- */
-.y-button-is-disabled {
-  @apply cursor-not-allowed;
-  background-color: inherit;
-}
-/* ---禁用--- */
