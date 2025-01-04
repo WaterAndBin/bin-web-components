@@ -82,7 +82,7 @@ export default class YButton extends Component<ButtonProps> {
     return (
       <button
         style={style}
-        className={clsx(className, ['y-button-base', `y-button-type-${type}`, `y-button-size-${size}`], { [`y-button-is-disabled`]: disabled, [`y-button-status-${status}`]: status == 'normal' })}
+        className={clsx(className, ['y-button-base', `y-button-type-${type}`, `y-button-size-${size}`], { [`y-button-is-disabled`]: disabled, [`y-button-status-${status}`]: status })}
       >
         {children ? <slot></slot> : <span>Button</span>}
       </button>

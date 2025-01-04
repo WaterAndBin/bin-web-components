@@ -39,19 +39,23 @@
 // 禁止按钮状态
 @mixin button-disabled-state($bg-color) {
   &.y-button-is-disabled {
-    @apply cursor-not-allowed;
-    opacity: $btn-disabled-opacity;
-    background-color: $bg-color; /* 使用传入的颜色 */
-    filter: brightness(100%);
+    opacity: $btn-opacity-default;
+
+    &:hover {
+      @apply cursor-not-allowed;
+      background-color: $bg-color; /* 使用传入的颜色 */
+      filter: brightness(100%);
+    }
   }
 }
 
-// 按钮类型
-@mixin button-status($bg-color) {
-  &.y-button-status-* {
-    @apply cursor-not-allowed;
-    opacity: $btn-disabled-opacity;
-    background-color: $bg-color; /* 使用传入的颜色 */
-    filter: brightness(100%);
+// 特殊处理hover之后的变化
+@mixin button-hover-handle($type, $bg-color) {
+  /* 特定的 hover 状态 */
+  @if $type == 'secondary' {
+    @include hoverDark();
+  }
+  @if $type == 'text' {
+    @include hoverBg($bg-color);
   }
 }

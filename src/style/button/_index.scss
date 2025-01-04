@@ -1,5 +1,6 @@
 @use './_var.scss' as *;
 @use './_mixin.scss' as *;
+@use 'sass:map';
 
 .y-button {
   &-base {
@@ -28,32 +29,26 @@
 
   /* ---类型--- */
   &-type {
-    &-primary {
-      color: $btn-text-primary;
-      background-color: $btn-color-primary;
-      @include button-disabled-state($btn-color-primary);
-      @include button-status($btn-color-primary);
-    }
+    @each $type in $button-types {
+      &-#{$type} {
+        color: map.get($btn-text, $type);
+        background-color: map.get($btn-bg-color, $type);
+        border-color: map.get($btn-border-color, $type);
+        @include button-disabled-state(map.get($btn-bg-color, $type));
+        @include button-hover-handle($type, map.get($btn-hover-color, $type));
 
-    &-secondary {
-      color: $btn-text-secondary;
-      background-color: $btn-color-secondary;
-      @include hoverDark();
-      @include button-disabled-state($btn-color-secondary);
-    }
+        /* 循环状态 */
+        @each $status in $button-status {
+          &.y-button-status-#{$status} {
+            color: map.get(map.get(map.get($btn-status, $status), $type), text);
+            background-color: map.get(map.get(map.get($btn-status, $status), $type), color);
+            border-color: map.get(map.get(map.get($btn-status, $status), $type), border);
 
-    &-outline {
-      color: $btn-text-outline;
-      background-color: $btn-color-outline;
-      border-color: $btn-border-color-outline;
-      @include button-disabled-state($btn-color-outline);
-    }
-
-    &-text {
-      color: $btn-text-text;
-      background-color: $btn-color-text;
-      @include hoverBg($btn-hover-color-text);
-      @include button-disabled-state($btn-color-text);
+            @include button-disabled-state(map.get(map.get(map.get($btn-status, $status), $type), color));
+            @include button-hover-handle($type, map.get($btn-hover-color, $status));
+          }
+        }
+      }
     }
   }
   /* ---类型--- */
