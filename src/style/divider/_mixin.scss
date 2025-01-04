@@ -1,0 +1,5 @@
+@use './_var.scss' as *;
+
+@mixin divider() {
+  @apply bg-red-700 h-10;
+}
