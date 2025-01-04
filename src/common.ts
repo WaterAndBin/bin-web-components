@@ -6,4 +6,9 @@ export type SizeEnum = 'small' | 'default' | 'large';
 /**
  * 类型
  */
-export type TypeEnum = 'primary' | 'secondary' | 'dashed' | 'outline' | 'text';
+export type TypeEnum = 'primary' | 'secondary' | 'outline' | 'text';
+
+/**
+ * 状态
+ */
+export type StatusEnum = 'success' | 'warning' | 'danger';

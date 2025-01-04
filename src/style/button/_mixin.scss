@@ -1,0 +1,61 @@
+@use './_var.scss' as *;
+
+@mixin button() {
+  @apply relative z-0 cursor-pointer border-solid border-transparent bg-transparent;
+  @apply inline-flex items-center justify-center align-middle	whitespace-nowrap	touch-manipulation;
+  @apply overflow-hidden outline-none;
+  font-size: $btn-font-default;
+  outline: none;
+  border-width: $btn-border-width;
+  border-radius: $btn-border-radius;
+  transition: all $anim-duration-base linear;
+
+  &:hover {
+    opacity: $btn-opacity-default;
+  }
+}
+
+// 变暗
+@mixin hoverDark() {
+  &:hover {
+    filter: brightness($btn-hover-dark);
+  }
+}
+
+// hover之后的颜色展示
+@mixin hoverBg($color, $isOpacity: true) {
+  @if ($isOpacity) {
+    &:hover {
+      background-color: $color;
+    }
+  } @else {
+    &:hover {
+      opacity: 1;
+      background-color: $color;
+    }
+  }
+}
+
+// 禁止按钮状态
+@mixin button-disabled-state($bg-color) {
+  &.y-button-is-disabled {
+    opacity: $btn-opacity-default;
+
+    &:hover {
+      @apply cursor-not-allowed;
+      background-color: $bg-color; /* 使用传入的颜色 */
+      filter: brightness(100%);
+    }
+  }
+}
+
+// 特殊处理hover之后的变化
+@mixin button-hover-handle($type, $bg-color) {
+  /* 特定的 hover 状态 */
+  @if $type == 'secondary' {
+    @include hoverDark();
+  }
+  @if $type == 'text' {
+    @include hoverBg($bg-color);
+  }
+}

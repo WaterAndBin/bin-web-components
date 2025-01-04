@@ -1,0 +1,112 @@
+$button-types: primary, secondary, outline, text;
+$button-status: success, warning, danger;
+
+// 变黑比例
+$btn-hover-dark: 94%;
+
+// 透明度
+$btn-opacity-default: var(--opacity-1);
+$btn-disabled-opacity: var(--opacity-2);
+
+// 背景颜色
+$btn-bg-color: (
+  primary: rgb(var(--primary-1)),
+  secondary: rgb(var(--gray-1)),
+  outline: transparent,
+  text: transparent
+);
+
+// 字体颜色
+$btn-text: (
+  primary: rgb(var(--white-1)),
+  secondary: rgb(var(--gray-2)),
+  outline: rgb(var(--primary-2)),
+  text: rgb(var(--primary-2))
+);
+
+// hover的背景颜色
+$btn-hover-color: (
+  text: rgb(var(--primary-3)),
+  success: rgb(var(--green-2)),
+  warning: rgb(var(--orange-1)),
+  danger: rgb(var(--red-1))
+);
+
+// 边框颜色
+$btn-border-color: (
+  outline: rgb(var(--primary-2))
+);
+
+// 默认字体大小
+$btn-font-sm: 0.8rem;
+$btn-font-default: 0.9rem;
+$btn-font-lg: 1rem;
+
+// 动画时间
+$anim-duration-base: 300ms;
+
+// 边框宽度
+$btn-border-width: 1px;
+
+// 边框圆
+$btn-border-radius: 4px;
+
+$btn-status: (
+  success: (
+    primary: (
+      color: rgb(var(--green-1)),
+      text: rgb(var(--white-1))
+    ),
+    secondary: (
+      color: rgb(var(--green-2)),
+      text: rgb(var(--green-3))
+    ),
+    outline: (
+      color: transparent,
+      text: rgb(var(--green-3)),
+      border: rgb(var(--green-3))
+    ),
+    text: (
+      color: transparent,
+      text: rgb(var(--green-3))
+    )
+  ),
+  warning: (
+    primary: (
+      color: rgb(var(--orange-2)),
+      text: rgb(var(--white-1))
+    ),
+    secondary: (
+      color: rgb(var(--orange-1)),
+      text: rgb(var(--orange-2))
+    ),
+    outline: (
+      color: transparent,
+      text: rgb(var(--orange-2)),
+      border: rgb(var(--orange-2))
+    ),
+    text: (
+      color: transparent,
+      text: rgb(var(--orange-2))
+    )
+  ),
+  danger: (
+    primary: (
+      color: rgb(var(--red-2)),
+      text: rgb(var(--white-1))
+    ),
+    secondary: (
+      color: rgb(var(--red-1)),
+      text: rgb(var(--red-2))
+    ),
+    outline: (
+      color: transparent,
+      text: rgb(var(--red-2)),
+      border: rgb(var(--red-2))
+    ),
+    text: (
+      color: transparent,
+      text: rgb(var(--red-2))
+    )
+  )
+);

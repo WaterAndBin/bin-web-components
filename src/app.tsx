@@ -1,6 +1,6 @@
 import { h, tag, Component } from 'omi';
 import { tailwind } from './style';
-import './Button/button';
+import './Button/_example';
 
 @tag('my-app')
 export default class extends Component {
@@ -8,22 +8,9 @@ export default class extends Component {
 
   render() {
     return (
-      <div className="p-2">
-        <div>
-          <y-button size="small"></y-button>
-          <y-button size="default"></y-button>
-          <y-button size="large"></y-button>
-        </div>
-        <div>
-          <y-button size="small" type="outline"></y-button>
-          <y-button size="default" type="outline"></y-button>
-          <y-button size="large" type="outline"></y-button>
-        </div>
-        <div>
-          <y-button size="small" disabled></y-button>
-          <y-button size="default" disabled></y-button>
-          <y-button size="large" disabled></y-button>
-        </div>
+      <div className="flex justify-center items-center flex-col">
+        <h2 className="text-xl font-semibold my-3">按钮</h2>
+        <text-button></text-button>
       </div>
     );
   }

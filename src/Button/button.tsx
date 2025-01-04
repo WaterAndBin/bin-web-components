@@ -60,17 +60,30 @@ export default class YButton extends Component<ButtonProps> {
           this.update();
         }
       }
+    },
+    /** 状态 */
+    status: {
+      type: String,
+      default: 'normal',
+      changed() {
+        if (this instanceof YButton) {
+          this.update();
+        }
+      }
     }
   };
 
   render(props: ButtonProps) {
-    const { size, style, className, type, children, disabled } = props;
+    const { size, style, className, type, children, disabled, status } = props;
 
     console.log(props);
     console.log(style);
 
     return (
-      <button style={style} className={clsx(className, ['y-button-base', `y-button-type-${type}`, `y-button-size-${size}`], { [`y-button-is-disabled`]: disabled })}>
+      <button
+        style={style}
+        className={clsx(className, ['y-button-base', `y-button-type-${type}`, `y-button-size-${size}`], { [`y-button-is-disabled`]: disabled, [`y-button-status-${status}`]: status })}
+      >
         {children ? <slot></slot> : <span>Button</span>}
       </button>
     );

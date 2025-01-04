@@ -1,6 +1,6 @@
 import { VNode } from 'omi';
 import React from 'react';
-import { SizeEnum, TypeEnum } from 'src/common';
+import type { SizeEnum, StatusEnum, TypeEnum } from 'src/common';
 
 export interface YButtonProps {
   /**
@@ -15,6 +15,10 @@ export interface YButtonProps {
    * 是否禁用
    */
   disabled?: boolean;
+  /**
+   * 状态
+   */
+  status?: StatusEnum;
   className?: string;
   style?: CSSStyleDeclaration;
   /**
