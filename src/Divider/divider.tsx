@@ -2,7 +2,7 @@ import { h, tag, Component } from 'omi';
 import clsx from 'clsx';
 import { tailwind } from '../style';
 import { styleSheet } from './style/index.js';
-import { YDividerProps } from './types.js';
+import { YDividerProps } from './types';
 
 export type DividerProps = YDividerProps;
 
@@ -11,9 +11,38 @@ export default class Divider extends Component<DividerProps> {
   static css = [tailwind, styleSheet];
 
   static props = {
+    /** 宽度，单位是px */
+    width: {
+      type: Number,
+      default: 1,
+      changed() {
+        if (this instanceof Divider) {
+          this.update();
+        }
+      }
+    },
+    /** 排序，水平：horizontal，竖：vertical */
+    type: {
+      type: String,
+      default: 'horizontal',
+      changed() {
+        if (this instanceof Divider) {
+          this.update();
+        }
+      }
+    },
+    orientation: {
+      type: String,
+      default: 'center',
+      changed() {
+        if (this instanceof Divider) {
+          this.update();
+        }
+      }
+    },
     /** 样式 */
     style: {
-      type: String,
+      type: CSSStyleDeclaration,
       default: '',
       changed() {
         if (this instanceof Divider) {
@@ -34,13 +63,10 @@ export default class Divider extends Component<DividerProps> {
   };
 
   render(props: DividerProps) {
-    const { className } = props;
+    const { width, type, style, className } = props;
 
-    return (
-      <div>
-        <div className={clsx(className, ['y-divider-base'])}></div>
-        <p>这是一根分割线</p>
-      </div>
-    );
+    const borderProperty = type === 'vertical' ? 'borderLeftWidth' : 'borderBottomWidth';
+
+    return <div className={clsx(className, ['y-divider-base', `y-divider-${type}`])} style={{ [borderProperty]: `${width}px`, style }}></div>;
   }
 }
