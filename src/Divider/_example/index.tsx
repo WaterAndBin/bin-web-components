@@ -16,6 +16,19 @@ export default class extends Component {
           <y-divider type="vertical"></y-divider>
           <span>Text3</span>
         </div>
+        <p>这是一根分割线分割线3</p>
+        <y-divider orientation="center">
+          <span>center</span>
+        </y-divider>
+        <p>这是一根分割线分割线4</p>
+        <y-divider orientation="center">
+          <span>center</span>
+        </y-divider>
+        <p>这是一根分割线分割线5</p>
+        <y-divider orientation="center">
+          <span>center</span>
+        </y-divider>
+        <p>这是一根分割线分割线3</p>
       </div>
     );
   }

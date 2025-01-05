@@ -6,6 +6,18 @@
     @include divider();
   }
 
+  &-base::before {
+    @apply w-full h-[1px] z-[1] border-solid border-b-[1px];
+    content: '';
+    border-bottom-color: $div-border-color;
+  }
+
+  &-base::after {
+    @apply w-[10%] h-[1px] z-[1] border-solid border-b-[1px];
+    content: '';
+    border-bottom-color: $div-border-color;
+  }
+
   &-horizontal{
     @apply my-3;
     border-bottom-color: $div-border-color;
@@ -14,5 +26,9 @@
   &-vertical{
     @apply inline mx-3 min-w-[1px] min-h-4;
     border-left-color: $div-border-color;
+  }
+
+  &-base .y-divider-text{
+    @apply relative z-[2] px-3 bg-white box-border; 
   }
 }

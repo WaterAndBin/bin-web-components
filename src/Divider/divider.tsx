@@ -14,7 +14,7 @@ export default class Divider extends Component<DividerProps> {
     /** 宽度，单位是px */
     width: {
       type: Number,
-      default: 1,
+      default: 0,
       changed() {
         if (this instanceof Divider) {
           this.update();
@@ -63,10 +63,23 @@ export default class Divider extends Component<DividerProps> {
   };
 
   render(props: DividerProps) {
-    const { width, type, style, className } = props;
+    const { width, type, orientation, style, className, children } = props;
 
     const borderProperty = type === 'vertical' ? 'borderLeftWidth' : 'borderBottomWidth';
 
-    return <div className={clsx(className, ['y-divider-base', `y-divider-${type}`])} style={{ [borderProperty]: `${width}px`, style }}></div>;
+    console.log('=====');
+    console.log(props.children);
+
+    return (
+      <div className={clsx(className, ['y-divider-base', `y-divider-${type}`])} style={{ [borderProperty]: `${width}px`, style }}>
+        {children ? (
+          <span className={clsx(['y-divider-text'], { [`y-divider-text-${orientation}`]: type !== 'vertical' })}>
+            <slot></slot>
+          </span>
+        ) : (
+          <></>
+        )}
+      </div>
+    );
   }
 }
