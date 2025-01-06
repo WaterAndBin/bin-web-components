@@ -1,0 +1,44 @@
+@use './_var.scss' as *;
+@use './_mixin.scss' as *;
+
+.y-divider {
+  &-base {
+    @include divider();
+  }
+
+  &-vertical {
+    @apply inline mx-3 min-w-[1px] min-h-4 border-l-[1px];
+    border-left-color: $div-border-color;
+  }
+
+  &-horizontal {
+    @apply my-5;
+    border-bottom-color: $div-border-color;
+  }
+
+  &-horizontal::before,
+  &-horizontal::after {
+    @include divider-horizontal();
+    @apply w-full;
+    border-bottom-style: var(--divider-border-style);
+    border-bottom-width: var(--divider-border-width);
+  }
+
+  &-base .y-divider-text {
+    @apply absolute box-border px-4 text-[14px] leading-loose z-[2] bg-white top-[50%];
+    transform: translateY(-50%);
+
+    &-center {
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &-left {
+      left: 12px;
+    }
+
+    &-right {
+      right: 12px;
+    }
+  }
+}

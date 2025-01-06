@@ -1,13 +1,90 @@
 import { h, tag, Component } from 'omi';
+import clsx from 'clsx';
+import { tailwind } from '../style';
+import { styleSheet } from './style/index.js';
+import { YDividerProps } from './types';
 
-@tag('t-divider')
-export default class Divider extends Component {
-  render() {
+export type DividerProps = YDividerProps;
+
+@tag('y-divider')
+export default class Divider extends Component<DividerProps> {
+  static css = [tailwind, styleSheet];
+
+  static props = {
+    /** 边框的宽度，默认是1px */
+    width: {
+      type: String,
+      default: '1px',
+      changed() {
+        if (this instanceof Divider) {
+          this.update();
+        }
+      }
+    },
+    /** Border的样式，是虚线还是实线等等 */
+    type: {
+      type: String,
+      default: 'solid',
+      changed() {
+        if (this instanceof Divider) {
+          this.update();
+        }
+      }
+    },
+    /** 分割文字位置 */
+    orientation: {
+      type: String,
+      default: 'center',
+      changed() {
+        if (this instanceof Divider) {
+          this.update();
+        }
+      }
+    },
+    /** 排序，水平：horizontal，竖：vertical */
+    direction: {
+      type: String,
+      default: 'horizontal',
+      changed() {
+        if (this instanceof Divider) {
+          this.update();
+        }
+      }
+    },
+    /** 样式 */
+    style: {
+      type: CSSStyleDeclaration,
+      default: '',
+      changed() {
+        if (this instanceof Divider) {
+          this.update();
+        }
+      }
+    },
+    /** 类 */
+    className: {
+      type: String,
+      default: '',
+      changed() {
+        if (this instanceof Divider) {
+          this.update();
+        }
+      }
+    }
+  };
+
+  render(props: DividerProps) {
+    const { width, type, direction, orientation, style, className, children } = props;
+
     return (
-      <div>
-        <hr />
-        <h1>分割线</h1>
-        <br />
+      <div className={clsx(className, ['y-divider-base', `y-divider-${direction}`])} style={{ '--divider-border-style': type, '--divider-border-width': width, style }}>
+        {children ? (
+          <span className={clsx(['y-divider-text'], { [`y-divider-text-${orientation}`]: direction !== 'vertical' })}>
+            <slot></slot>
+          </span>
+        ) : (
+          <></>
+        )}
       </div>
     );
   }

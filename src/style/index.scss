@@ -1,5 +1,6 @@
 @use './tailwind.scss' as *;
 @use './button/_index.scss' as *;
+@use './divider/_index.scss' as *;
 
 body {
   --opacity-1: 0.75;
@@ -12,7 +13,8 @@ body {
   --primary-3: 232, 254, 255;
 
   --gray-1: 242, 243, 245;
-  --gray-2: 78, 89, 105;
+  --gray-2: 229, 230, 235;
+  --gray-3: 78, 89, 105;
 
   --green-1: 0, 180, 42;
   --green-2: 232, 255, 234;

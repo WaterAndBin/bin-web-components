@@ -1,0 +1,12 @@
+@use './_var.scss' as *;
+
+@mixin divider() {
+  @apply w-full h-full max-w-full max-h-full relative box-border;
+  @apply flex items-center justify-items-start;
+}
+
+@mixin divider-horizontal() {
+  @apply h-[1px] z-[1];
+  content: '';
+  border-bottom-color: $div-border-color;
+}
