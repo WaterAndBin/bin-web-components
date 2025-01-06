@@ -1,34 +1,50 @@
 import { h, tag, Component } from 'omi';
 import '..';
+import { tailwind } from '../../style/index';
 
 @tag('text-divider')
 export default class extends Component {
+  static css = [tailwind];
+
   render() {
     return (
-      <div className="p-2 flex items-center justify-center">
-        <p>这是一根分割线分割线1</p>
+      <div>
+        <span>这是一根大部分用tailwind构建的，长的分割线分割线1</span>
         <y-divider></y-divider>
-        <p>这是一根分割线分割线2</p>
-        <div>
-          <span>Text1</span>
-          <y-divider type="vertical"></y-divider>
-          <span>Text2</span>
-          <y-divider type="vertical"></y-divider>
-          <span>Text3</span>
+        <span>这是一根大部分用tailwind构建的，长的分割线分割线2</span>
+        <y-divider orientation="left">
+          <span>left</span>
+        </y-divider>
+        <span>这是一根大部分用tailwind构建的，长的分割线分割线3</span>
+        <y-divider orientation="center">
+          <span>center</span>
+        </y-divider>
+        <span>这是一根大部分用tailwind构建的，长的分割线分割线4</span>
+        <y-divider orientation="right">
+          <span>right</span>
+        </y-divider>
+        <div className="text-center">
+          <span>点状分割线</span>
+          <y-divider type="dotted" width="2px"></y-divider>
+          <span>双线分割线</span>
+          <y-divider type="double" width="4px"></y-divider>
+          <span>虚线分割线</span>
+          <y-divider type="dashed" width="2px"></y-divider>
         </div>
-        <p>这是一根分割线分割线3</p>
-        <y-divider orientation="center">
-          <span>center</span>
-        </y-divider>
-        <p>这是一根分割线分割线4</p>
-        <y-divider orientation="center">
-          <span>center</span>
-        </y-divider>
-        <p>这是一根分割线分割线5</p>
-        <y-divider orientation="center">
-          <span>center</span>
-        </y-divider>
-        <p>这是一根分割线分割线3</p>
+        <div className="flex justify-center items-center flex-col">
+          <span>竖直分割</span>
+          <div className="mt-3">
+            <span>Text1</span>
+            <y-divider direction="vertical"></y-divider>
+            <span>Text2</span>
+            <y-divider direction="vertical"></y-divider>
+            <span>Text3</span>
+            <y-divider direction="vertical"></y-divider>
+            <span>Text4</span>
+            <y-divider direction="vertical"></y-divider>
+            <span>Text5</span>
+          </div>
+        </div>
       </div>
     );
   }

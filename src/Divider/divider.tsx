@@ -11,10 +11,30 @@ export default class Divider extends Component<DividerProps> {
   static css = [tailwind, styleSheet];
 
   static props = {
-    /** 宽度，单位是px */
+    /** 边框的宽度，默认是1px */
     width: {
-      type: Number,
-      default: 0,
+      type: String,
+      default: '1px',
+      changed() {
+        if (this instanceof Divider) {
+          this.update();
+        }
+      }
+    },
+    /** Border的样式，是虚线还是实线等等 */
+    type: {
+      type: String,
+      default: 'solid',
+      changed() {
+        if (this instanceof Divider) {
+          this.update();
+        }
+      }
+    },
+    /** 分割文字位置 */
+    orientation: {
+      type: String,
+      default: 'center',
       changed() {
         if (this instanceof Divider) {
           this.update();
@@ -22,18 +42,9 @@ export default class Divider extends Component<DividerProps> {
       }
     },
     /** 排序，水平：horizontal，竖：vertical */
-    type: {
+    direction: {
       type: String,
       default: 'horizontal',
-      changed() {
-        if (this instanceof Divider) {
-          this.update();
-        }
-      }
-    },
-    orientation: {
-      type: String,
-      default: 'center',
       changed() {
         if (this instanceof Divider) {
           this.update();
@@ -63,17 +74,12 @@ export default class Divider extends Component<DividerProps> {
   };
 
   render(props: DividerProps) {
-    const { width, type, orientation, style, className, children } = props;
-
-    const borderProperty = type === 'vertical' ? 'borderLeftWidth' : 'borderBottomWidth';
-
-    console.log('=====');
-    console.log(props.children);
+    const { width, type, direction, orientation, style, className, children } = props;
 
     return (
-      <div className={clsx(className, ['y-divider-base', `y-divider-${type}`])} style={{ [borderProperty]: `${width}px`, style }}>
+      <div className={clsx(className, ['y-divider-base', `y-divider-${direction}`])} style={{ '--divider-border-style': type, '--divider-border-width': width, style }}>
         {children ? (
-          <span className={clsx(['y-divider-text'], { [`y-divider-text-${orientation}`]: type !== 'vertical' })}>
+          <span className={clsx(['y-divider-text'], { [`y-divider-text-${orientation}`]: direction !== 'vertical' })}>
             <slot></slot>
           </span>
         ) : (
