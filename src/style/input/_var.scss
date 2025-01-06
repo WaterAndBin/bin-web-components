@@ -2,7 +2,11 @@
 $input-border-color: rgb(var(--gray-2));
 
 // hover之后的背景颜色
-$input-hover-bg-color: rgb(var(--gray-2));
+$input-hover-bg-color: rgb(var(--primary-3));
+
+// foucues之后的背景颜色
+$input-focused-bg-color: rgb(var(--primary-3));
+$input-focused-border-color: rgb(var(--primary-3));
 
 // 运动时长
-$anim-duration-base: 100ms;
+$anim-duration-base:var(--anim-time-1);

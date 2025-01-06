@@ -8,7 +8,7 @@ export default class extends Component {
 
   render() {
     return (
-      <div>
+      <div className="mb-3">
         <y-input></y-input>
       </div>
     );

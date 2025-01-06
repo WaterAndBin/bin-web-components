@@ -23,12 +23,21 @@ export default class Divider extends Component<InputProps> {
     }
   };
 
+  /** 是否点击了输入框 */
+  isFocused = false;
+
+  changeIsFocused(): void {
+    this.isFocused = !this.isFocused;
+    this.update();
+  }
+
   render(props: InputProps) {
     const { placeholder } = props;
 
     return (
-      <div>
-        <input className={clsx(['y-input-base'])} placeholder={placeholder} />
+      <div className={clsx(['y-input-box', { 'y-input-box-focused': this.isFocused }])}>
+        <input className={clsx(['y-input-base'])} onFocus={() => this.changeIsFocused()} onBlur={() => this.changeIsFocused()} placeholder={placeholder} />
+        <span className="y-input-icon">x</span>
       </div>
     );
   }

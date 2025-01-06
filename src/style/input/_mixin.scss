@@ -1,9 +1,13 @@
 @use './_var.scss' as *;
 
 @mixin Input() {
-  @apply border-[1px] border-solid cursor-text bg-transparent p-1;
+  @apply border-[1px] border-solid cursor-text bg-transparent px-1 py-[2px] box-border;
+  @apply rounded-sm outline-none inline-flex items-center text-[14px];
   border-color: $input-border-color;
-  transition: all $anim-duration-base linear;
+  transition:
+    color 0.1s linear,
+    border-color 0.1s linear,
+    background-color 0.1s linear;
 
   &:hover {
     background-color: $input-hover-bg-color;

@@ -1,8 +1,30 @@
 @use './_var.scss' as *;
 @use './_mixin.scss' as *;
 
-.y-input {
-  &-base {
-    @include Input();
+.y-input-box {
+  @include Input();
+
+  &-focused {
+    border-color: $input-focused-border-color;
+    transition:
+      color 0.15s linear,
+      border-color 0.15s linear,
+      background-color 0.15s linear;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  .y-input {
+    &-base {
+      @apply cursor-text bg-transparent px-2 py-1 box-border border-0;
+      @apply outline-none;
+    }
+  }
+
+  & .y-input-icon {
+    @apply cursor-pointer bg-red-400 leading-[0] inline-block;
+    @apply text-[14px];
   }
 }
