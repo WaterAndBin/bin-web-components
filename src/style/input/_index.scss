@@ -1,0 +1,8 @@
+@use './_var.scss' as *;
+@use './_mixin.scss' as *;
+
+.y-input {
+  &-base {
+    @include Input();
+  }
+}

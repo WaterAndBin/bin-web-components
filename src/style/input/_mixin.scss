@@ -1,0 +1,11 @@
+@use './_var.scss' as *;
+
+@mixin Input() {
+  @apply border-[1px] border-solid cursor-text bg-transparent p-1;
+  border-color: $input-border-color;
+  transition: all $anim-duration-base linear;
+
+  &:hover {
+    background-color: $input-hover-bg-color;
+  }
+}
