@@ -1,5 +1,6 @@
 import { VNode } from 'omi';
 import React from 'react';
+import { StyleValue } from 'src/common';
 
 export type SortTypes = 'horizontal' | 'vertical';
 export type OrientationTypes = 'left' | 'right' | 'center';
@@ -15,7 +16,7 @@ export interface YDividerProps {
   /** 分割文字位置 */
   orientation?: OrientationTypes;
   className?: string;
-  style?: CSSStyleDeclaration;
+  style?: StyleValue;
   /**
    * slot插槽专用
    */
