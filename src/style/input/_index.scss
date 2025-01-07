@@ -6,10 +6,7 @@
 
   &-focused {
     border-color: $input-focused-border-color;
-    transition:
-      color 0.15s linear,
-      border-color 0.15s linear,
-      background-color 0.15s linear;
+    transition: all $anim-duration-base linear;
 
     &:hover {
       background-color: transparent;
@@ -23,8 +20,22 @@
     }
   }
 
-  & .y-input-icon {
-    @apply cursor-pointer bg-red-400 leading-[0] inline-block;
-    @apply text-[14px];
+  .y-input-icon {
+    @apply cursor-pointer leading-[0] relative size-5 inline-flex justify-center items-center text-center;
+    @apply text-[14px] z-50;
+    background-color: inherit;
+    transition: all $anim-duration-base linear;
+
+    &:before {
+      @apply absolute top-[50%] left-[50%] rounded-full block size-full z-[-1];
+      content: '';
+      transform: translate(-50%, -50%);
+      background-color: inherit;
+    }
+
+    &:hover {
+      @apply rounded-full;
+      background-color: $icon-hover-bg-color;
+    }
   }
 }
