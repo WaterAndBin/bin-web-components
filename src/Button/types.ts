@@ -1,6 +1,6 @@
 import { VNode } from 'omi';
 import React from 'react';
-import type { SizeEnum, StatusEnum, TypeEnum } from 'src/common';
+import type { SizeEnum, StatusEnum, StyleValue, TypeEnum } from 'src/common';
 
 export interface YButtonProps {
   /**
@@ -20,7 +20,7 @@ export interface YButtonProps {
    */
   status?: StatusEnum;
   className?: string;
-  style?: CSSStyleDeclaration;
+  style?: StyleValue;
   /**
    * slot插槽专用
    */
