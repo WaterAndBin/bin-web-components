@@ -1,6 +1,6 @@
 import { type ButtonProps } from './Button';
 import { type DividerProps } from './Divider';
-import { type TagProps } from './Tag';
+import { type InputProps } from './Input';
 import * as CSS from 'csstype';
 
 declare global {
@@ -8,7 +8,7 @@ declare global {
     interface IntrinsicElements {
       'y-button': ButtonProps;
       'y-divider': DividerProps;
-      'y-tag': TagProps;
+      'y-input': InputProps;
     }
   }
 

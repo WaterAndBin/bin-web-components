@@ -1,7 +1,7 @@
-import { h, tag, Component, createRef } from 'omi';
+import { h, tag, Component, createRef, OmiProps } from 'omi';
 import { tailwind } from '../style';
 import { styleSheet } from './style/index.js';
-import { YInputProps, YInputEvent } from './types';
+import { YInputProps, YInputEvent, InputType } from './types';
 import clsx from 'clsx';
 
 export interface InputProps extends YInputProps, YInputEvent {}
@@ -11,10 +11,38 @@ export default class Divider extends Component<InputProps> {
   static css = [tailwind, styleSheet];
 
   static props = {
+    allowClear: {
+      type: Boolean,
+      default: true,
+      changed() {
+        if (this instanceof Divider) {
+          this.update();
+        }
+      }
+    },
+    width: {
+      type: String,
+      default: '220px',
+      changed() {
+        if (this instanceof Divider) {
+          this.update();
+        }
+      }
+    },
     /** 边框的宽度，默认是1px */
     size: {
       type: String,
       default: 'default',
+      changed() {
+        if (this instanceof Divider) {
+          this.update();
+        }
+      }
+    },
+    /** 类型 */
+    type: {
+      type: String,
+      default: 'text',
       changed() {
         if (this instanceof Divider) {
           this.update();
@@ -64,6 +92,8 @@ export default class Divider extends Component<InputProps> {
   private isEmpty: boolean = true;
   /** 是否点击了图标 */
   private isIconClicked: boolean = false;
+  /** 是否点击了图标 */
+  private isShowPassword: boolean = false;
 
   /**
    * 处理MouseEnter
@@ -163,8 +193,17 @@ export default class Divider extends Component<InputProps> {
     this.isIconClicked = false;
   };
 
-  render(props: InputProps) {
-    const { size, placeholder, className, style } = props;
+  get handleInputType(): InputType | string {
+    const { type } = this.props;
+
+    if (type === 'password') {
+      return this.isShowPassword ? 'text' : 'password';
+    }
+    return 'text';
+  }
+
+  render(props: OmiProps<InputProps>) {
+    const { allowClear, width, type, size, placeholder, className, style } = props;
 
     return (
       <div
@@ -172,19 +211,47 @@ export default class Divider extends Component<InputProps> {
         onMouseEnter={this.handleOnMouseEnter}
         onMouseLeave={this.handleOnMouseLeave}
         onClick={() => this.inputRef.current?.focus()}
-        style={style}
+        style={{ width: width, style }}
       >
+        <slot name="prefix"></slot>
         <input
           ref={this.inputRef}
+          type={this.handleInputType}
           className={clsx(['y-input-base', `y-input-size-${size}`])}
           onFocus={this.handleOnFocus}
           onBlur={this.handleOnBlur}
           onInput={this.handleInput}
           placeholder={placeholder}
         />
-        <span className="y-input-icon" style={{ visibility: this.iconVisibility && this.isEnter ? 'visible' : 'hidden' }} onClick={this.iconOnClick} onMouseEnter={() => (this.isIconClicked = true)}>
-          x
-        </span>
+        {allowClear && (
+          <span className="y-input-icon" style={{ visibility: this.iconVisibility ? 'visible' : 'hidden' }} onClick={this.iconOnClick} onMouseEnter={() => (this.isIconClicked = true)}>
+            x
+          </span>
+        )}
+        {type === 'password' && (
+          <span className="y-input-icon" style={{ visibility: this.iconVisibility ? 'visible' : 'hidden' }}>
+            {!this.isShowPassword && (
+              <span
+                onClick={() => {
+                  this.isShowPassword = true;
+                  this.update();
+                }}
+              >
+                🕶
+              </span>
+            )}
+            {this.isShowPassword && (
+              <span
+                onClick={() => {
+                  this.isShowPassword = false;
+                  this.update();
+                }}
+              >
+                👀
+              </span>
+            )}
+          </span>
+        )}
       </div>
     );
   }

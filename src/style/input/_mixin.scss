@@ -1,8 +1,8 @@
 @use './_var.scss' as *;
 
 @mixin Input() {
-  @apply border-[1px] border-solid cursor-text bg-transparent px-1 py-[2px] box-border;
-  @apply rounded-sm outline-none inline-flex items-center text-[14px];
+  @apply border-solid cursor-text bg-transparent box-border inline-flex items-center relative;
+  @apply border-[1px] rounded-sm outline-none px-2;
   border-color: $input-border-color;
   transition: all $anim-duration-base linear;
 

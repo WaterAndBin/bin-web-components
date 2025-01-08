@@ -1,5 +1,6 @@
 @use './_var.scss' as *;
 @use './_mixin.scss' as *;
+@use 'sass:map';
 
 .y-input-box {
   @include Input();
@@ -15,19 +16,34 @@
 
   .y-input {
     &-base {
-      @apply cursor-text bg-transparent px-2 py-1 box-border border-0;
-      @apply outline-none;
+      @apply cursor-text bg-transparent box-border;
+      @apply size-full border-0 outline-none;
+    }
+
+    &-base[type='password']::-ms-reveal {
+      display: none;
+    }
+
+    &-size {
+      @each $type in $input-size-type {
+        &-#{$type} {
+          font-size: map.get(map.get($input-size, $type), text);
+          // padding: map.get(map.get($input-size, $type), px);
+          padding: map.get(map.get($input-size, $type), py) 0;
+        }
+      }
     }
   }
 
   .y-input-icon {
-    @apply cursor-pointer leading-[0] relative size-5 inline-flex justify-center items-center text-center;
-    @apply text-[14px] z-50;
+    @apply cursor-pointer relative inline-flex justify-center items-center text-center;
+    @apply text-[14px] z-50 leading-[0] size-5 select-none;
     background-color: inherit;
     transition: all $anim-duration-base linear;
 
     &:before {
-      @apply absolute top-[50%] left-[50%] rounded-full block size-full z-[-1];
+      @apply absolute rounded-full block;
+      @apply top-[50%] left-[50%] z-[-1] size-full;
       content: '';
       transform: translate(-50%, -50%);
       background-color: inherit;

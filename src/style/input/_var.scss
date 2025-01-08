@@ -1,3 +1,5 @@
+$input-size-type: small, default, large;
+
 // 边框的颜色
 $input-border-color: rgb(var(--gray-2));
 
@@ -7,7 +9,33 @@ $icon-hover-bg-color: rgb(var(--gray-2));
 
 // foucues之后的背景颜色
 $input-focused-bg-color: rgb(var(--primary-3));
+
 $input-focused-border-color: rgb(var(--primary-3));
 
 // 运动时长
 $anim-duration-base: var(--anim-time-2);
+
+// 字体大小
+$input-text-small: var(--text-small);
+$input-text-default: var(--text-default);
+$input-text-large: var(--text-large);
+
+// 边距 这边的py是参考了tailwind当中的py
+$input-py-small: var(--py-small);
+$input-py-default: var(--py-default);
+$input-py-large: var(--py-large);
+
+$input-size: (
+  small: (
+    text: $input-text-small,
+    py: $input-py-small
+  ),
+  default: (
+    text: $input-text-default,
+    py: $input-py-default
+  ),
+  large: (
+    text: $input-text-large,
+    py: $input-py-large
+  )
+);

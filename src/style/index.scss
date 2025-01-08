@@ -4,8 +4,25 @@
 @use './input/_index.scss' as *;
 
 body {
+  /* 透明度 */
   --opacity-1: 0.75;
   --opacity-2: 1;
+
+  /* 动画时间 */
+  --anim-time-1: 50ms;
+  --anim-time-2: 100ms;
+  --anim-time-3: 200ms;
+  --anim-time-4: 300ms;
+
+  /* 字体大小 */
+  --text-small: 12px;
+  --text-default: 14px;
+  --text-large: 16px;
+
+  /* 边距的边框，这边的py是参考tailwind当中的py  padding-top  padding-bottom */
+  --py-small: 0.4rem;
+  --py-default: 0.5rem;
+  --py-large: 0.6rem;
 
   --white-1: 255, 255, 255;
 
@@ -26,9 +43,4 @@ body {
 
   --red-1: 255, 236, 232;
   --red-2: 245, 63, 63;
-
-  --anim-time-1: 50ms;
-  --anim-time-2: 100ms;
-  --anim-time-3: 200ms;
-  --anim-time-4: 300ms;
 }
