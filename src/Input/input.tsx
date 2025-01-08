@@ -12,9 +12,39 @@ export default class Divider extends Component<InputProps> {
 
   static props = {
     /** 边框的宽度，默认是1px */
+    size: {
+      type: String,
+      default: 'default',
+      changed() {
+        if (this instanceof Divider) {
+          this.update();
+        }
+      }
+    },
+    /** 边框的宽度，默认是1px */
     placeholder: {
       type: String,
       default: '请输入内容',
+      changed() {
+        if (this instanceof Divider) {
+          this.update();
+        }
+      }
+    },
+    /** 类 */
+    className: {
+      type: String,
+      default: '',
+      changed() {
+        if (this instanceof Divider) {
+          this.update();
+        }
+      }
+    },
+    /** 样式 */
+    style: {
+      type: CSSStyleDeclaration,
+      default: '',
       changed() {
         if (this instanceof Divider) {
           this.update();
@@ -32,6 +62,8 @@ export default class Divider extends Component<InputProps> {
   private isEnter: boolean = false;
   /** 输入框是否为空 */
   private isEmpty: boolean = true;
+  /** 是否点击了图标 */
+  private isIconClicked: boolean = false;
 
   /**
    * 处理MouseEnter
@@ -50,6 +82,14 @@ export default class Divider extends Component<InputProps> {
     e.stopImmediatePropagation();
     this.isEnter = false;
     this.handleInputEmpty();
+    /* 判断用户是不是按下了icon，但是又不去松手的那种 */
+    if (this.isIconClicked && !this.isEnter) {
+      if (!this.inputRef.current) return;
+      /* 继续模拟光标点击input */
+      this.inputRef.current.focus();
+      /* 恢复默认 */
+      this.isIconClicked = false;
+    }
     this.update();
   };
 
@@ -73,17 +113,19 @@ export default class Divider extends Component<InputProps> {
     e.stopImmediatePropagation();
     this.isFocused = true;
     this.update();
-    console.log('f');
   };
 
   /**
    * 处理blur
    */
   private handleOnBlur = (e: Event): void => {
-    console.log(e.currentTarget);
-    // e.stopImmediatePropagation();
-    this.isFocused = false;
-    this.update();
+    e.stopImmediatePropagation();
+
+    /* 一般失去焦点都是既离开了输入框，又离开了icon图标，就直接恢复默认 */
+    if (!this.isIconClicked && !this.isEnter) {
+      this.isFocused = false;
+      this.update();
+    }
   };
 
   /**
@@ -107,42 +149,40 @@ export default class Divider extends Component<InputProps> {
     return isEnter && !isEmpty;
   }
 
-  private clearInputValue = (e: Event): void => {
-    // e.stopPropagation();
+  /**
+   * 图标鼠标弹开
+   */
+  private iconOnClick = (e: Event): void => {
     e.stopImmediatePropagation();
-
     if (!this.inputRef.current) return;
+    /* 清空 */
     this.inputRef.current.value = '';
+    /* 模拟光标点击 */
     this.inputRef.current.focus();
+    /* 恢复默认 */
+    this.isIconClicked = false;
   };
 
   render(props: InputProps) {
-    const { placeholder } = props;
+    const { size, placeholder, className, style } = props;
 
     return (
       <div
-        className={clsx(['y-input-box', { 'y-input-box-focused': this.isFocused }])}
+        className={clsx(['y-input-box', { 'y-input-box-focused': this.isFocused }, className])}
         onMouseEnter={this.handleOnMouseEnter}
         onMouseLeave={this.handleOnMouseLeave}
-        // onClick={() => this.inputRef.current?.focus()}
+        onClick={() => this.inputRef.current?.focus()}
+        style={style}
       >
         <input
           ref={this.inputRef}
-          className={clsx(['y-input-base'])}
+          className={clsx(['y-input-base', `y-input-size-${size}`])}
           onFocus={this.handleOnFocus}
-          onBlur={(e) => {
-            this.handleOnBlur(e);
-          }}
+          onBlur={this.handleOnBlur}
           onInput={this.handleInput}
           placeholder={placeholder}
         />
-        <span
-          className="y-input-icon"
-          style={{ visibility: this.iconVisibility ? 'visible' : 'hidden' }}
-          onClick={(e) => {
-            this.clearInputValue(e);
-          }}
-        >
+        <span className="y-input-icon" style={{ visibility: this.iconVisibility && this.isEnter ? 'visible' : 'hidden' }} onClick={this.iconOnClick} onMouseEnter={() => (this.isIconClicked = true)}>
           x
         </span>
       </div>

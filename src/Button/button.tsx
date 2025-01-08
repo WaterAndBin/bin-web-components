@@ -76,9 +76,6 @@ export default class YButton extends Component<ButtonProps> {
   render(props: ButtonProps) {
     const { size, style, className, type, children, disabled, status } = props;
 
-    console.log(props);
-    console.log(style);
-
     return (
       <button
         style={style}

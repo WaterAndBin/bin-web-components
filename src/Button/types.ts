@@ -1,7 +1,6 @@
 import { VNode } from 'omi';
 import React from 'react';
 import type { SizeEnum, StatusEnum, TypeEnum } from 'src/common';
-
 export interface YButtonProps {
   /**
    * 尺寸

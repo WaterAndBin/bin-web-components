@@ -1,4 +1,5 @@
 import { h, tag, Component } from 'omi';
+import 'omi-router';
 import { tailwind } from './style';
 import './Button/_example';
 import './Divider/_example';
@@ -11,7 +12,10 @@ export default class extends Component {
   render() {
     return (
       <div>
-        <div className="flex justify-center items-center flex-col">
+        <li>
+          <a href="#/">Home</a>
+        </li>
+        {/* <div className="flex justify-center items-center flex-col">
           <h2 className="text-xl font-semibold my-3">按钮</h2>
           <text-button></text-button>
         </div>
@@ -22,7 +26,7 @@ export default class extends Component {
         <div className="flex justify-center items-center flex-col">
           <h2 className="text-xl font-semibold my-3">输入框</h2>
           <text-input></text-input>
-        </div>
+        </div> */}
       </div>
     );
   }
