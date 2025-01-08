@@ -1,0 +1,24 @@
+@use './_var.scss' as *;
+@use './_mixin.scss' as *;
+
+.y-tag {
+  &-base {
+    @include tag();
+
+    &:first-child {
+      margin-left: 10px;
+    }
+  }
+
+  &-size {
+    &-samll {
+      font-size: $tag-font-lg;
+      @apply h-5 leading-4;
+    }
+
+    &-large {
+      font-size: $tag-font-sm;
+      @apply h-8 leading-8;
+    }
+  }
+}

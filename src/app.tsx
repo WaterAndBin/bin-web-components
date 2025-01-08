@@ -10,7 +10,7 @@ export default class extends Component {
 
   render() {
     return (
-      <div>
+      <div style={'margin-bottom: 100px'}>
         <div className="flex justify-center items-center flex-col">
           <h2 className="text-xl font-semibold my-3">按钮</h2>
           <text-button></text-button>
