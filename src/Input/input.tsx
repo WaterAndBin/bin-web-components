@@ -7,7 +7,7 @@ import clsx from 'clsx';
 export interface InputProps extends YInputProps, YInputEvent {}
 
 @tag('y-input')
-export default class Divider extends Component<InputProps> {
+export default class Input extends Component<InputProps> {
   static css = [tailwind, styleSheet];
 
   static props = {
@@ -15,7 +15,7 @@ export default class Divider extends Component<InputProps> {
       type: Boolean,
       default: true,
       changed() {
-        if (this instanceof Divider) {
+        if (this instanceof Input) {
           this.update();
         }
       }
@@ -24,7 +24,7 @@ export default class Divider extends Component<InputProps> {
       type: String,
       default: '220px',
       changed() {
-        if (this instanceof Divider) {
+        if (this instanceof Input) {
           this.update();
         }
       }
@@ -34,7 +34,7 @@ export default class Divider extends Component<InputProps> {
       type: String,
       default: 'default',
       changed() {
-        if (this instanceof Divider) {
+        if (this instanceof Input) {
           this.update();
         }
       }
@@ -44,7 +44,7 @@ export default class Divider extends Component<InputProps> {
       type: String,
       default: 'text',
       changed() {
-        if (this instanceof Divider) {
+        if (this instanceof Input) {
           this.update();
         }
       }
@@ -54,7 +54,7 @@ export default class Divider extends Component<InputProps> {
       type: String,
       default: '请输入内容',
       changed() {
-        if (this instanceof Divider) {
+        if (this instanceof Input) {
           this.update();
         }
       }
@@ -64,7 +64,7 @@ export default class Divider extends Component<InputProps> {
       type: String,
       default: '',
       changed() {
-        if (this instanceof Divider) {
+        if (this instanceof Input) {
           this.update();
         }
       }
@@ -74,7 +74,7 @@ export default class Divider extends Component<InputProps> {
       type: CSSStyleDeclaration,
       default: '',
       changed() {
-        if (this instanceof Divider) {
+        if (this instanceof Input) {
           this.update();
         }
       }
@@ -88,8 +88,6 @@ export default class Divider extends Component<InputProps> {
   private isFocused: boolean = false;
   /** 是否进入了输入框 */
   private isEnter: boolean = false;
-  /** 输入框是否为空 */
-  private isEmpty: boolean = true;
   /** 是否点击了图标 */
   private isIconClicked: boolean = false;
   /** 是否点击了图标 */
@@ -101,7 +99,6 @@ export default class Divider extends Component<InputProps> {
   private handleOnMouseEnter = (e: Event): void => {
     e.stopImmediatePropagation();
     this.isEnter = true;
-    this.handleInputEmpty();
     this.update();
   };
 
@@ -111,7 +108,6 @@ export default class Divider extends Component<InputProps> {
   private handleOnMouseLeave = (e: Event): void => {
     e.stopImmediatePropagation();
     this.isEnter = false;
-    this.handleInputEmpty();
     /* 判断用户是不是按下了icon，但是又不去松手的那种 */
     if (this.isIconClicked && !this.isEnter) {
       if (!this.inputRef.current) return;
@@ -121,19 +117,6 @@ export default class Divider extends Component<InputProps> {
       this.isIconClicked = false;
     }
     this.update();
-  };
-
-  /**
-   * 处理input内是否为空
-   */
-  private handleInputEmpty = () => {
-    if (!this.inputRef.current) return;
-    /* 判断输入框内是否为空 */
-    if (this.inputRef.current.value) {
-      this.isEmpty = false;
-    } else {
-      this.isEmpty = true;
-    }
   };
 
   /**
@@ -162,9 +145,13 @@ export default class Divider extends Component<InputProps> {
    * 处理input
    */
   private handleInput = (): void => {
-    this.handleInputEmpty();
     this.update();
   };
+
+  /** 输入框是否为空 */
+  get isEmpty(): boolean {
+    return !!this.inputRef.current?.value;
+  }
 
   /**
    * 处理icon的visibility
@@ -173,10 +160,9 @@ export default class Divider extends Component<InputProps> {
     const { isFocused, isEnter, isEmpty } = this;
     /* 如果是点击了输入框，就直接判断是否没空 */
     if (isFocused) {
-      return !isEmpty;
+      return this.props.allowClear! && isEmpty;
     }
-    /* 没点击输入框，就判断是否鼠标移入与空 */
-    return isEnter && !isEmpty;
+    return this.props.allowClear! && isEnter && isEmpty;
   }
 
   /**
