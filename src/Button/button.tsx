@@ -76,12 +76,15 @@ export default class YButton extends Component<ButtonProps> {
   render(props: ButtonProps) {
     const { size, style, className, type, children, disabled, status } = props;
 
+    // 判断 children 是否有内容
+    const hasChildren = Array.isArray(children) ? children.length > 0 : !!children;
+
     return (
       <button
         style={style}
         className={clsx(className, ['y-button-base', `y-button-type-${type}`, `y-button-size-${size}`], { [`y-button-is-disabled`]: disabled, [`y-button-status-${status}`]: status })}
       >
-        {children ? <slot></slot> : <span>Button</span>}
+        {hasChildren ? <slot></slot> : <span>Button</span>}
       </button>
     );
   }

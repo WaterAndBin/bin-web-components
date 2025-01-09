@@ -6,7 +6,6 @@ export default class extends Component {
   render() {
     return (
       <div className="p-2">
-        123123
         <div>
           <span>主要：</span>
           <y-button size="small"></y-button>

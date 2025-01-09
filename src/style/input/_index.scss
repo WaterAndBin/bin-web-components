@@ -35,6 +35,10 @@
     }
   }
 
+  & .y-input-disabled {
+    @apply cursor-not-allowed;
+  }
+
   .y-input-icon {
     @apply cursor-pointer relative inline-flex justify-center items-center text-center;
     @apply text-[14px] z-50 leading-[0] size-5 select-none;

@@ -1,4 +1,4 @@
-import { SizeEnum } from 'src/common';
+import { SizeEnum, StyleValue } from 'src/common';
 
 export type InputType = 'text' | 'password';
 
@@ -13,8 +13,10 @@ export interface YInputProps {
   type?: InputType;
   /** 提示信息 */
   placeholder?: string;
+  /** 是否禁用，默认是false */
+  disabled?: boolean;
   className?: string;
-  style?: CSSStyleDeclaration;
+  style?: StyleValue;
   children?: Element;
 }
 

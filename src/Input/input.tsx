@@ -59,6 +59,16 @@ export default class Input extends Component<InputProps> {
         }
       }
     },
+    /** 边框的宽度，默认是1px */
+    disabled: {
+      type: Boolean,
+      default: false,
+      changed() {
+        if (this instanceof Input) {
+          this.update();
+        }
+      }
+    },
     /** 类 */
     className: {
       type: String,
@@ -148,7 +158,33 @@ export default class Input extends Component<InputProps> {
     this.update();
   };
 
-  /** 输入框是否为空 */
+  /**
+   * 图标鼠标弹开
+   */
+  private iconOnClick = (e: Event): void => {
+    console.log('删除了');
+
+    e.stopImmediatePropagation();
+    if (!this.inputRef.current) return;
+    /* 清空 */
+    this.inputRef.current.value = '';
+    /* 模拟光标点击 */
+    this.inputRef.current.focus();
+    /* 恢复默认 */
+    this.isIconClicked = false;
+  };
+
+  /**
+   * icon是password的时候，进行点击操作
+   */
+  private iconPasswordClick = (): void => {
+    this.isShowPassword = !this.isShowPassword;
+    this.update();
+  };
+
+  /**
+   * 输入框是否为空
+   */
   get isEmpty(): boolean {
     return !!this.inputRef.current?.value;
   }
@@ -166,19 +202,8 @@ export default class Input extends Component<InputProps> {
   }
 
   /**
-   * 图标鼠标弹开
+   * 处理input类型
    */
-  private iconOnClick = (e: Event): void => {
-    e.stopImmediatePropagation();
-    if (!this.inputRef.current) return;
-    /* 清空 */
-    this.inputRef.current.value = '';
-    /* 模拟光标点击 */
-    this.inputRef.current.focus();
-    /* 恢复默认 */
-    this.isIconClicked = false;
-  };
-
   get handleInputType(): InputType | string {
     const { type } = this.props;
 
@@ -189,7 +214,7 @@ export default class Input extends Component<InputProps> {
   }
 
   render(props: OmiProps<InputProps>) {
-    const { allowClear, width, type, size, placeholder, className, style } = props;
+    const { allowClear, width, type, size, placeholder, disabled, className, style } = props;
 
     return (
       <div
@@ -203,7 +228,7 @@ export default class Input extends Component<InputProps> {
         <input
           ref={this.inputRef}
           type={this.handleInputType}
-          className={clsx(['y-input-base', `y-input-size-${size}`])}
+          className={clsx(['y-input-base', `y-input-size-${size}`], { 'y-input-disabled': disabled })}
           onFocus={this.handleOnFocus}
           onBlur={this.handleOnBlur}
           onInput={this.handleInput}
@@ -216,26 +241,7 @@ export default class Input extends Component<InputProps> {
         )}
         {type === 'password' && (
           <span className="y-input-icon" style={{ visibility: this.iconVisibility ? 'visible' : 'hidden' }}>
-            {!this.isShowPassword && (
-              <span
-                onClick={() => {
-                  this.isShowPassword = true;
-                  this.update();
-                }}
-              >
-                🕶
-              </span>
-            )}
-            {this.isShowPassword && (
-              <span
-                onClick={() => {
-                  this.isShowPassword = false;
-                  this.update();
-                }}
-              >
-                👀
-              </span>
-            )}
+            {!this.isShowPassword ? <span onClick={this.iconPasswordClick}>🕶</span> : <span onClick={this.iconPasswordClick}>👀</span>}
           </span>
         )}
       </div>

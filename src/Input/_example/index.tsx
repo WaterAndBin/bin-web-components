@@ -51,7 +51,7 @@ export default class extends Component {
         </div>
         <div className="my-1">
           <span className="min-w-40 inline-block text-right">错误的输入框：</span>
-          <y-input></y-input>
+          <y-input disabled></y-input>
         </div>
       </div>
     );
