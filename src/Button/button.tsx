@@ -33,7 +33,7 @@ export default class YButton extends Component<ButtonProps> {
     },
     /** 样式 */
     style: {
-      type: CSSStyleSheet,
+      type: CSSStyleDeclaration,
       default: '',
       changed() {
         if (this instanceof YButton) {
