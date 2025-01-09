@@ -20,8 +20,8 @@ export default class extends Component {
           <text-divider></text-divider>
         </div>
         <div className="flex justify-center items-center flex-col">
-          <h2 className="text-xl font-semibold my-3">输入框</h2>
-          <text-input></text-input>
+          <h2 className="text-xl font-semibold my-3">标签</h2>
+          <text-tag></text-tag>
         </div>
       </div>
     );
