@@ -1,0 +1,111 @@
+@use './_var.scss' as *;
+@use './_mixin.scss' as *;
+@use 'sass:map';
+
+.y-input-box {
+  @include Input();
+
+  /* 错误的样式 */
+  &.y-input-error {
+    border-color: $input-border-color-error;
+
+    &:hover {
+      background-color: $input-hover-bg-color-error;
+      border-color: $input-hover-border-color-error;
+    }
+  }
+
+  &.y-input-disabled {
+    @apply cursor-not-allowed;
+    background-color: $input-disabled-bg-default;
+    color: $input-disabled-text;
+
+    &-error {
+      @apply cursor-not-allowed border-0;
+      background-color: $input-disabled-bg-error;
+      border-color: $input-disabled-border-error;
+      color: $input-disabled-text-error;
+    }
+  }
+
+  &.y-input-loading {
+    @apply cursor-not-allowed;
+    opacity: 0.8;
+
+    &:hover {
+      background-color: inherit;
+      border-color: inherit;
+    }
+  }
+
+  /* 点击的样式 */
+  &.y-input-focused {
+    border-color: $input-focused-border-color;
+    transition: all $anim-duration-base linear;
+
+    &:hover {
+      background-color: transparent;
+    }
+
+    &-error {
+      border-color: $input-focused-border-color-error;
+
+      &:hover {
+        border-color: $input-focused-border-color-error;
+        background-color: transparent;
+      }
+    }
+  }
+
+  .y-input {
+    &-base {
+      @apply cursor-text bg-transparent box-border;
+      @apply size-full border-0 outline-none;
+      cursor: inherit;
+    }
+
+    &-base[type='password']::-ms-reveal {
+      display: none;
+    }
+
+    &-size {
+      @each $type in $input-size-type {
+        &-#{$type} {
+          font-size: map.get(map.get($input-size, $type), text);
+          padding: map.get(map.get($input-size, $type), py) 0;
+        }
+      }
+    }
+  }
+
+  .y-input-icon {
+    @apply cursor-pointer relative inline-flex justify-center items-center text-center;
+    @apply text-[14px] z-50 leading-[0] size-5 select-none;
+    background-color: inherit;
+    transition: all $anim-duration-base linear;
+
+    &:before {
+      @apply absolute rounded-full block;
+      @apply top-[50%] left-[50%] z-[-1] size-full;
+      content: '';
+      transform: translate(-50%, -50%);
+      background-color: inherit;
+    }
+
+    &:hover {
+      @apply rounded-full;
+      background-color: $icon-hover-bg-color;
+    }
+  }
+
+  .y-input-limit,
+  .y-input-total {
+    @apply text-[12px];
+    color: $input-limit-text-color;
+  }
+
+  /* 前缀 */
+  ::slotted([slot='prefix']) {
+    padding-right: $input-px-default;
+  }
+}

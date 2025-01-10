@@ -1,0 +1,67 @@
+// size的类型
+$input-size-type: small, default, large;
+
+// 默认边框的颜色
+$input-border-color: rgb(var(--gray-2));
+$input-border-color-error: rgb(var(--red-2));
+
+// hover之后的背景颜色
+$input-hover-bg-color: rgb(var(--gray-1));
+$input-hover-bg-color-error: rgb(var(--red-1));
+$icon-hover-bg-color: rgb(var(--gray-2));
+
+// hover之后的边框颜色
+$input-hover-border-color-error: rgb(var(--red-1));
+
+// foucues之后的背景颜色
+$input-focused-bg-color: rgb(var(--primary-3));
+
+// foucues之后的边框颜色
+$input-focused-border-color: rgb(var(--primary-3));
+$input-focused-border-color-error: rgb(var(--red-2));
+
+// 运动时长
+$anim-duration-base: var(--anim-time-2);
+
+// 字体大小
+$input-text-small: var(--text-small);
+$input-text-default: var(--text-default);
+$input-text-large: var(--text-large);
+
+// 边距 这边的py是参考了tailwind当中的py
+$input-py-small: var(--py-small);
+$input-py-default: var(--py-default);
+$input-py-large: var(--py-large);
+
+// 禁用之后的背景颜色
+$input-disabled-bg-default: rgb(var(--gray-1));
+$input-disabled-bg-error: rgb(var(--red-1));
+
+// 禁用之后的边框颜色
+$input-disabled-border-error: rgb(var(--red-3));
+
+// 禁用之后的字体颜色
+$input-disabled-text: rgb(var(--gray-3));
+$input-disabled-text-error: rgb(var(--red-2));
+
+// 默认边距
+$input-px-default: 0.5rem;
+$input-m-default: 0.25rem;
+
+// 限制字体的颜色
+$input-limit-text-color: rgb(var(--gray-3));
+
+$input-size: (
+  small: (
+    text: $input-text-small,
+    py: $input-py-small
+  ),
+  default: (
+    text: $input-text-default,
+    py: $input-py-default
+  ),
+  large: (
+    text: $input-text-large,
+    py: $input-py-large
+  )
+);

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import TestButton from './pages/TestButton/index.vue'
+import TestInput from './pages/TestInput/index.vue'
 
 const asd = () => {
   // const type = typeof import('test-ui/lib')
@@ -9,6 +10,7 @@ const asd = () => {
 <template>
   <div>
     <TestButton></TestButton>
+    <TestInput></TestInput>
   </div>
 </template>
 
