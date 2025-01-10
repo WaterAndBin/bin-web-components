@@ -2,9 +2,11 @@
 
 @mixin Input() {
   @apply border-solid cursor-text bg-transparent box-border inline-flex items-center relative;
-  @apply border-[1px] rounded-sm outline-none px-2;
+  @apply border-[1px] rounded-sm outline-none;
   border-color: $input-border-color;
   transition: all $anim-duration-base linear;
+  padding: 0 $input-px-default;
+  margin: $input-m-default;
 
   &:hover {
     background-color: $input-hover-bg-color;

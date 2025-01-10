@@ -92,21 +92,21 @@ $btn-status: (
   ),
   danger: (
     primary: (
-      color: rgb(var(--red-2)),
+      color: rgb(var(--red-3)),
       text: rgb(var(--white-1))
     ),
     secondary: (
       color: rgb(var(--red-1)),
-      text: rgb(var(--red-2))
+      text: rgb(var(--red-3))
     ),
     outline: (
       color: transparent,
-      text: rgb(var(--red-2)),
-      border: rgb(var(--red-2))
+      text: rgb(var(--red-3)),
+      border: rgb(var(--red-3))
     ),
     text: (
       color: transparent,
-      text: rgb(var(--red-2))
+      text: rgb(var(--red-3))
     )
   )
 );

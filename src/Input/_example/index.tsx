@@ -31,27 +31,48 @@ export default class extends Component {
         </div>
         <div className="my-1">
           <span className="min-w-40 inline-block text-right">带前缀输入框：</span>
-          <y-input></y-input>
+          <y-input>
+            <span slot="prefix">🏠</span>
+          </y-input>
         </div>
         <div className="my-1">
           <span className="min-w-40 inline-block text-right">带后缀输入框：</span>
-          <y-input></y-input>
+          <y-input>
+            <span slot="suffix">🏠</span>
+          </y-input>
         </div>
         <div className="my-1">
           <span className="min-w-40 inline-block text-right">加载中的输入框：</span>
-          <y-input></y-input>
+          <y-input defaultValue="hallo,world" loading></y-input>
         </div>
         <div className="my-1">
-          <span className="min-w-40 inline-block text-right">带数字统计的输入框：</span>
-          <y-input></y-input>
+          <span className="min-w-40 inline-block text-right">带字数统计的输入框：</span>
+          <y-input showWordLimit></y-input>
+        </div>
+        <div className="my-1">
+          <span className="min-w-40 inline-block text-right">带数字限制的输入框：</span>
+          <y-input showWordTotal></y-input>
         </div>
         <div className="my-1">
           <span className="min-w-40 inline-block text-right">禁用的输入框：</span>
-          <y-input></y-input>
+          <y-input disabled></y-input>
         </div>
         <div className="my-1">
           <span className="min-w-40 inline-block text-right">错误的输入框：</span>
-          <y-input disabled></y-input>
+          <y-input error></y-input>
+        </div>
+        <div className="my-1">
+          <span className="min-w-40 inline-block text-right">错误禁用的输入框：</span>
+          <y-input error disabled></y-input>
+        </div>
+        <div className="my-1 flex">
+          <span className="min-w-40 inline-block text-right">携带默认值的输入框：</span>
+          <div className="flex flex-col">
+            <y-input defaultValue="hallo,world"></y-input>
+            <y-input error defaultValue="hallo,world"></y-input>
+            <y-input disabled defaultValue="hallo,world"></y-input>
+            <y-input error disabled defaultValue="hallo,world"></y-input>
+          </div>
         </div>
       </div>
     );

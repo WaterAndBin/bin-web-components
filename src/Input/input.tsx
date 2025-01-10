@@ -11,6 +11,7 @@ export default class Input extends Component<InputProps> {
   static css = [tailwind, styleSheet];
 
   static props = {
+    /** 是否清空输入框，默认true */
     allowClear: {
       type: Boolean,
       default: true,
@@ -20,6 +21,7 @@ export default class Input extends Component<InputProps> {
         }
       }
     },
+    /** 宽度，默认220px */
     width: {
       type: String,
       default: '220px',
@@ -29,7 +31,7 @@ export default class Input extends Component<InputProps> {
         }
       }
     },
-    /** 边框的宽度，默认是1px */
+    /** 大小 */
     size: {
       type: String,
       default: 'default',
@@ -49,18 +51,78 @@ export default class Input extends Component<InputProps> {
         }
       }
     },
-    /** 边框的宽度，默认是1px */
+    /** 提示信息 */
     placeholder: {
       type: String,
-      default: '请输入内容',
+      default: '请输入',
       changed() {
         if (this instanceof Input) {
           this.update();
         }
       }
     },
-    /** 边框的宽度，默认是1px */
+    /** 是否禁用，默认是false  */
     disabled: {
+      type: Boolean,
+      default: false,
+      changed() {
+        if (this instanceof Input) {
+          this.update();
+        }
+      }
+    },
+    /** 是否是错误的，默认是false */
+    error: {
+      type: Boolean,
+      default: false,
+      changed() {
+        if (this instanceof Input) {
+          this.update();
+        }
+      }
+    },
+    /** 默认值 */
+    defaultValue: {
+      type: String,
+      default: '',
+      changed() {
+        if (this instanceof Input) {
+          this.update();
+        }
+      }
+    },
+    /** 最大的数，默认是0，与数字统计一起使用 */
+    maxLength: {
+      type: Number,
+      default: 10,
+      changed() {
+        if (this instanceof Input) {
+          this.update();
+        }
+      }
+    },
+    /** 显示数字统计，并且传最大的数 */
+    showWordLimit: {
+      type: Boolean,
+      default: false,
+      changed() {
+        if (this instanceof Input) {
+          this.update();
+        }
+      }
+    },
+    /** 显示字数统计 */
+    showWordTotal: {
+      type: Boolean,
+      default: false,
+      changed() {
+        if (this instanceof Input) {
+          this.update();
+        }
+      }
+    },
+    /** 加载中，默认为false */
+    loading: {
       type: Boolean,
       default: false,
       changed() {
@@ -102,12 +164,16 @@ export default class Input extends Component<InputProps> {
   private isIconClicked: boolean = false;
   /** 是否点击了图标 */
   private isShowPassword: boolean = false;
+  /** input的值 */
+  private inputValue: string = ''; // 初始化输入框的值
 
   /**
    * 处理MouseEnter
    */
   private handleOnMouseEnter = (e: Event): void => {
     e.stopImmediatePropagation();
+    /* 禁用就不调用下面的方法，以此来提高性能 */
+    if (this.props.disabled) return;
     this.isEnter = true;
     this.update();
   };
@@ -117,6 +183,8 @@ export default class Input extends Component<InputProps> {
    */
   private handleOnMouseLeave = (e: Event): void => {
     e.stopImmediatePropagation();
+    /* 禁用就不调用下面的方法，以此来提高性能 */
+    if (this.props.disabled) return;
     this.isEnter = false;
     /* 判断用户是不是按下了icon，但是又不去松手的那种 */
     if (this.isIconClicked && !this.isEnter) {
@@ -154,7 +222,16 @@ export default class Input extends Component<InputProps> {
   /**
    * 处理input
    */
-  private handleInput = (): void => {
+  private handleInput = (e: Event): void => {
+    const { maxLength = 0, showWordLimit } = this.props;
+    const target = e.target as HTMLInputElement;
+    if (!target) return;
+    /* 限制字+字数判断 */
+    if (showWordLimit && this.inputValue.length >= maxLength) {
+      e.preventDefault(); // 阻止默认输入
+      return;
+    }
+    this.inputValue = target.value;
     this.update();
   };
 
@@ -162,12 +239,10 @@ export default class Input extends Component<InputProps> {
    * 图标鼠标弹开
    */
   private iconOnClick = (e: Event): void => {
-    console.log('删除了');
-
     e.stopImmediatePropagation();
     if (!this.inputRef.current) return;
     /* 清空 */
-    this.inputRef.current.value = '';
+    this.inputValue = '';
     /* 模拟光标点击 */
     this.inputRef.current.focus();
     /* 恢复默认 */
@@ -181,6 +256,11 @@ export default class Input extends Component<InputProps> {
     this.isShowPassword = !this.isShowPassword;
     this.update();
   };
+
+  get inputNumber(): number {
+    if (!this.inputRef.current) return 0;
+    return this.inputRef.current.value.length;
+  }
 
   /**
    * 输入框是否为空
@@ -213,12 +293,25 @@ export default class Input extends Component<InputProps> {
     return 'text';
   }
 
+  install = () => {
+    this.inputValue = this.props.defaultValue ?? '';
+  };
+
   render(props: OmiProps<InputProps>) {
-    const { allowClear, width, type, size, placeholder, disabled, className, style } = props;
+    const { allowClear, width, type, size, placeholder, disabled, error, maxLength, showWordLimit, showWordTotal, loading, className, style } = props;
 
     return (
       <div
-        className={clsx(['y-input-box', { 'y-input-box-focused': this.isFocused }, className])}
+        className={clsx([
+          'y-input-box',
+          {
+            [`y-input-focused${error ? '-error' : ''}`]: this.isFocused,
+            [`y-input-disabled${error ? '-error' : ''}`]: disabled,
+            'y-input-error': error,
+            'y-input-loading': loading
+          },
+          className
+        ])}
         onMouseEnter={this.handleOnMouseEnter}
         onMouseLeave={this.handleOnMouseLeave}
         onClick={() => this.inputRef.current?.focus()}
@@ -228,22 +321,38 @@ export default class Input extends Component<InputProps> {
         <input
           ref={this.inputRef}
           type={this.handleInputType}
-          className={clsx(['y-input-base', `y-input-size-${size}`], { 'y-input-disabled': disabled })}
+          className={clsx(['y-input-base', `y-input-size-${size}`])}
           onFocus={this.handleOnFocus}
           onBlur={this.handleOnBlur}
           onInput={this.handleInput}
           placeholder={placeholder}
+          disabled={disabled || loading}
+          value={this.inputValue}
+          {...(showWordLimit ? { maxLength: maxLength } : {})}
         />
-        {allowClear && (
-          <span className="y-input-icon" style={{ visibility: this.iconVisibility ? 'visible' : 'hidden' }} onClick={this.iconOnClick} onMouseEnter={() => (this.isIconClicked = true)}>
+        {allowClear && !loading && (
+          <span
+            className="y-input-icon"
+            style={{ visibility: this.iconVisibility ? 'visible' : 'hidden' }}
+            onClick={this.iconOnClick}
+            onMouseEnter={() => (this.isIconClicked = true)}
+          >
             x
           </span>
         )}
-        {type === 'password' && (
+        {type === 'password' && !loading && (
           <span className="y-input-icon" style={{ visibility: this.iconVisibility ? 'visible' : 'hidden' }}>
             {!this.isShowPassword ? <span onClick={this.iconPasswordClick}>🕶</span> : <span onClick={this.iconPasswordClick}>👀</span>}
           </span>
         )}
+        {showWordTotal && <span className="y-input-total">{this.inputNumber}</span>}
+        {showWordLimit && (
+          <span className="y-input-limit">
+            {this.inputNumber}/{maxLength}
+          </span>
+        )}
+        {loading && <span className="y-input-icon">⭕</span>}
+        <slot name="suffix"></slot>
       </div>
     );
   }

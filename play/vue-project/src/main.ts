@@ -3,6 +3,7 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
+import 'test-ui'
 import 'test-ui/lib/style/index.css'
 
 import naive from 'naive-ui'
