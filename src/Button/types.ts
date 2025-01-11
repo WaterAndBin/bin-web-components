@@ -1,6 +1,6 @@
 import { VNode } from 'omi';
 import React from 'react';
-import type { SizeEnum, StatusEnum, StyleValue, TypeEnum } from 'src/common';
+import type { SizeEnum, StatusEnum, StyleValue, TypeEnum } from '../common';
 
 export interface YButtonProps {
   /**

@@ -19,6 +19,7 @@
     "src/main.tsx",
     "src/app.tsx",
     "src/vite-env.d.ts",
-    "src/**/style/index.js"
+    "src/**/style/index.js",
+    "src/routes.tsx",
   ]
 }

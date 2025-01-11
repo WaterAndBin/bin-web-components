@@ -9,6 +9,7 @@ export default class extends Component {
   render() {
     return (
       <div>
+        <h2 className="py-3 font-bold text-2xl">分割线</h2>
         <span>这是一根大部分用tailwind构建的，长的分割线分割线1</span>
         <y-divider></y-divider>
         <span>这是一根大部分用tailwind构建的，长的分割线分割线2</span>

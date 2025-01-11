@@ -1,4 +1,5 @@
 @use './tailwind.scss' as *;
+@use './_variables.scss' as *;
 @use './button/_index.scss' as *;
 @use './divider/_index.scss' as *;
 @use './input/_index.scss' as *;
@@ -45,3 +46,5 @@ body {
   --red-2: 249, 137, 129;
   --red-3: 245, 63, 63;
 }
+
+$prefix: y;

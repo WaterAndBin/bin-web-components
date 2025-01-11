@@ -1,6 +1,6 @@
 import { VNode } from 'omi';
 import React from 'react';
-import { StyleValue } from 'src/common';
+import { StyleValue } from '../common';
 
 export type SortTypes = 'horizontal' | 'vertical';
 export type OrientationTypes = 'left' | 'right' | 'center';

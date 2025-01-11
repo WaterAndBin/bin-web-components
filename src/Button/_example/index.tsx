@@ -1,11 +1,15 @@
 import { h, tag, Component } from 'omi';
 import '..';
+import { tailwind } from '../../style/index';
 
 @tag('text-button')
 export default class extends Component {
+  static css = [tailwind];
+
   render() {
     return (
-      <div className="p-2">
+      <div>
+        <h2 className="py-3 font-bold text-2xl">分割线</h2>
         <div>
           <span>主要：</span>
           <y-button size="small"></y-button>

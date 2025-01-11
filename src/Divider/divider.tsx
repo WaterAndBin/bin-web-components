@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { tailwind } from '../style';
 import { styleSheet } from './style/index.js';
 import { YDividerProps } from './types';
+import { ClassNamePrefix } from '../utils/clsx';
 
 export type DividerProps = YDividerProps;
 
@@ -77,9 +78,12 @@ export default class Divider extends Component<DividerProps> {
     const { width, type, direction, orientation, style, className, children } = props;
 
     return (
-      <div className={clsx(className, ['y-divider-base', `y-divider-${direction}`])} style={{ '--divider-border-style': type, '--divider-border-width': width, style }}>
+      <div
+        className={clsx(className, [ClassNamePrefix('divider-base'), ClassNamePrefix(`divider-${direction}`)])}
+        style={{ '--divider-border-style': type, '--divider-border-width': width, style }}
+      >
         {children ? (
-          <span className={clsx(['y-divider-text'], { [`y-divider-text-${orientation}`]: direction !== 'vertical' })}>
+          <span className={clsx([ClassNamePrefix('divider-text')], { [ClassNamePrefix(`divider-text-${orientation}`)]: direction !== 'vertical' })}>
             <slot></slot>
           </span>
         ) : (
