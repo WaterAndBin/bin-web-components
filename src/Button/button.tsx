@@ -3,6 +3,7 @@ import { YButtonProps, YButtonEvent } from './types';
 import { tailwind } from '../style';
 import { styleSheet } from './style/index.js';
 import clsx from 'clsx';
+import { ClassNamePrefix } from '../utils/clsx';
 
 export interface ButtonProps extends YButtonProps, YButtonEvent {}
 
@@ -82,7 +83,10 @@ export default class YButton extends Component<ButtonProps> {
     return (
       <button
         style={style}
-        className={clsx(className, ['y-button-base', `y-button-type-${type}`, `y-button-size-${size}`], { [`y-button-is-disabled`]: disabled, [`y-button-status-${status}`]: status })}
+        className={clsx(className, [ClassNamePrefix('button-base'), ClassNamePrefix(`button-type-${type}`), ClassNamePrefix(`button-size-${size}`)], {
+          [ClassNamePrefix(`button-is-disabled`)]: disabled,
+          [ClassNamePrefix(`button-status-${status}`)]: status
+        })}
       >
         {hasChildren ? <slot></slot> : <span>Button</span>}
       </button>

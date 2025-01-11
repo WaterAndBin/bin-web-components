@@ -3,6 +3,7 @@ import { tailwind } from '../style';
 import { styleSheet } from './style/index.js';
 import { YInputProps, YInputEvent, InputType } from './types';
 import clsx from 'clsx';
+import { ClassNamePrefix } from '../utils/clsx';
 
 export interface InputProps extends YInputProps, YInputEvent {}
 
@@ -303,12 +304,12 @@ export default class Input extends Component<InputProps> {
     return (
       <div
         className={clsx([
-          'y-input-box',
+          ClassNamePrefix('input-box'),
           {
-            [`y-input-focused${error ? '-error' : ''}`]: this.isFocused,
-            [`y-input-disabled${error ? '-error' : ''}`]: disabled,
-            'y-input-error': error,
-            'y-input-loading': loading
+            [ClassNamePrefix(`input-focused${error ? '-error' : ''}`)]: this.isFocused,
+            [ClassNamePrefix(`input-disabled${error ? '-error' : ''}`)]: disabled,
+            [ClassNamePrefix('input-error')]: error,
+            [ClassNamePrefix('input-loading')]: loading
           },
           className
         ])}
@@ -321,7 +322,7 @@ export default class Input extends Component<InputProps> {
         <input
           ref={this.inputRef}
           type={this.handleInputType}
-          className={clsx(['y-input-base', `y-input-size-${size}`])}
+          className={clsx([ClassNamePrefix('input-base'), ClassNamePrefix(`input-size-${size}`)])}
           onFocus={this.handleOnFocus}
           onBlur={this.handleOnBlur}
           onInput={this.handleInput}
@@ -332,7 +333,7 @@ export default class Input extends Component<InputProps> {
         />
         {allowClear && !loading && (
           <span
-            className="y-input-icon"
+            className={clsx(ClassNamePrefix('input-icon'))}
             style={{ visibility: this.iconVisibility ? 'visible' : 'hidden' }}
             onClick={this.iconOnClick}
             onMouseEnter={() => (this.isIconClicked = true)}
@@ -341,17 +342,17 @@ export default class Input extends Component<InputProps> {
           </span>
         )}
         {type === 'password' && !loading && (
-          <span className="y-input-icon" style={{ visibility: this.iconVisibility ? 'visible' : 'hidden' }}>
+          <span className={clsx(ClassNamePrefix('input-icon'))} style={{ visibility: this.iconVisibility ? 'visible' : 'hidden' }}>
             {!this.isShowPassword ? <span onClick={this.iconPasswordClick}>🕶</span> : <span onClick={this.iconPasswordClick}>👀</span>}
           </span>
         )}
-        {showWordTotal && <span className="y-input-total">{this.inputNumber}</span>}
+        {showWordTotal && <span className={clsx(ClassNamePrefix('input-total'))}>{this.inputNumber}</span>}
         {showWordLimit && (
-          <span className="y-input-limit">
+          <span className="input-limit">
             {this.inputNumber}/{maxLength}
           </span>
         )}
-        {loading && <span className="y-input-icon">⭕</span>}
+        {loading && <span className={clsx(ClassNamePrefix('input-icon'))}>⭕</span>}
         <slot name="suffix"></slot>
       </div>
     );

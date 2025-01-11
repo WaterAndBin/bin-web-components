@@ -1,5 +1,5 @@
 import { VNode } from 'omi';
-import { SizeEnum, StyleValue } from 'src/common';
+import { SizeEnum, StyleValue } from '../common';
 
 export type InputType = 'text' | 'password';
 

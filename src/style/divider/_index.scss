@@ -1,7 +1,8 @@
 @use './_var.scss' as *;
 @use './_mixin.scss' as *;
+@use '../variables' as *;
 
-.y-divider {
+.#{$prefix}-divider {
   &-base {
     @include divider();
   }
@@ -16,15 +17,14 @@
     border-bottom-color: $div-border-color;
   }
 
-  &-horizontal::before,
-  &-horizontal::after {
+  &-horizontal::before {
     @include divider-horizontal();
     @apply w-full;
     border-bottom-style: var(--divider-border-style);
     border-bottom-width: var(--divider-border-width);
   }
 
-  &-base .y-divider-text {
+  &-base .#{$prefix}-divider-text {
     @apply absolute box-border px-4 text-[14px] leading-loose z-[2] bg-white top-[50%];
     transform: translateY(-50%);
 

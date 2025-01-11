@@ -32,7 +32,8 @@ const inputList = [
   '!src/vite-env.d.ts',
   '!src/globals.ts',
   '!src/types/**.ts',
-  '!src/**/style/*'
+  '!src/**/style/*',
+  '!src/routes.tsx',
 ];
 
 function removeCssQueryPlugin() {

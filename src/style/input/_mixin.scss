@@ -1,4 +1,5 @@
 @use './_var.scss' as *;
+@use '../variables' as *;
 
 @mixin Input() {
   @apply border-solid cursor-text bg-transparent box-border inline-flex items-center relative;

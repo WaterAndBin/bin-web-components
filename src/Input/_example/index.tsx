@@ -9,6 +9,7 @@ export default class extends Component {
   render() {
     return (
       <div className="mb-3">
+        <h2 className="py-3 font-bold text-2xl">输入框</h2>
         <div className="my-1">
           <span className="min-w-40 inline-block">小一点的默认输入框：</span>
           <y-input size="small"></y-input>
