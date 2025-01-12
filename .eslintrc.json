@@ -57,7 +57,14 @@
   "overrides": [
     {
       "files": ["./src/**/*.{.js,.ts,.tsx,.jsx}", "./src/*.{.js,.ts,.tsx,.jsx}"]
-    }
+    },
+    {
+      "files": ["*.json"],
+      "rules": {
+          "no-unused-expressions": "off",
+          "@typescript-eslint/no-unused-expressions": "off"
+      }
+  }
   ],
   "ignorePatterns": ["test-ui"] // 排除该文件
 }
