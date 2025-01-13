@@ -1,0 +1,11 @@
+@use './_var.scss' as *;
+@use './_mixin.scss' as *;
+@use '../variables' as *;
+
+.#{$prefix}-icon {
+  &-base {
+    svg {
+      @include icon();
+    }
+  }
+}

@@ -1,4 +1,5 @@
 @use './_var.scss' as *;
+@use '../variables' as *;
 
 @mixin button() {
   @apply relative z-0 cursor-pointer border-solid border-transparent bg-transparent;
@@ -38,7 +39,7 @@
 
 // 禁止按钮状态
 @mixin button-disabled-state($bg-color) {
-  &.y-button-is-disabled {
+  &.#{$prefix}-button-is-disabled {
     opacity: $btn-opacity-default;
 
     &:hover {

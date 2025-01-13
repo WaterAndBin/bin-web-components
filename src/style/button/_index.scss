@@ -1,8 +1,9 @@
 @use './_var.scss' as *;
 @use './_mixin.scss' as *;
+@use '../variables' as *;
 @use 'sass:map';
 
-.y-button {
+.#{$prefix}-button {
   &-base {
     @include button();
     @apply m-1;
@@ -39,7 +40,7 @@
 
         /* 循环状态 */
         @each $status in $button-status {
-          &.y-button-status-#{$status} {
+          &.#{$prefix}-button-status-#{$status} {
             color: map.get(map.get(map.get($btn-status, $status), $type), text);
             background-color: map.get(map.get(map.get($btn-status, $status), $type), color);
             border-color: map.get(map.get(map.get($btn-status, $status), $type), border);

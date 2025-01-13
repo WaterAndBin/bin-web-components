@@ -1,17 +1,36 @@
 @use './tailwind.scss' as *;
+@use './_variables.scss' as *;
 @use './button/_index.scss' as *;
 @use './divider/_index.scss' as *;
+@use './input/_index.scss' as *;
 @use './tag/_index.scss' as *;
 
 body {
+  /* 透明度 */
   --opacity-1: 0.75;
   --opacity-2: 1;
 
+  /* 动画时间 */
+  --anim-time-1: 50ms;
+  --anim-time-2: 100ms;
+  --anim-time-3: 200ms;
+  --anim-time-4: 300ms;
+
+  /* 字体大小 */
+  --text-small: 12px;
+  --text-default: 14px;
+  --text-large: 16px;
+
+  /* 边距的边框，这边的py是参考tailwind当中的py  padding-top  padding-bottom */
+  --py-small: 0.4rem;
+  --py-default: 0.5rem;
+  --py-large: 0.6rem;
+
   --white-1: 255, 255, 255;
 
-  --primary-1: 70, 175, 198;
-  --primary-2: 39, 153, 184;
-  --primary-3: 232, 254, 255;
+  --primary-1: 232, 254, 255;
+  --primary-2: 70, 175, 198;
+  --primary-3: 39, 153, 184;
 
   --gray-1: 242, 243, 245;
   --gray-2: 229, 230, 235;
@@ -25,5 +44,8 @@ body {
   --orange-2: 255, 125, 0;
 
   --red-1: 255, 236, 232;
-  --red-2: 245, 63, 63;
+  --red-2: 249, 137, 129;
+  --red-3: 245, 63, 63;
 }
+
+$prefix: y;

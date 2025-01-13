@@ -1,6 +1,5 @@
 import { VNode } from 'omi';
-import React from 'react';
-import { StyleValue } from 'src/common';
+import { StyleValue } from '../common';
 
 export type SortTypes = 'horizontal' | 'vertical';
 export type OrientationTypes = 'left' | 'right' | 'center';
@@ -20,5 +19,5 @@ export interface YDividerProps {
   /**
    * slot插槽专用
    */
-  children?: React.JSX.Element | React.JSX.Element[] | HTMLDivElement | HTMLDivElement[] | string | VNode<any>;
+  children?: VNode | VNode<any>;
 }
