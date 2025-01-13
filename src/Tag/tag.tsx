@@ -1,4 +1,4 @@
-import { h, tag, Component, computed } from 'omi';
+import { h, tag, Component } from 'omi';
 import { TagProps } from './types';
 import clsx from 'clsx';
 import { styleSheet } from './style/index.js';
@@ -42,8 +42,16 @@ export default class YTag extends Component<TagProps> {
         }
       }
     },
-    status: {
-      default: 'normal',
+    closable: {
+      default: false,
+      changed() {
+        if (this instanceof YTag) {
+          this.update();
+        }
+      }
+    },
+    bordered: {
+      default: false,
       changed() {
         if (this instanceof YTag) {
           this.update();
@@ -52,32 +60,57 @@ export default class YTag extends Component<TagProps> {
     }
   };
 
+  private visible: boolean = true;
+  private presetColor: Array<string> = ['red', 'orange', 'green', 'cyan', 'blue', 'purple'];
+
+  private handleClick = () => {
+    this.visible = false;
+    this.update();
+  };
+
+  get colorClass(): string {
+    if (this.props.color === '') return ''; // 未设置color属性则返回
+    return this.presetColor.includes(this.props.color!) ? `y-tag-${this.props.color}` : `y-tag-custom-color`;
+  }
+
+  get tagStyle(): CSSProperties {
+    // 将外部传入的不同类型样式进行处理
+    let formatStyle = {} as CSSProperties;
+    if (this.props.style === '') {
+      formatStyle = {};
+    } else if (typeof this.props.style === 'string') {
+      formatStyle = JSON.parse(this.props.style);
+    } else {
+      formatStyle = this.props.style as CSSProperties;
+    }
+
+    // 自定义颜色
+    let colorStyle = {} as CSSProperties;
+    if (this.colorClass === 'y-tag-custom-color') {
+      colorStyle = {
+        color: 'white',
+        backgroundColor: this.props.color
+      };
+    }
+
+    return Object.assign(colorStyle, formatStyle);
+  }
+
   render(props: TagProps) {
-    const { style, children, className, size, color } = props;
-    console.log(styleSheet);
-    const tagStyle = computed<CSSProperties>(() => {
-      let formatStyle = {};
-      if (style === '') {
-        formatStyle = {};
-      } else if (typeof style === 'string') {
-        formatStyle = JSON.parse(style);
-      } else {
-        formatStyle = style as CSSProperties;
-      }
-
-      const colorStyle = {
-        color,
-        backgroundColor: ''
-      } as CSSProperties;
-
-      return Object.assign(colorStyle, formatStyle);
-    });
+    const { children, className, size, closable, bordered } = props;
 
     return (
       <>
-        <span style={tagStyle.value} className={clsx(className, ['y-tag-base', `y-tag-size-${size}`])}>
-          {children ? <slot></slot> : <template></template>}
-        </span>
+        {this.visible && (
+          <span style={this.tagStyle} className={clsx(className, ['y-tag-base', `y-tag-size-${size}`, this.colorClass], { [`y-tag-bordered`]: bordered })}>
+            {children ? <slot></slot> : <template></template>}
+            {closable && (
+              <span className="y-tag-close" onClick={this.handleClick}>
+                x
+              </span>
+            )}
+          </span>
+        )}
       </>
     );
   }

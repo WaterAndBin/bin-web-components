@@ -2,6 +2,7 @@ import { h, tag, Component } from 'omi';
 import { tailwind } from './style';
 import './Button/_example';
 import './Divider/_example';
+import './Tag/_example';
 
 @tag('my-app')
 export default class extends Component {
@@ -17,6 +18,10 @@ export default class extends Component {
         <div className="flex justify-center items-center flex-col">
           <h2 className="text-xl font-semibold my-3">分割线</h2>
           <text-divider></text-divider>
+        </div>
+        <div className="flex justify-center items-center flex-col">
+          <h2 className="text-xl font-semibold my-3">标签</h2>
+          <text-tag></text-tag>
         </div>
       </div>
     );

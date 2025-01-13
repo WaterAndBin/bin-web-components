@@ -26,6 +26,8 @@ export interface YTagProps {
    * slot插槽专用
    */
   children?: React.JSX.Element | React.JSX.Element[] | HTMLDivElement | HTMLDivElement[] | string | VNode<any>;
+  closable?: boolean;
+  bordered?: boolean;
 }
 
 export interface YTagEvent {
