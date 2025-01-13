@@ -22,29 +22,30 @@ export default class extends Component {
 
   render() {
     return (
-      <div className="h-full bg-gray-200 w-[14rem] p-4 overflow-x: hidden;">
-        <h3 className="py-4 font-bold text-4xl text-center">Bin-UI</h3>
-        <div>
-          <ul>
-            {routes.map((items, index) => {
-              const isActive = items.path === this.getCurrentPath; // 判断是否为当前路径
-
-              return (
-                index !== 0 &&
-                index !== routes.length - 1 && (
-                  <li
-                    className={`hover:bg-gray-100 cursor-pointer text-xl my-1 py-3 font-bold px-2 rounded-md ${isActive ? 'bg-gray-100' : ''}`}
-                    onClick={() => {
-                      router.push(items.path);
-                      this.update();
-                    }}
-                  >
-                    <button>{items.title}</button>
-                  </li>
-                )
-              );
-            })}
-          </ul>
+      <div className="h-full bg-gray-200 w-[16rem]">
+        <div className="fixed w-[16rem]  p-4">
+          <h3 className="py-4 font-bold text-4xl text-center">Bin-UI</h3>
+          <div>
+            <ul>
+              {routes.map((items, index) => {
+                const isActive = items.path === this.getCurrentPath; // 判断是否为当前路径
+                return (
+                  index !== 0 &&
+                  index !== routes.length - 1 && (
+                    <li
+                      className={`hover:bg-gray-100 cursor-pointer text-xl my-1 py-3 font-bold px-2 rounded-md ${isActive ? 'bg-gray-100' : ''}`}
+                      onClick={() => {
+                        router.push(items.path);
+                        this.update();
+                      }}
+                    >
+                      <button>{items?.title}</button>
+                    </li>
+                  )
+                );
+              })}
+            </ul>
+          </div>
         </div>
       </div>
     );

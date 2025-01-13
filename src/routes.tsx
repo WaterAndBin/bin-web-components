@@ -15,6 +15,7 @@ const components = [
 // 动态生成路由
 export const routes = [
   {
+    title: '重定向',
     path: '/',
     redirect: '/Button'
   },
@@ -26,6 +27,7 @@ export const routes = [
     }
   })),
   {
+    title: '404',
     path: '*',
     render() {
       return <div>404</div>;
