@@ -1,0 +1,21 @@
+@use './_var.scss' as *;
+@use './_mixin.scss' as *;
+@use '../variables' as *;
+
+.#{$prefix}-switch {
+  @include switch();
+
+  &-ball {
+    @apply flex justify-center items-center rounded-full absolute text-sm;
+    @apply z-[1] top-[4px] left-[4px] w-4 h-4 bg-white;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &-checked {
+    background-color: aqua;
+
+    & .#{$prefix}-switch-ball {
+      left: calc(100% - 16px - 4px);
+    }
+  }
+}
