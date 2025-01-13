@@ -1,0 +1,6 @@
+@use './_var.scss' as *;
+@use '../variables' as *;
+
+@mixin icon() {
+  @apply w-full h-full;
+}

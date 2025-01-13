@@ -1,5 +1,4 @@
 import { VNode } from 'omi';
-import React from 'react';
 import type { SizeEnum, StatusEnum, StyleValue, TypeEnum } from '../common';
 
 export interface YButtonProps {
@@ -24,7 +23,7 @@ export interface YButtonProps {
   /**
    * slot插槽专用
    */
-  children?: React.JSX.Element | React.JSX.Element[] | HTMLDivElement | HTMLDivElement[] | string | VNode<any>;
+  children?: VNode | VNode<any>;
 }
 
 export interface YButtonEvent {
