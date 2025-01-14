@@ -2,7 +2,8 @@
 @use '../variables' as *;
 
 @mixin switch() {
-  @apply relative w-full h-full box-border inline-flex;
-  @apply min-w-10 h-6 bg-gray-300 rounded-full;
-  transition: all 0.3s ease-in-out;
+  @apply relative box-border select-none align-middle;
+  @apply h-6 rounded-full;
+  transition: all 0.15s ease-in-out;
+  background-color: $switch-bg-color-default;
 }

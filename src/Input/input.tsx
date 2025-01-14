@@ -318,6 +318,7 @@ export default class Input extends Component<InputProps> {
         onClick={() => this.inputRef.current?.focus()}
         style={{ width: width, style }}
       >
+        {/* 前缀插槽 */}
         <slot name="prefix"></slot>
         <input
           ref={this.inputRef}
@@ -331,6 +332,7 @@ export default class Input extends Component<InputProps> {
           value={this.inputValue}
           {...(showWordLimit ? { maxLength: maxLength } : {})}
         />
+        {/* 清除按钮 */}
         {allowClear && !loading && (
           <span
             className={clsx(ClassNamePrefix('input-icon'))}
@@ -341,18 +343,23 @@ export default class Input extends Component<InputProps> {
             x
           </span>
         )}
+        {/* 密码的眼睛 */}
         {type === 'password' && !loading && (
           <span className={clsx(ClassNamePrefix('input-icon'))} style={{ visibility: this.iconVisibility ? 'visible' : 'hidden' }}>
             {!this.isShowPassword ? <span onClick={this.iconPasswordClick}>🕶</span> : <span onClick={this.iconPasswordClick}>👀</span>}
           </span>
         )}
+        {/* 统计字数 */}
         {showWordTotal && <span className={clsx(ClassNamePrefix('input-total'))}>{this.inputNumber}</span>}
+        {/* 字数限制 */}
         {showWordLimit && (
           <span className="input-limit">
             {this.inputNumber}/{maxLength}
           </span>
         )}
+        {/* 加载 */}
         {loading && <span className={clsx(ClassNamePrefix('input-icon'))}>⭕</span>}
+        {/* 后缀插槽 */}
         <slot name="suffix"></slot>
       </div>
     );
