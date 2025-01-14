@@ -63,15 +63,10 @@ export default class extends Component {
           <y-tag color="purple" bordered closable>
             purple
           </y-tag>
-          <y-tag color="#f53f3f" bordered closable>
-            #f53f3f
-          </y-tag>
-          <y-tag color="#7816ff" bordered closable>
-            #7816ff
-          </y-tag>
-          <y-tag color="#ffb400" bordered closable>
-            #ffb400
-          </y-tag>
+        </div>
+        <div>
+          <span>loading</span>
+          <y-tag loading>loading</y-tag>
         </div>
       </div>
     );

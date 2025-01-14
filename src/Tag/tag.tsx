@@ -3,6 +3,7 @@ import { TagProps } from './types';
 import clsx from 'clsx';
 import { styleSheet } from './style/index.js';
 import { CSSProperties } from '../common.ts';
+import '../Icon';
 
 @tag('y-tag')
 export default class YTag extends Component<TagProps> {
@@ -57,6 +58,14 @@ export default class YTag extends Component<TagProps> {
           this.update();
         }
       }
+    },
+    loading: {
+      default: false,
+      changed() {
+        if (this instanceof YTag) {
+          this.update();
+        }
+      }
     }
   };
 
@@ -97,7 +106,7 @@ export default class YTag extends Component<TagProps> {
   }
 
   render(props: TagProps) {
-    const { children, className, size, closable, bordered } = props;
+    const { children, className, size, closable, bordered, loading } = props;
 
     return (
       <>
@@ -106,9 +115,10 @@ export default class YTag extends Component<TagProps> {
             {children ? <slot></slot> : <template></template>}
             {closable && (
               <span className="y-tag-close" onClick={this.handleClick}>
-                x
+                <y-icon name="times" size="16px" />
               </span>
             )}
+            {loading && <y-icon name="loading" size="16px" style={{ marginLeft: '3px' }} />}
           </span>
         )}
       </>

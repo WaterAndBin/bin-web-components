@@ -1,8 +1,9 @@
 @use './_var.scss' as *;
 @use './_mixin.scss' as *;
+@use '../variables' as *;
 @use 'sass:string';
 
-.y-tag {
+.#{$prefix}-tag {
   &-base {
     @include tag();
 
@@ -24,30 +25,27 @@
   }
 
   &-close {
-    @apply ml-1 cursor-pointer;
-    padding: 1px;
+    @apply ml-0.5 cursor-pointer;
     cursor: pointer;
     border-radius: 50%;
-    // transform: translate(5px, 1px);
+
+    &:hover {
+      background-color: $y-tag-close-bg;
+    }
   }
 
   @each $color in $y-tag-colors {
     &-#{$color} {
       color: string.unquote($color);
-      background-color: color-mix(in srgb, string.unquote($color) 20%, white);
+      background-color: color-mix(in srgb, string.unquote($color) 15%, white);
 
       // 边框
       &:where(.y-tag-bordered) {
         border: 1px solid string.unquote($color);
       }
-    }
 
-    & > &-close {
-      color: string.unquote($color);
-
-      &:hover {
-        color: white;
-        background-color: white;
+      & .y-tag-close:hover {
+        background-color: color-mix(in srgb, string.unquote($color) 25%, white);
       }
     }
   }

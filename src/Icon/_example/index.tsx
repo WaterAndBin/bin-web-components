@@ -1,7 +1,7 @@
 import { h, tag, Component } from 'omi';
 import '..';
 import { tailwind } from '../../style/index';
-import icon from '../uil.json';
+import icon from '../icon.json';
 
 @tag('text-icon')
 export default class extends Component {

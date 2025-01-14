@@ -28,6 +28,7 @@ export interface YTagProps {
   children?: React.JSX.Element | React.JSX.Element[] | HTMLDivElement | HTMLDivElement[] | string | VNode<any>;
   closable?: boolean;
   bordered?: boolean;
+  loading?: boolean;
 }
 
 export interface YTagEvent {

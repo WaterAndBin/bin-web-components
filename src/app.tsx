@@ -48,10 +48,6 @@ export default class extends Component {
             </ul>
           </div>
         </div>
-        <div className="flex justify-center items-center flex-col">
-          <h2 className="text-xl font-semibold my-3">标签</h2>
-          <text-tag></text-tag>
-        </div>
       </div>
     );
   }

@@ -2,7 +2,7 @@
 
 @mixin tag() {
   @apply box-border inline-flex items-center content-center;
-  @apply px-2 h-6 leading-none;
+  @apply px-1.5 h-6 leading-none;
   @apply border-solid border-transparent rounded;
   font-size: $tag-font-default;
   white-space: nowrap;
