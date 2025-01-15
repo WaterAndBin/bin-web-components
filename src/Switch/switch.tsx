@@ -1,4 +1,4 @@
-import { h, tag, Component, OmiProps, createRef } from 'omi';
+import { h, tag, Component, createRef } from 'omi';
 import { YSwitchProps, YSwitchEvent } from './types';
 import { tailwind } from '../style/index.js';
 import { styleSheet } from './style/index.js';
@@ -84,9 +84,12 @@ export default class YSwitch extends Component<SwitchProps> {
     },
     /** 函数返回值用于判断是否阻止切换 */
     beforeChange: {
-      type: () => Boolean,
+      type: Function,
       default: null,
-      changed() {
+      changed(newValue: any) {
+        console.log(12312313);
+        console.log(newValue);
+
         if (this instanceof YSwitch) {
           this.update();
         }
@@ -127,6 +130,10 @@ export default class YSwitch extends Component<SwitchProps> {
     /* 兼容react事件，可能有onChange */
     if (this.props.onChange) {
       this.props.onChange(this.isChecked);
+    } else {
+      /* 兼容 vue 事件 */
+      this.fire('change', this.isChecked);
+      this.fire('update', this.isChecked);
     }
 
     this.update();
@@ -177,9 +184,12 @@ export default class YSwitch extends Component<SwitchProps> {
     this.update();
   }
 
-  render(props: OmiProps<SwitchProps>) {
+  render(props: SwitchProps) {
     const { width, size, disabled, uncheckedColor, loading } = props;
     const { isChecked, checkedClass, getIconColor } = this;
+
+    console.log('======');
+    console.log(props);
 
     const buttonStyle: { [key: string]: string } = {};
 

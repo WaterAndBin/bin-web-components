@@ -1,6 +1,6 @@
 import _YSwitch from './switch';
 
-export type { SwitchProps } from './switch';
+// export type { SwitchProps } from './switch';
 export const YSwitch = _YSwitch;
 export default YSwitch;
 

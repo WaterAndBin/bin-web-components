@@ -9,8 +9,6 @@ export interface YSwitchProps {
   size?: SizeEnum;
   /** 禁用，默认是false */
   disabled?: boolean;
-  /** 默认参数 */
-  defaultValue?: boolean;
   /** 选中时的开关颜色 */
   checkedColor?: string;
   /** 未选中时的开关颜色 */
