@@ -112,17 +112,24 @@ export default class YSwitch extends Component<SwitchProps> {
 
       if (canChange) {
         this.props.loading = false;
-        this.isChecked = !this.isChecked;
-        this.update();
+      } else {
+        return;
       }
-    } else {
-      this.isChecked = !this.isChecked;
-      this.update();
     }
+    this.isChecked = !this.isChecked;
 
     /* 更新传进来的参数 */
-    // @ts-ignore
-    this.props.value.value = this.isChecked;
+    if (this.props.value instanceof Object && 'value' in this.props.value) {
+      /* 这里主要用于OMI的 */
+      this.props.value.value = this.isChecked;
+    }
+
+    /* 兼容react事件，可能有onChange */
+    if (this.props.onChange) {
+      this.props.onChange(this.isChecked);
+    }
+
+    this.update();
   };
 
   /**
@@ -158,16 +165,21 @@ export default class YSwitch extends Component<SwitchProps> {
   }
 
   installed(): void {
-    // @ts-ignore
-    this.isChecked = this.props.value.value ?? false;
+    const value = this.props.value;
+
+    // 如果 value 是 Omi.SignalValue<boolean> 类型，提取其 .value 属性
+    if (value && typeof value === 'object' && 'value' in value) {
+      this.isChecked = value.value;
+    } else if (typeof this.props.value === 'boolean') {
+      /* 如果只是传过来的是boolean类型，就直接赋值，兼容传入value={true}事件 */
+      this.isChecked = this.props.value;
+    }
     this.update();
   }
 
   render(props: OmiProps<SwitchProps>) {
     const { width, size, disabled, uncheckedColor, loading } = props;
     const { isChecked, checkedClass, getIconColor } = this;
-
-    console.log(props);
 
     const buttonStyle: { [key: string]: string } = {};
 
@@ -185,7 +197,6 @@ export default class YSwitch extends Component<SwitchProps> {
         })}
         style={{ '--switch-ball-width': this.getBallWidth + 'px', minWidth: width, ...buttonStyle, ...checkedClass }}
         onClick={this.changeIsChecked}
-        onChange={() => this.fire('onChange', isChecked)}
         disabled={disabled || loading}
       >
         <span ref={this.ballRef} className={clsx(ClassNamePrefix('switch-ball'))}>

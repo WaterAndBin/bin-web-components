@@ -22,7 +22,7 @@ export default class extends Component {
             <span>基础的开关：</span>
             <y-switch value={text} onChange={(data) => console.log(data)} />
           </div>
-          {/* <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center">
             <span>尺寸不同的开关：</span>
             <y-switch size="small" />
             <y-switch />
@@ -72,7 +72,7 @@ export default class extends Component {
             <span> 设置 beforeChange 函数，函数的返回值将用于判断是否阻止切换：</span>
             <y-switch beforeChange={this.changeLoading}></y-switch>
             <y-switch beforeChange={this.changeLoading} checkedColor="#F53F3F" uncheckedColor="green" />
-          </div> */}
+          </div>
         </div>
       </div>
     );

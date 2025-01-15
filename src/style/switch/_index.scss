@@ -14,7 +14,7 @@
   }
 
   &-size-large {
-    @apply min-w-14 h-7;
+    @apply h-7;
 
     & .#{$prefix}-switch-ball {
       @apply size-5;
