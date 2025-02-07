@@ -1,8 +1,8 @@
-import { SignalValue, VNode } from 'omi';
+import { VNode } from 'omi';
 import type { SizeEnum } from '../common';
 
 export interface YSwitchProps {
-  value?: SignalValue<boolean> | boolean;
+  defaultChecked?: boolean;
   /** 宽度，默认是10px */
   width?: string;
   /** 尺寸 */
@@ -22,4 +22,12 @@ export interface YSwitchEvent {
   /** 函数返回值用于判断是否阻止切换 */
   beforeChange?: () => boolean | Promise<boolean>;
   onChange?: (isChecked: boolean) => void;
+}
+
+/**
+ * YSwitch实例对象
+ */
+export interface YSwitchInstance {
+  /** 改变按钮状态，会去调用before-change方法 */
+  changeIsChecked: () => Promise<void>;
 }

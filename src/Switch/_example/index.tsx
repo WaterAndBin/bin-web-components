@@ -20,7 +20,7 @@ export default class extends Component {
           <h2 className="py-3 font-bold text-2xl">开关</h2>
           <div className="w-full">
             <span>基础的开关：</span>
-            <y-switch value={text} onChange={(data) => console.log(data)} />
+            <y-switch defaultChecked={text.value} />
           </div>
           <div className="flex justify-center items-center">
             <span>尺寸不同的开关：</span>
@@ -30,18 +30,18 @@ export default class extends Component {
           </div>
           <div className="flex justify-center items-center">
             <span>默认打开的开关：</span>
-            <y-switch size="small" value={true} />
-            <y-switch value={true} />
-            <y-switch size="large" value={true} />
+            <y-switch size="small" defaultChecked={true} />
+            <y-switch defaultChecked={true} />
+            <y-switch size="large" defaultChecked={true} />
           </div>
           <div className="flex justify-center items-center">
             <span>禁用的开关：</span>
             <y-switch disabled size="small" />
-            <y-switch disabled value={true} size="small" />
+            <y-switch disabled defaultChecked={true} size="small" />
             <y-switch disabled />
-            <y-switch disabled value={true} />
+            <y-switch disabled defaultChecked={true} />
             <y-switch disabled size="large" />
-            <y-switch disabled value={true} size="large" />
+            <y-switch disabled defaultChecked={true} size="large" />
           </div>
           <div className="flex justify-center items-center">
             <span>自定义颜色：</span>
@@ -64,9 +64,9 @@ export default class extends Component {
           <div className="flex justify-center items-center">
             <span> 加载中的开关</span>
             <y-switch loading />
-            <y-switch loading value={true} />
+            <y-switch loading defaultChecked={true} />
             <y-switch loading checkedColor="#F53F3F" uncheckedColor="green" />
-            <y-switch loading checkedColor="#F53F3F" uncheckedColor="green" value={true} />
+            <y-switch loading checkedColor="#F53F3F" uncheckedColor="green" defaultChecked={true} />
           </div>
           <div className="flex justify-center items-center">
             <span> 设置 beforeChange 函数，函数的返回值将用于判断是否阻止切换：</span>

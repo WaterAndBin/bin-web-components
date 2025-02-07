@@ -1,4 +1,4 @@
-import { h, tag, Component, createRef } from 'omi';
+import { h, tag, Component, createRef, bind } from 'omi';
 import { YSwitchProps, YSwitchEvent } from './types';
 import { tailwind } from '../style/index.js';
 import { styleSheet } from './style/index.js';
@@ -13,11 +13,13 @@ export default class YSwitch extends Component<SwitchProps> {
   static css = [tailwind, styleSheet];
 
   static props = {
-    value: {
+    /** 默认checked */
+    defaultChecked: {
       type: Boolean,
-      default: null,
-      changed() {
+      default: false,
+      changed(newValue: boolean) {
         if (this instanceof YSwitch) {
+          this.isChecked = newValue;
           this.update();
         }
       }
@@ -76,56 +78,44 @@ export default class YSwitch extends Component<SwitchProps> {
     loading: {
       type: Boolean,
       default: false,
-      changed() {
+      changed(newValue: boolean) {
         if (this instanceof YSwitch) {
-          this.update();
-        }
-      }
-    },
-    /** 函数返回值用于判断是否阻止切换 */
-    beforeChange: {
-      type: Function,
-      default: null,
-      changed(newValue: any) {
-        console.log(12312313);
-        console.log(newValue);
-
-        if (this instanceof YSwitch) {
+          this.switchLoading = newValue;
           this.update();
         }
       }
     }
   };
 
+  /* beforeChange调用方法，vue传进来都是before-change */
+  private beforeChange: (() => boolean | Promise<boolean>) | undefined;
+  private 'before-change': () => boolean | Promise<boolean>;
+
   /** 默认false，表示关 */
   private isChecked: boolean = false;
+  private switchLoading: boolean = false;
 
   /* dom */
   ballRef = createRef<HTMLElement>();
 
-  changeIsChecked = async (): Promise<void> => {
-    const { beforeChange } = this.props;
-
-    if (beforeChange) {
-      this.props.loading = true;
+  @bind
+  async changeIsChecked(): Promise<void> {
+    if (this.beforeChange || this['before-change']) {
+      this.switchLoading = true;
       this.update();
 
-      /* 运行函数，判断是否可用为true */
-      const canChange = await beforeChange();
+      // 判断使用beforeChange还是before-change
+      const beforeChangeFn = this.beforeChange || this['before-change'];
+      // 运行函数，判断是否可用为true
+      const canChange = await beforeChangeFn();
 
       if (canChange) {
-        this.props.loading = false;
+        this.switchLoading = false;
       } else {
         return;
       }
     }
     this.isChecked = !this.isChecked;
-
-    /* 更新传进来的参数 */
-    if (this.props.value instanceof Object && 'value' in this.props.value) {
-      /* 这里主要用于OMI的 */
-      this.props.value.value = this.isChecked;
-    }
 
     /* 兼容react事件，可能有onChange */
     if (this.props.onChange) {
@@ -137,7 +127,7 @@ export default class YSwitch extends Component<SwitchProps> {
     }
 
     this.update();
-  };
+  }
 
   /**
    * 获取 switch-ball 的宽
@@ -163,33 +153,26 @@ export default class YSwitch extends Component<SwitchProps> {
    *  如果是自定义的icon，让loading图标也跟着自定义的颜色走
    */
   get getIconColor(): { [key: string]: string } {
-    const { checkedColor, uncheckedColor, loading } = this.props;
+    const { checkedColor, uncheckedColor } = this.props;
+    const { switchLoading } = this;
     const { isChecked } = this;
-    if (loading) {
+    if (switchLoading) {
       return isChecked && checkedColor ? { stroke: checkedColor } : !isChecked && uncheckedColor ? { stroke: uncheckedColor } : {};
     }
     return {};
   }
 
   installed(): void {
-    const value = this.props.value;
+    // 初始化loading默认值
+    this.switchLoading = this.props.loading ?? false;
+    this.isChecked = this.props.defaultChecked ?? false;
 
-    // 如果 value 是 Omi.SignalValue<boolean> 类型，提取其 .value 属性
-    if (value && typeof value === 'object' && 'value' in value) {
-      this.isChecked = value.value;
-    } else if (typeof this.props.value === 'boolean') {
-      /* 如果只是传过来的是boolean类型，就直接赋值，兼容传入value={true}事件 */
-      this.isChecked = this.props.value;
-    }
     this.update();
   }
 
   render(props: SwitchProps) {
-    const { width, size, disabled, uncheckedColor, loading } = props;
-    const { isChecked, checkedClass, getIconColor } = this;
-
-    console.log('======');
-    console.log(props);
+    const { width, size, disabled, uncheckedColor } = props;
+    const { isChecked, checkedClass, getIconColor, switchLoading } = this;
 
     const buttonStyle: { [key: string]: string } = {};
 
@@ -203,14 +186,14 @@ export default class YSwitch extends Component<SwitchProps> {
         className={clsx(ClassNamePrefix(`switch`), ClassNamePrefix(`switch-size-${size}`), {
           [ClassNamePrefix('switch-checked')]: isChecked,
           [ClassNamePrefix('switch-disabled')]: disabled,
-          [ClassNamePrefix('switch-loading')]: loading
+          [ClassNamePrefix('switch-loading')]: switchLoading
         })}
         style={{ '--switch-ball-width': this.getBallWidth + 'px', minWidth: width, ...buttonStyle, ...checkedClass }}
         onClick={this.changeIsChecked}
-        disabled={disabled || loading}
+        disabled={disabled || switchLoading}
       >
         <span ref={this.ballRef} className={clsx(ClassNamePrefix('switch-ball'))}>
-          {loading ? (
+          {switchLoading ? (
             <span className={clsx(ClassNamePrefix('loading'))} style={{ ...getIconColor }}>
               <y-icon name="loading"></y-icon>
             </span>
