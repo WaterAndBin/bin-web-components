@@ -54,9 +54,9 @@ const changeLoading = async () => {
       <div class="flex justify-center items-center">
         <span> 加载中的开关</span>
         <y-switch loading />
-        <y-switch loading default-checked="true" />
+        <y-switch loading :default-checked="true" />
         <y-switch loading checked-color="#F53F3F" unchecked-color="green" />
-        <y-switch loading checked-color="#F53F3F" unchecked-color="green" defaultChecked="true" />
+        <y-switch loading checked-color="#F53F3F" unchecked-color="green" :default-checked="true" />
       </div>
       <div class="flex justify-center items-center">
         <span> 设置 beforeChange 函数，函数的返回值将用于判断是否阻止切换：</span>
