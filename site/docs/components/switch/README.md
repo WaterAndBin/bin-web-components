@@ -1,10 +1,12 @@
----
-title: 开关
-description:
-isComponent: true
-usage: { title: '', description: '' }
-spline: base
----
+# 开关 Switch
+
+使用开关切换两种状态之间。
+
+<!--@include: ./demo/basic.md-->
+
+<div>
+<y-button/>
+</div>
 
 ## API
 
