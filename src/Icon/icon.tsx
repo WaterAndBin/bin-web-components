@@ -15,10 +15,9 @@ export default class Icon extends Component<IconProps> {
   static css = [tailwind, styleSheet];
 
   static props = {
-    /** 边框的宽度，默认是1px */
     name: {
       type: String,
-      default: '1px',
+      default: '',
       changed() {
         if (this instanceof Icon) {
           this.update();
@@ -32,7 +31,7 @@ export default class Icon extends Component<IconProps> {
     const svg = iconMap.get(name);
 
     if (svg) {
-      return <div className={clsx(ClassNamePrefix('icon-base'))} style={{ width: '2rem', height: '2rem' }} innerHTML={svg}></div>;
+      return <div className={clsx(ClassNamePrefix('icon-base'))} innerHTML={svg}></div>;
     } else {
       return <span>错误</span>;
     }

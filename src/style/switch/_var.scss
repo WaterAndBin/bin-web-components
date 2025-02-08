@@ -1,0 +1,15 @@
+@use '../variables' as *;
+
+// 默认背景颜色
+$switch-bg-color-default: rgb(var(--gray-3));
+
+// 触发之后的背景颜色
+$switch-checked-bg-color: rgb($theme-primary-1);
+
+// 透明度
+$switch-opacity-disabled: var(--opacity-3);
+$switch-opacity-loading: var(--opacity-5);
+
+// svg的颜色
+$switch-svg-stroke-loading: $switch-bg-color-default;
+$switch-svg-stroke-checked: $switch-checked-bg-color;

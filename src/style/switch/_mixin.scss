@@ -1,0 +1,9 @@
+@use './_var.scss' as *;
+@use '../variables' as *;
+
+@mixin switch() {
+  @apply relative box-border select-none align-middle;
+  @apply h-6 rounded-full;
+  transition: all 0.15s ease-in-out;
+  background-color: $switch-bg-color-default;
+}

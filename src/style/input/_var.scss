@@ -41,7 +41,7 @@ $input-disabled-bg-error: rgb(var(--red-1));
 $input-disabled-border-error: rgb(var(--red-3));
 
 // 禁用之后的字体颜色
-$input-disabled-text: rgb(var(--gray-3));
+$input-disabled-text: rgb(var(--gray-4));
 $input-disabled-text-error: rgb(var(--red-2));
 
 // 默认边距
@@ -49,7 +49,7 @@ $input-px-default: 0.5rem;
 $input-m-default: 0.25rem;
 
 // 限制字体的颜色
-$input-limit-text-color: rgb(var(--gray-3));
+$input-limit-text-color: rgb(var(--gray-4));
 
 $input-size: (
   small: (
