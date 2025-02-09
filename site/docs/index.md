@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: 开始使用
-      link: /markdown-examples
+      link: /docs/guide/attention
       
 features:
   - title: 开箱即用

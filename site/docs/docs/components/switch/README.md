@@ -2,11 +2,7 @@
 
 使用开关切换两种状态之间。
 
-<!--@include: ./demo/basic.md-->
-
-<div>
-<y-button/>
-</div>
+<!-- @include: ./demo/basic.md -->
 
 ## API
 

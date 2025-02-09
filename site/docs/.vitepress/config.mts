@@ -1,6 +1,5 @@
 import { defineConfig } from 'vitepress';
-import { componentDosc } from '../router';
-import UnoCSS from 'unocss/vite';
+import { sidebarGuide } from '../router';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -14,21 +13,9 @@ export default defineConfig({
       { text: 'React案例', link: '/markdown-examples' }
     ],
 
-    sidebar: [
-      {
-        text: '开发指南',
-        items: [{ text: '开发注意事项', link: '/docs/attention' }]
-      },
-      {
-        text: '使用指南',
-        items: [{ text: '开始', link: '/docs/start' }]
-      },
-      {
-        text: '组件',
-        collapsed: true,
-        items: [{ text: '数据录入' }, ...componentDosc]
-      }
-    ],
+    sidebar: {
+      '/docs/': { base: '/docs/', items: sidebarGuide() }
+    },
 
     outline: {
       label: 'Contents'
@@ -48,9 +35,5 @@ export default defineConfig({
         isCustomElement: (tag) => tag.startsWith('y-')
       }
     }
-  },
-
-  vite: {
-    plugins: [UnoCSS()]
   }
 });
