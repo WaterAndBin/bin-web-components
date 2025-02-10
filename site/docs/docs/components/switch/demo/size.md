@@ -1,7 +1,9 @@
-## 基础用法
+## 尺寸
 
 <div class="box-default">
+  <y-switch size="small" />
   <y-switch />
+  <y-switch size="large" />
 </div>
 
 ::: details 查看代码
@@ -10,7 +12,9 @@
 
 ```vue [Vue]
 <template>
+  <y-switch size="small" />
   <y-switch />
+  <y-switch size="large" />
 </template>
 ```
 

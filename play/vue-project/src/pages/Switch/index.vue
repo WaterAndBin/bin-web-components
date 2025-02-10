@@ -10,7 +10,7 @@ const changeLoading = async () => {
     <div class="flex justify-center items-center flex-col">
       <div class="flex justify-center items-center">
         <span>基础的开关：</span>
-        <y-switch value="text" />
+        <y-switch />
       </div>
       <div class="flex justify-center items-center">
         <span>尺寸不同的开关：</span>

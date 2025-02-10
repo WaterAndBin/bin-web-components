@@ -1,7 +1,7 @@
-## 基础用法
+## 自定义颜色
 
 <div class="box-default">
-  <y-switch />
+  <y-switch checked-color="#F53F3F" unchecked-color="green" />
 </div>
 
 ::: details 查看代码
@@ -10,7 +10,7 @@
 
 ```vue [Vue]
 <template>
-  <y-switch />
+  <y-switch checked-color="#F53F3F" unchecked-color="green" />
 </template>
 ```
 
