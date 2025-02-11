@@ -33,3 +33,10 @@
 code {
   font-size: 0.85rem !important;
 }
+
+.divider-demo {
+  border: 15px solid var(--vp-sidebar-bg-color);
+  box-sizing: border-box;
+  width: 434px;
+  padding: 20px 10px;
+}
