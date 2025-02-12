@@ -4,6 +4,7 @@ defineOptions({
 })
 </script>
 
+<!-- #region button -->
 <template>
   <div className="p-2">
     <div>
@@ -77,3 +78,4 @@ defineOptions({
     </div>
   </div>
 </template>
+<!-- #endregion button -->
