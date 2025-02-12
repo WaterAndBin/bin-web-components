@@ -2,7 +2,7 @@ import { h, tag, Component } from 'omi';
 import { TagProps } from './types';
 import clsx from 'clsx';
 import { styleSheet } from './style/index.js';
-import { CSSProperties } from '../common.ts';
+import { CSSProperties } from '../common';
 import '../Icon';
 
 @tag('y-tag')
@@ -10,8 +10,8 @@ export default class YTag extends Component<TagProps> {
   static css = [styleSheet];
 
   static props = {
-    /** 按钮类型 */
     color: {
+      type: String,
       default: '',
       changed() {
         if (this instanceof YTag) {
@@ -20,6 +20,7 @@ export default class YTag extends Component<TagProps> {
       }
     },
     size: {
+      type: String,
       default: 'default',
       changed() {
         if (this instanceof YTag) {
@@ -36,6 +37,7 @@ export default class YTag extends Component<TagProps> {
       }
     },
     className: {
+      type: String,
       default: '',
       changed() {
         if (this instanceof YTag) {
@@ -44,6 +46,7 @@ export default class YTag extends Component<TagProps> {
       }
     },
     closable: {
+      type: Boolean,
       default: false,
       changed() {
         if (this instanceof YTag) {
@@ -52,6 +55,7 @@ export default class YTag extends Component<TagProps> {
       }
     },
     bordered: {
+      type: Boolean,
       default: false,
       changed() {
         if (this instanceof YTag) {
@@ -60,6 +64,7 @@ export default class YTag extends Component<TagProps> {
       }
     },
     loading: {
+      type: Boolean,
       default: false,
       changed() {
         if (this instanceof YTag) {
@@ -68,6 +73,9 @@ export default class YTag extends Component<TagProps> {
       }
     }
   };
+
+  private close: null | undefined;
+  private 'before-change': null | undefined;
 
   private visible: boolean = true;
   private presetColor: Array<string> = ['red', 'orange', 'green', 'cyan', 'blue', 'purple'];
@@ -106,13 +114,14 @@ export default class YTag extends Component<TagProps> {
   }
 
   render(props: TagProps) {
-    const { children, className, size, closable, bordered, loading } = props;
+    const { className, size, closable, bordered, loading } = props;
 
+    this.fire('change', { size: props.size, children: props.children });
     return (
       <>
         {this.visible && (
           <span style={this.tagStyle} className={clsx(className, ['y-tag-base', `y-tag-size-${size}`, this.colorClass], { [`y-tag-bordered`]: bordered })}>
-            {children ? <slot></slot> : <template></template>}
+            {this.children ? <slot></slot> : <template></template>}
             {closable && (
               <span className="y-tag-close" onClick={this.handleClick}>
                 <y-icon name="times" size="16px" />

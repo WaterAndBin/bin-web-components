@@ -1,7 +1,7 @@
 import { VNode } from 'omi';
 import React from 'react';
 import type { SizeEnum, StatusEnum } from 'src/common';
-import { StyleValue } from '../common.ts';
+import { StyleValue } from '../common';
 
 export interface YTagProps {
   /**
