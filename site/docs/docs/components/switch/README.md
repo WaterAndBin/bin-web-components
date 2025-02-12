@@ -2,15 +2,151 @@
 
 使用开关切换两种状态之间。
 
-<!-- @include: ./demo/basic.md -->
-<!-- @include: ./demo/size.md -->
-<!-- @include: ./demo/open.md -->
-<!-- @include: ./demo/disabled.md -->
-<!-- @include: ./demo/color.md -->
-<!-- @include: ./demo/text.md -->
-<!-- @include: ./demo/icon.md -->
-<!-- @include: ./demo/loading.md -->
-<!-- @include: ./demo/before.md -->
+## 基础用法
+
+<SwitchBasic />
+
+::: details 查看代码
+
+::: code-group
+
+<<< @/../../play\vue-project\src\pages\Switch\basic.vue#switch [vue]
+
+```tsx [React]
+开发中...
+```
+
+:::
+
+## 尺寸
+
+<SwitchSize />
+
+::: details 查看代码
+
+::: code-group
+
+<<< @/../../play\vue-project\src\pages\Switch\size.vue#switch [vue]
+
+```tsx [React]
+开发中...
+```
+
+:::
+
+## 默认开启
+
+<SwitchOpen/>
+
+::: details 查看代码
+
+::: code-group
+
+<<< @/../../play\vue-project\src\pages\Switch\open.vue#switch [vue]
+
+```tsx [React]
+开发中...
+```
+
+:::
+
+## 禁用
+
+<SwitchDisabled />
+
+::: details 查看代码
+
+::: code-group
+
+<<< @/../../play\vue-project\src\pages\Switch\disabled.vue#switch [vue]
+
+```tsx [React]
+开发中...
+```
+
+:::
+
+## 自定义颜色
+
+<SwitchColor />
+
+::: details 查看代码
+
+::: code-group
+
+<<< @/../../play\vue-project\src\pages\Switch\color.vue#switch [vue]
+
+```tsx [React]
+开发中...
+```
+
+:::
+
+## 自定义文案
+
+<SwitchText />
+
+::: details 查看代码
+
+::: code-group
+
+<<< @/../../play\vue-project\src\pages\Switch\text.vue#switch [vue]
+
+```tsx [React]
+开发中...
+```
+
+:::
+
+## 自定义图标
+
+<SwitchIcon />
+
+::: details 查看代码
+
+::: code-group
+
+<<< @/../../play\vue-project\src\pages\Switch\icon.vue#switch [vue]
+
+```tsx [React]
+开发中...
+```
+
+:::
+
+## 加载
+
+loading图标会跟着当前的开关背景颜色保持一致。
+
+<SwitchLoading />
+
+::: details 查看代码
+
+::: code-group
+
+<<< @/../../play\vue-project\src\pages\Switch\loading.vue#switch [vue]
+
+```tsx [React]
+开发中...
+```
+
+:::
+
+## 切换拦截
+
+<SwitchBefore />
+
+::: details 查看代码
+
+::: code-group
+
+<<< @/../../play\vue-project\src\pages\Switch\before.vue#switch [vue]
+
+```tsx [React]
+开发中...
+```
+
+:::
 
 ## API
 

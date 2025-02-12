@@ -2,8 +2,42 @@
 
 就按钮。嗯，就是按钮。
 
-<!-- @include: ./demo/basic.md -->
-<!-- @include: ./demo/disabled.md -->
+## 基础用法
+
+- 类型有三种：`primary `，`secondary `，`outline`，`text`
+- 尺寸有三种：`small`，`default`，`large`
+
+<ButtonBasic />
+
+::: details 查看代码
+
+::: code-group
+
+<<< @/../../play\vue-project\src\pages\Button\basic.vue#button [vue]
+
+```tsx [React]
+开发中...
+```
+
+:::
+
+## 禁用
+
+- 禁用按钮，需要`disabled`
+
+<ButtonDisabled />
+
+::: details 查看代码
+
+::: code-group
+
+<<< @/../../play\vue-project\src\pages\Button\disabled.vue#button [vue]
+
+```tsx [React]
+开发中...
+```
+
+:::
 
 ## API
 

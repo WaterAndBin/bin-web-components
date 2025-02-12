@@ -5,7 +5,7 @@ interface FileType {
 }
 
 // 全量引入所需文件
-const modules: Record<string, FileType> = import.meta.glob('../../../play/vue-project/src/pages/Button/*.vue', { eager: true });
+const modules: Record<string, FileType> = import.meta.glob('../../../play/vue-project/src/pages/**/*.vue', { eager: true });
 
 export default (app: App): void => {
   // 遍历注册

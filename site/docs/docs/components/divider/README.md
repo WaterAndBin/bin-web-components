@@ -2,11 +2,53 @@
 
 就按钮。嗯，就是按钮。
 
-<!-- @include: ./demo/basic.md -->
-<!-- @include: ./demo/width.md -->
-<!-- @include: ./demo/text.md -->
-<!-- @include: ./demo/type.md -->
-<!-- @include: ./demo/vertical.md -->
+## 基础用法
+
+<DividerBasic />
+
+::: details 查看代码
+
+::: code-group
+
+<<< @/../../play\vue-project\src\pages\Divider\basic.vue#divider [vue]
+
+```tsx [React]
+开发中...
+```
+
+:::
+
+## 宽度
+
+<DividerWidth />
+
+::: details 查看代码
+
+::: code-group
+
+<<< @/../../play\vue-project\src\pages\Divider\width.vue#divider [vue]
+
+```tsx [React]
+开发中...
+```
+
+:::
+
+## 各种类型
+
+<DividerType />
+
+::: details 查看代码
+
+::: code-group
+
+<<< @/../../play\vue-project\src\pages\Divider\type.vue#divider [vue]
+
+```tsx [React]
+开发中...
+```
+
+:::
 
 ## API
 
