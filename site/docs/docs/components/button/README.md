@@ -5,8 +5,6 @@
 <!-- @include: ./demo/basic.md -->
 <!-- @include: ./demo/disabled.md -->
 
-<ButtonVue></ButtonVue>
-
 ## API
 
 ### `<y-button>` Props
