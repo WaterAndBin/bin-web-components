@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineOptions({
+  name: 'ButtonVue'
+})
+</script>
 
 <template>
   <div className="p-2">

@@ -1,6 +1,6 @@
 ## 基础用法
 
-<div class="box-default">
+<!-- <div class="box-default">
   <div>
     <y-button size="small"></y-button>
     <y-button size="default"></y-button>
@@ -34,7 +34,9 @@
     <y-button status="danger" type="outline"></y-button>
     <y-button status="danger" type="text"></y-button>
   </div>
-</div>
+</div> -->
+
+<ButtonVue></ButtonVue>
 
 ::: details 查看代码
 
