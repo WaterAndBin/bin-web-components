@@ -1,10 +1,3 @@
-<script setup lang="ts">
-defineOptions({
-  name: 'ButtonBasic'
-})
-</script>
-
-<!-- #region button -->
 <template>
   <div class="box-default">
     <div>
@@ -46,4 +39,3 @@ defineOptions({
     </div>
   </div>
 </template>
-<!-- #endregion button -->
