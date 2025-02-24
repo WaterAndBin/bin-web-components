@@ -13,7 +13,7 @@
                 {{ items }}
               </span>
             </div>
-            <div class="code_content">
+            <div class="code_content" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
               <!-- <highlightjs language="javascript" :code="fileVueContent" /> -->
               <div v-show="clickedLang === 0">
                 <span class="language">-vue</span>
@@ -23,6 +23,14 @@
                 <span class="language">-react</span>
                 <pre><code class="language-javascript">{{ fileVueContent }}</code></pre>
               </div>
+              <button
+                class="copy-code-btn"
+                @click="handleCopyCode"
+                type="button"
+                :style="{
+                  opacity: showCopy ? 1 : 0
+                }"
+              ></button>
             </div>
           </div>
         </div>
@@ -33,11 +41,11 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, markRaw, ref, nextTick, onBeforeUpdate } from 'vue';
+import { onMounted, markRaw, ref, nextTick, computed } from 'vue';
 import hljs from 'highlight.js'; // 引入 highlight.js
 import markdownit from 'markdown-it';
-const md = markdownit();
 
+const md = markdownit();
 const props = defineProps({
   title: String,
   content: String,
@@ -48,7 +56,10 @@ const props = defineProps({
 const languageArrs = ['Vue', 'React'];
 const clickedLang = ref<number>(0);
 
+const codeContentRef = ref();
 const showCode = ref<boolean>(false);
+const showCopy = ref<boolean>(false);
+const copied = ref<boolean>(false);
 /**
  * Vue源码
  */
@@ -68,6 +79,36 @@ const tip = ref<string>('');
 const getContent = async (): Promise<void> => {
   const baseUrl = await import(`../../../play/vue-project/src/pages/${props.content}/${props.type}.vue?raw`);
   fileVueContent.value = baseUrl.default;
+};
+
+const handleMouseEnter = (event: MouseEvent) => {
+  showCopy.value = true;
+};
+
+const handleMouseLeave = (event: MouseEvent) => {
+  if (copied.value) return;
+  showCopy.value = false;
+};
+
+const computedUrl = computed(() => {
+  return copied.value ? `var(--vp-icon-copied)` : `var(--vp-icon-copy)`;
+});
+
+const handleCopyCode = async () => {
+  copied.value = true;
+  try {
+    if (navigator.clipboard) {
+      await navigator.clipboard.writeText(fileVueContent.value);
+    } else {
+      const codeBlocks = document.querySelectorAll('pre code');
+      console.log(codeBlocks);
+    }
+    setTimeout(() => {
+      copied.value = false;
+    }, 3000);
+  } catch (err) {
+    console.error(err.name, err.message);
+  }
 };
 
 /* 热更新没用。。?raw不会热加载，不再属于vue文件，不会再去监听了 */
@@ -174,5 +215,31 @@ pre {
 
 .switch_lang_active {
   color: #3451b2;
+}
+
+.code_content {
+  position: relative;
+  .copy-code-btn {
+    direction: ltr;
+    position: absolute;
+    top: 20px;
+    right: 8px;
+    z-index: 3;
+    border: 1px solid var(--vp-code-copy-code-border-color);
+    border-radius: 4px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--vp-code-copy-code-bg);
+    opacity: 0;
+    cursor: pointer;
+    background-image: v-bind(computedUrl);
+    background-position: 50%;
+    background-size: 20px;
+    background-repeat: no-repeat;
+    transition:
+      border-color 0.25s,
+      background-color 0.25s,
+      opacity 0.25s;
+  }
 }
 </style>
