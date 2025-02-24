@@ -3,6 +3,14 @@ import { defineConfig } from 'vite';
 // https://vitejs.dev/config/
 export default defineConfig({
   base: './',
+  /* 屏蔽scss的警告 */
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler', // 或 "modern"，"legacy"
+      },
+    },
+  },
   plugins: [
     {
       // 插件名称（可选）

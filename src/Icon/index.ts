@@ -6,4 +6,4 @@ export default Icon;
 
 // export type ButtonInstance = InstanceType<typeof YButton>;
 // export * from './RYButton';
-// export type * from './types';
+export type * from './types';

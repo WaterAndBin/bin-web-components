@@ -1,0 +1,9 @@
+@use './_var.scss' as *;
+@use './_mixin.scss' as *;
+@use '../variables' as *;
+
+.#{$prefix}-space {
+  &-base {
+    @apply inline-flex items-center bg-red-100;
+  }
+}

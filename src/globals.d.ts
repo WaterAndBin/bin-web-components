@@ -9,6 +9,7 @@ import { type ButtonProps } from './Button';
 import { type DividerProps } from './Divider';
 import { type InputProps } from './Input';
 import { type SwitchProps } from './Switch';
+import { type SpaceProps } from './space';
 
 declare global {
   namespace JSX {
@@ -17,6 +18,7 @@ declare global {
       'y-divider': DividerProps;
       'y-input': InputProps;
       'y-switch': SwitchProps;
+      'y-space': SpaceProps;
     }
   }
 }

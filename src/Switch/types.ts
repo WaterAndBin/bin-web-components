@@ -15,7 +15,7 @@ export interface YSwitchProps {
   uncheckedColor?: string;
   /** 是否加载，默认为false */
   loading?: boolean;
-  children?: VNode | VNode[];
+  children?: VNode | VNode[] | string;
 }
 
 export interface YSwitchEvent {

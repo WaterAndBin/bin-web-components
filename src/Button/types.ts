@@ -23,7 +23,7 @@ export interface YButtonProps {
   /**
    * slot插槽专用
    */
-  children?: VNode | VNode<any>;
+  children?: VNode | VNode<any> | string;
 }
 
 export interface YButtonEvent {
