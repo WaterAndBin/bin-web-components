@@ -4,34 +4,14 @@
 
 ## 基础用法
 
-<SwitchBasic />
-
-::: details 查看代码
-
-::: code-group
-
-<<< @/../../play\vue-project\src\pages\Switch\basic.vue#switch [vue]
-
-```tsx [React]
-开发中...
-```
-
+::: demo
+Switch/basic
 :::
 
 ## 尺寸
 
-<SwitchSize />
-
-::: details 查看代码
-
-::: code-group
-
-<<< @/../../play\vue-project\src\pages\Switch\size.vue#switch [vue]
-
-```tsx [React]
-开发中...
-```
-
+::: demo
+Switch/size
 :::
 
 ## 默认开启
@@ -42,7 +22,7 @@
 
 ::: code-group
 
-<<< @/../../play\vue-project\src\pages\Switch\open.vue#switch [vue]
+<<< @/../../play/vue-project/src/pages/Switch/open.vue#switch [vue]
 
 ```tsx [React]
 开发中...
@@ -58,7 +38,7 @@
 
 ::: code-group
 
-<<< @/../../play\vue-project\src\pages\Switch\disabled.vue#switch [vue]
+<<< @/../../play/vue-project/src/pages/Switch/disabled.vue#switch [vue]
 
 ```tsx [React]
 开发中...
@@ -74,7 +54,7 @@
 
 ::: code-group
 
-<<< @/../../play\vue-project\src\pages\Switch\color.vue#switch [vue]
+<<< @/../../play/vue-project/src/pages/Switch/color.vue#switch [vue]
 
 ```tsx [React]
 开发中...
@@ -90,7 +70,7 @@
 
 ::: code-group
 
-<<< @/../../play\vue-project\src\pages\Switch\text.vue#switch [vue]
+<<< @/../../play/vue-project/src/pages/Switch/text.vue#switch [vue]
 
 ```tsx [React]
 开发中...
@@ -106,7 +86,7 @@
 
 ::: code-group
 
-<<< @/../../play\vue-project\src\pages\Switch\icon.vue#switch [vue]
+<<< @/../../play/vue-project/src/pages/Switch/icon.vue#switch [vue]
 
 ```tsx [React]
 开发中...
@@ -124,7 +104,7 @@ loading图标会跟着当前的开关背景颜色保持一致。
 
 ::: code-group
 
-<<< @/../../play\vue-project\src\pages\Switch\loading.vue#switch [vue]
+<<< @/../../play/vue-project/src/pages/Switch/loading.vue#switch [vue]
 
 ```tsx [React]
 开发中...
@@ -140,7 +120,7 @@ loading图标会跟着当前的开关背景颜色保持一致。
 
 ::: code-group
 
-<<< @/../../play\vue-project\src\pages\Switch\before.vue#switch [vue]
+<<< @/../../play/vue-project/src/pages/Switch/before.vue#switch [vue]
 
 ```tsx [React]
 开发中...

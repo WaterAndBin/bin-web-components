@@ -10,7 +10,7 @@
 
 ::: code-group
 
-<<< @/../../play\vue-project\src\pages\Divider\basic.vue#divider [vue]
+<<< @/../../play/vue-project/src/pages/Divider/basic.vue#divider [vue]
 
 ```tsx [React]
 开发中...
@@ -26,7 +26,7 @@
 
 ::: code-group
 
-<<< @/../../play\vue-project\src\pages\Divider\width.vue#divider [vue]
+<<< @/../../play/vue-project/src/pages/Divider/width.vue#divider [vue]
 
 ```tsx [React]
 开发中...
@@ -42,7 +42,7 @@
 
 ::: code-group
 
-<<< @/../../play\vue-project\src\pages\Divider\type.vue#divider [vue]
+<<< @/../../play/vue-project/src/pages/Divider/type.vue#divider [vue]
 
 ```tsx [React]
 开发中...

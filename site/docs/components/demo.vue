@@ -8,10 +8,16 @@
       <div class="code_box">
         <div class="code" :class="{ show_code: showCode }">
           <div class="code__reference">
-            <div class="switch">
-              <span class="switch_lang" v-for="(items, index) in languageArrs" :key="index" :class="{ switch_lang_active: index === clickedLang }" @click="clickedLang = index">
-                {{ items }}
-              </span>
+            <div>
+              <div class="switch">
+                <div>
+                  <span class="switch_lang" v-for="(items, index) in languageArrs" :key="index"
+                    :class="{ switch_lang_active: index === clickedLang }" @click="clickedLang = index">
+                    {{ items }}
+                  </span>
+                </div>
+                <button class="switch_btn" @click="handleCopyCode" type="button"></button>
+              </div>
             </div>
             <div class="code_content" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
               <!-- <highlightjs language="javascript" :code="fileVueContent" /> -->
@@ -21,16 +27,11 @@
               </div>
               <div v-show="clickedLang === 1">
                 <span class="language">-react</span>
-                <pre><code class="language-javascript">{{ fileVueContent }}</code></pre>
+                <pre><code class="language-javascript">{{ fileReactContent }}</code></pre>
               </div>
-              <button
-                class="copy-code-btn"
-                @click="handleCopyCode"
-                type="button"
-                :style="{
-                  opacity: showCopy ? 1 : 0
-                }"
-              ></button>
+              <button class="copy-code-btn" @click="handleCopyCode" type="button" :style="{
+                opacity: showCopy ? 1 : 0
+              }"></button>
             </div>
           </div>
         </div>
@@ -53,17 +54,35 @@ const props = defineProps({
   name: String
 });
 
+/**
+ * 语言数组
+ */
 const languageArrs = ['Vue', 'React'];
+/**
+ * 具体点击了什么语言
+ */
 const clickedLang = ref<number>(0);
 
-const codeContentRef = ref();
-const showCode = ref<boolean>(false);
+/**
+ * 代码展示
+ */
+const showCode = ref<boolean>(true);
+/**
+ * 复制展示
+ */
 const showCopy = ref<boolean>(false);
+/**
+ * 复制状态
+ */
 const copied = ref<boolean>(false);
 /**
  * Vue源码
  */
-const fileVueContent = ref('');
+const fileVueContent = ref<string>('');
+/**
+ * react源码
+ */
+const fileReactContent = ref<string>('');
 /**
  * Vue组件
  */
@@ -77,16 +96,25 @@ const tip = ref<string>('');
  * 获取源代码
  */
 const getContent = async (): Promise<void> => {
-  const baseUrl = await import(`../../../play/vue-project/src/pages/${props.content}/${props.type}.vue?raw`);
-  fileVueContent.value = baseUrl.default;
+  try {
+    const vueContent = await import(`../../../play/vue-project/src/pages/${props.content}/${props.type}.vue?raw`);
+    fileVueContent.value = vueContent.default;
+  } catch {
+    fileVueContent.value = '未获取到源代码，开发中。。'
+  }
+  try {
+    const reactContent = await import(`../../../play/react-project/src/pages/${props.content}/${props.type}.tsx?raw`);
+    fileReactContent.value = reactContent.default
+  } catch {
+    fileReactContent.value = '未获取到源代码，开发中。。'
+  }
 };
 
-const handleMouseEnter = (event: MouseEvent) => {
+const handleMouseEnter = () => {
   showCopy.value = true;
 };
 
-const handleMouseLeave = (event: MouseEvent) => {
-  if (copied.value) return;
+const handleMouseLeave = () => {
   showCopy.value = false;
 };
 
@@ -98,16 +126,13 @@ const handleCopyCode = async () => {
   copied.value = true;
   try {
     if (navigator.clipboard) {
-      await navigator.clipboard.writeText(fileVueContent.value);
-    } else {
-      const codeBlocks = document.querySelectorAll('pre code');
-      console.log(codeBlocks);
+      await navigator.clipboard.writeText(clickedLang.value === 0 ? fileVueContent.value : fileReactContent.value);
     }
     setTimeout(() => {
       copied.value = false;
-    }, 3000);
+    }, 2000);
   } catch (err) {
-    console.error(err.name, err.message);
+    console.error(err)
   }
 };
 
@@ -202,6 +227,8 @@ pre {
 .switch {
   padding: 10px;
   border-bottom: 2px solid #e9e8e8;
+  display: flex;
+  justify-content: space-between;
 }
 
 .switch_lang {
@@ -219,27 +246,40 @@ pre {
 
 .code_content {
   position: relative;
-  .copy-code-btn {
-    direction: ltr;
-    position: absolute;
-    top: 20px;
-    right: 8px;
-    z-index: 3;
-    border: 1px solid var(--vp-code-copy-code-border-color);
-    border-radius: 4px;
-    width: 40px;
-    height: 40px;
-    background-color: var(--vp-code-copy-code-bg);
-    opacity: 0;
-    cursor: pointer;
-    background-image: v-bind(computedUrl);
-    background-position: 50%;
-    background-size: 20px;
-    background-repeat: no-repeat;
-    transition:
-      border-color 0.25s,
-      background-color 0.25s,
-      opacity 0.25s;
-  }
+}
+
+.copy-code-btn {
+  direction: ltr;
+  position: absolute;
+  top: 20px;
+  right: 8px;
+  z-index: 3;
+  border: 1px solid var(--vp-code-copy-code-border-color);
+  border-radius: 4px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--vp-code-copy-code-bg);
+  opacity: 0;
+  background-image: v-bind(computedUrl);
+  transition:
+    border-color 0.25s,
+    background-color 0.25s,
+    opacity 0.25s;
+  background-position: 50%;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.switch_btn {
+  direction: ltr;
+  width: 20px;
+  height: 20px;
+  background-color: var(--vp-code-copy-code-bg);
+  background-image: v-bind(computedUrl);
+  background-position: 50%;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  cursor: pointer;
 }
 </style>
