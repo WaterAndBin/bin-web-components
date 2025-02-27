@@ -1,0 +1,42 @@
+.box-default {
+  border: 1px solid rgb(218, 217, 217);
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  padding: 24px 20px;
+  margin: 20px 0;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.vp-doc div h2 {
+  margin-top: 2.25rem;
+  margin-bottom: 1.75rem;
+  line-height: 1.25;
+  font-size: 1.65rem;
+}
+
+.vp-doc table {
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.5em;
+  display: inline-table;
+}
+
+:root {
+  --vp-layout-max-width: 90%;
+}
+
+.content-container {
+  max-width: 850px !important;
+}
+
+code {
+  font-size: 0.85rem !important;
+}
+
+.divider-demo {
+  border: 15px solid var(--vp-sidebar-bg-color);
+  box-sizing: border-box;
+  width: 434px;
+  padding: 20px 10px;
+}

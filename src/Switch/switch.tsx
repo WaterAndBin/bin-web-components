@@ -34,7 +34,7 @@ export default class YSwitch extends Component<SwitchProps> {
         }
       }
     },
-    /** 禁用 */
+    /** 尺寸 */
     size: {
       type: String,
       default: 'default',

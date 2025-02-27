@@ -75,7 +75,8 @@ export default class Divider extends Component<DividerProps> {
   };
 
   render(props: DividerProps) {
-    const { width, type, direction, orientation, style, className, children } = props;
+    const { width, type, direction, orientation, style, className } = props;
+    const { children } = this;
 
     return (
       <div
