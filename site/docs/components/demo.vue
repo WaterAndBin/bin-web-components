@@ -66,7 +66,7 @@ const clickedLang = ref<number>(0);
 /**
  * 代码展示
  */
-const showCode = ref<boolean>(true);
+const showCode = ref<boolean>(false);
 /**
  * 复制展示
  */
