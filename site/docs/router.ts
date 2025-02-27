@@ -36,6 +36,10 @@ export function sidebarGuide(): DefaultTheme.SidebarItem[] {
           text: '数据录入',
           items: [
             {
+              text: '输入框 Input',
+              link: 'input/README'
+            },
+            {
               text: '开关 Switch',
               link: 'switch/README'
             }

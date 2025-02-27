@@ -1,10 +1,3 @@
-<script setup lang="ts">
-defineOptions({
-  name: 'SwitchIcon'
-})
-</script>
-
-<!-- #region switch -->
 <template>
   <div class="box-default">
     <y-switch>
@@ -13,4 +6,3 @@ defineOptions({
     </y-switch>
   </div>
 </template>
-<!-- #endregion switch -->

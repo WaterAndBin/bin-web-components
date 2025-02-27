@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="z-index: -1;">
     <div class="demo_tip" v-html="tip"></div>
     <div class="demo_preview">
       <div class="preview_box">
@@ -183,7 +183,7 @@ onMounted(async () => {
   text-align: center;
   background: #f3f3f3;
   cursor: pointer;
-  z-index: 100;
+  z-index: 1;
 }
 
 .operate_btn:hover {

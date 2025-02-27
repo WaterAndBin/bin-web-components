@@ -1,10 +1,3 @@
-<script setup lang="ts">
-defineOptions({
-  name: 'SwitchLoading'
-})
-</script>
-
-<!-- #region switch -->
 <template>
   <div class="box-default">
     <y-switch loading />
@@ -13,4 +6,3 @@ defineOptions({
     <y-switch loading checked-color="#F53F3F" unchecked-color="green" :default-checked="true" />
   </div>
 </template>
-<!-- #endregion switch -->

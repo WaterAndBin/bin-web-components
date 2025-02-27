@@ -301,6 +301,9 @@ export default class Input extends Component<InputProps> {
   render(props: OmiProps<InputProps>) {
     const { allowClear, width, type, size, placeholder, disabled, error, maxLength, showWordLimit, showWordTotal, loading, className, style } = props;
 
+    console.log(props);
+    console.log(allowClear);
+
     return (
       <div
         className={clsx([

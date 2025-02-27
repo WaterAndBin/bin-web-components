@@ -10,122 +10,50 @@ Switch/basic
 
 ## 尺寸
 
-::: demo
+::: demo  尺寸有三种：`small`、`default`、`large`。
 Switch/size
 :::
 
 ## 默认开启
 
-<SwitchOpen/>
-
-::: details 查看代码
-
-::: code-group
-
-<<< @/../../play/vue-project/src/pages/Switch/open.vue#switch [vue]
-
-```tsx [React]
-开发中...
-```
-
+::: demo 需要默认开启则传入`:default-checked='true'`，该参数默认为`false`。
+Switch/open
 :::
 
 ## 禁用
 
-<SwitchDisabled />
-
-::: details 查看代码
-
-::: code-group
-
-<<< @/../../play/vue-project/src/pages/Switch/disabled.vue#switch [vue]
-
-```tsx [React]
-开发中...
-```
-
+::: demo 禁用只需要添加`disabled`
+Switch/disabled
 :::
 
 ## 自定义颜色
 
-<SwitchColor />
-
-::: details 查看代码
-
-::: code-group
-
-<<< @/../../play/vue-project/src/pages/Switch/color.vue#switch [vue]
-
-```tsx [React]
-开发中...
-```
-
+::: demo 自定义颜色可以通过`checked-color`和`unchecked-color`。
+Switch/color
 :::
 
 ## 自定义文案
 
-<SwitchText />
-
-::: details 查看代码
-
-::: code-group
-
-<<< @/../../play/vue-project/src/pages/Switch/text.vue#switch [vue]
-
-```tsx [React]
-开发中...
-```
-
+::: demo 自定义文档需要通过`slot`去传文档。开启前的文案`slot='checked'`，开启后的文案`slot='unchecked'`。
+Switch/text
 :::
 
 ## 自定义图标
 
-<SwitchIcon />
-
-::: details 查看代码
-
-::: code-group
-
-<<< @/../../play/vue-project/src/pages/Switch/icon.vue#switch [vue]
-
-```tsx [React]
-开发中...
-```
-
+::: demo 自定义图标需要通过`slot`。开启前图标`slot='checkedIcon'`，开启后图标`slot='uncheckedIcon'`。
+Switch/icon
 :::
 
 ## 加载
 
-loading图标会跟着当前的开关背景颜色保持一致。
-
-<SwitchLoading />
-
-::: details 查看代码
-
-::: code-group
-
-<<< @/../../play/vue-project/src/pages/Switch/loading.vue#switch [vue]
-
-```tsx [React]
-开发中...
-```
-
+::: demo 加载需要添加`loading`字段，默认是`false`。loading图标会跟着当前的开关背景颜色保持一致。
+Switch/loading
 :::
 
 ## 切换拦截
 
-<SwitchBefore />
-
-::: details 查看代码
-
-::: code-group
-
-<<< @/../../play/vue-project/src/pages/Switch/before.vue#switch [vue]
-
-```tsx [React]
-开发中...
-```
-
+::: demo 切换拦截需要传入`before-change`方法。当为`true`的时候才进行切换，当为`false`的时候不会进行切换
+Switch/before
 :::
 
 ## API

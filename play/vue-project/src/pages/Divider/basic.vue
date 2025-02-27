@@ -1,10 +1,3 @@
-<script setup lang="ts">
-defineOptions({
-  name: 'DividerBasic'
-})
-</script>
-
-<!-- #region divider -->
 <template>
   <div class="box-default">
     <div class="divider-demo">
@@ -20,4 +13,3 @@ defineOptions({
     </div>
   </div>
 </template>
-<!-- #endregion divider -->

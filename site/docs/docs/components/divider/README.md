@@ -4,50 +4,32 @@
 
 ## 基础用法
 
-<DividerBasic />
+::: demo 
+Divider/basic
+:::
 
-::: details 查看代码
+## 带文字的分割线（Vue与React暂时用不了！）
 
-::: code-group
-
-<<< @/../../play/vue-project/src/pages/Divider/basic.vue#divider [vue]
-
-```tsx [React]
-开发中...
-```
-
+::: demo 可以通过`orientation`去调整文字的位置。
+Divider/text
 :::
 
 ## 宽度
 
-<DividerWidth />
-
-::: details 查看代码
-
-::: code-group
-
-<<< @/../../play/vue-project/src/pages/Divider/width.vue#divider [vue]
-
-```tsx [React]
-开发中...
-```
-
+::: demo 通过`width`字段可以去设置分割线的宽度。
+Divider/width
 :::
 
 ## 各种类型
 
-<DividerType />
+::: demo 通过`type`可以去设置分割线的类型，有`solid`、`dashed`、`dotted`、`double`。
+Divider/type
+:::
 
-::: details 查看代码
+## 竖形分割线
 
-::: code-group
-
-<<< @/../../play/vue-project/src/pages/Divider/type.vue#divider [vue]
-
-```tsx [React]
-开发中...
-```
-
+::: demo 通过`direction`可以去设置分割线为竖形。
+Divider/vertical
 :::
 
 ## API
@@ -62,7 +44,6 @@
 | orientation | `left` \ `right` \ `center`              | center     | 分割文字位置 | N    |
 | className   | string                                   | -          | 自定义类名   | N    |
 | style       | StyleValue                               | -          | 自定义样式   | N    |
-| children    | VNode                                    | -          | slot插槽专用 | N    |
 
 ### `<y-button>` methods
 
