@@ -5,7 +5,7 @@ $button-status: success, warning, danger;
 $btn-hover-dark: 94%;
 
 // 透明度
-$btn-opacity-default: var(--opacity-1);
+$btn-opacity-default: var(--opacity-3);
 $btn-disabled-opacity: var(--opacity-2);
 
 // 背景颜色
@@ -19,7 +19,7 @@ $btn-bg-color: (
 // 字体颜色
 $btn-text: (
   primary: rgb(var(--white-1)),
-  secondary: rgb(var(--gray-3)),
+  secondary: rgb(var(--gray-4)),
   outline: rgb(var(--primary-3)),
   text: rgb(var(--primary-3))
 );

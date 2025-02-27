@@ -18,22 +18,7 @@ export default class Icon extends Component<IconProps> {
   static props = {
     name: {
       type: String,
-      changed() {
-        if (this instanceof Icon) {
-          this.update();
-        }
-      }
-    },
-    size: {
-      default: 20,
-      changed() {
-        if (this instanceof Icon) {
-          this.update();
-        }
-      }
-    },
-    style: {
-      default: {},
+      default: '',
       changed() {
         if (this instanceof Icon) {
           this.update();
@@ -56,7 +41,7 @@ export default class Icon extends Component<IconProps> {
     const svg = iconMap.get(name);
 
     if (svg) {
-      return <div className={clsx(ClassNamePrefix('icon-base'))} style={this.iconStyle} innerHTML={svg}></div>;
+      return <div className={clsx(ClassNamePrefix('icon-base'))} innerHTML={svg}></div>;
     } else {
       return <span>错误</span>;
     }

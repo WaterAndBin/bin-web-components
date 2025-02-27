@@ -1,0 +1,71 @@
+@use './_var.scss' as *;
+@use './_mixin.scss' as *;
+@use '../variables' as *;
+
+.#{$prefix}-switch {
+  @include switch();
+
+  &-size-small {
+    @apply min-w-8 h-5;
+
+    & .#{$prefix}-switch-ball {
+      @apply size-3;
+    }
+  }
+
+  &-size-large {
+    @apply h-7;
+
+    & .#{$prefix}-switch-ball {
+      @apply size-5;
+    }
+  }
+
+  /* 小球 */
+  &-ball {
+    @apply flex justify-center items-center rounded-full absolute text-sm;
+    @apply z-[1] top-[4px] left-[4px] size-4 bg-white;
+    transition: all 0.15s ease-in-out;
+
+    & .#{$prefix}-loading {
+      @apply size-[80%];
+      stroke: $switch-svg-stroke-loading;
+    }
+  }
+
+  /* 点击之后的处理 */
+  &-checked {
+    background-color: $switch-checked-bg-color;
+
+    & .#{$prefix}-switch-ball {
+      left: calc(100% - var(--switch-ball-width) - 4px);
+
+      & .#{$prefix}-loading {
+        stroke: $switch-svg-stroke-checked;
+      }
+    }
+  }
+
+  /* 禁用 */
+  &-disabled {
+    @apply cursor-not-allowed;
+    opacity: $switch-opacity-disabled;
+  }
+
+  &-loading {
+    @apply cursor-pointer;
+    opacity: $switch-opacity-loading;
+  }
+
+  ::slotted([slot='checked']) {
+    @apply text-white;
+    margin-left: calc(var(--switch-ball-width) + 8px);
+    margin-right: 10px;
+  }
+
+  ::slotted([slot='unchecked']) {
+    @apply text-white;
+    margin-right: calc(var(--switch-ball-width) + 8px);
+    margin-left: 10px;
+  }
+}

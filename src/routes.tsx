@@ -3,6 +3,7 @@ import './Button/_example/index';
 import './Icon/_example/index';
 import './Divider/_example/index';
 import './Input/_example/index';
+import './Switch/_example/index';
 import './Tag/_example/index';
 
 // 定义所有组件的路由信息
@@ -11,6 +12,7 @@ const components = [
   { title: '图标', path: '/Icon', tag: 'text-icon' },
   { title: '分割线', path: '/Divider', tag: 'text-divider' },
   { title: '输入框', path: '/Input', tag: 'text-input' },
+  { title: '开关', path: '/Switch', tag: 'text-switch' },
   { title: '标签', path: '/Tag', tag: 'text-tag' }
 ];
 
