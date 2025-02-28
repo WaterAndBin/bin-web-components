@@ -3,7 +3,7 @@
     <div class="demo_tip" v-html="tip"></div>
     <div class="demo_preview">
       <div class="preview_box">
-        <component v-if="fileComponent" :is="fileComponent" />
+        <component :is="fileComponent" />
       </div>
       <div class="code_box">
         <div class="code" :class="{ show_code: showCode }">
@@ -97,16 +97,14 @@ const tip = ref<string>('');
  */
 const getContent = async (): Promise<void> => {
   try {
-    import(`../../../play/vue-project/src/pages/${props.content}/${props.type}.vue?raw`).then(module => {
-      fileVueContent.value = module.default;
-    });
+    const vueContent = await import(`../../../play/vue-project/src/pages/${props.content}/${props.type}.vue?raw`);
+    fileVueContent.value = vueContent.default;
   } catch {
     fileVueContent.value = '未获取到源代码，开发中。。'
   }
   try {
-    await import(`../../../play/react-project/src/pages/${props.content}/${props.type}.tsx?raw`).then(module => {
-      fileReactContent.value = module.default
-    });
+    const reactContent = await import(`../../../play/react-project/src/pages/${props.content}/${props.type}.tsx?raw`);
+    fileReactContent.value = reactContent.default
   } catch {
     fileReactContent.value = '未获取到源代码，开发中。。'
   }
@@ -143,12 +141,11 @@ const handleCopyCode = async () => {
 //   getContent();
 // });
 
-onMounted(() => {
+onMounted(async () => {
   getContent();
   /* 获取组件 */
-  import(`../../../play/vue-project/src/pages/${props.content}/${props.type}.vue`).then(module => {
-    fileComponent.value = markRaw(module.default);
-  });
+  const loadedComponent = await import(`../../../play/vue-project/src/pages/${props.content}/${props.type}.vue`);
+  fileComponent.value = markRaw(loadedComponent.default);
   const result = md.render(props.title as string);
   tip.value = result.replace(/\。/g, '。<br>'); // 在句号后插入 <br> 标签
 

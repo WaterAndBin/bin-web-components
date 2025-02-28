@@ -5,6 +5,8 @@ import container from 'markdown-it-container';
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'Bin-UI',
+  outDir: '../dist',
+  base: '/bin-web-components-docs/',
   description: 'A VitePress Site',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
@@ -26,15 +28,6 @@ export default defineConfig({
 
     search: {
       provider: 'local'
-    }
-  },
-
-  vite: {
-    // ssr: {
-    // external: ['omi', '@omiu/utils'] // 将 omi 排除在 SSR 打包之外
-    // },
-    build: {
-      ssr: false // 完全禁用 SSR（仅限测试，不推荐生产）
     }
   },
 

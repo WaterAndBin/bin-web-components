@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 docs/docs/.vitepress/cache
+site/docs/.vitepress/cache
 test-ui/lib/
 
 # Editor directories and files
