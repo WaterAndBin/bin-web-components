@@ -1,0 +1,88 @@
+{
+  "hash": "95f3164e",
+  "configHash": "5a16ea00",
+  "lockfileHash": "fb0661ab",
+  "browserHash": "2c859f9d",
+  "optimized": {
+    "vue": {
+      "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "file": "vue.js",
+      "fileHash": "c93bdf2a",
+      "needsInterop": false
+    },
+    "vitepress > @vue/devtools-api": {
+      "src": "../../../../node_modules/@vue/devtools-api/dist/index.js",
+      "file": "vitepress___@vue_devtools-api.js",
+      "fileHash": "60137832",
+      "needsInterop": false
+    },
+    "vitepress > @vueuse/core": {
+      "src": "../../../../node_modules/@vueuse/core/index.mjs",
+      "file": "vitepress___@vueuse_core.js",
+      "fileHash": "053fccc5",
+      "needsInterop": false
+    },
+    "vitepress > @vueuse/integrations/useFocusTrap": {
+      "src": "../../../../node_modules/@vueuse/integrations/useFocusTrap.mjs",
+      "file": "vitepress___@vueuse_integrations_useFocusTrap.js",
+      "fileHash": "4973eb6a",
+      "needsInterop": false
+    },
+    "vitepress > mark.js/src/vanilla.js": {
+      "src": "../../../../node_modules/mark.js/src/vanilla.js",
+      "file": "vitepress___mark__js_src_vanilla__js.js",
+      "fileHash": "5fe651c5",
+      "needsInterop": false
+    },
+    "vitepress > minisearch": {
+      "src": "../../../../node_modules/minisearch/dist/es/index.js",
+      "file": "vitepress___minisearch.js",
+      "fileHash": "cffdc753",
+      "needsInterop": false
+    },
+    "highlight.js": {
+      "src": "../../../../node_modules/highlight.js/es/index.js",
+      "file": "highlight__js.js",
+      "fileHash": "d3488a19",
+      "needsInterop": false
+    },
+    "markdown-it": {
+      "src": "../../../../node_modules/markdown-it/index.mjs",
+      "file": "markdown-it.js",
+      "fileHash": "96c8207b",
+      "needsInterop": false
+    },
+    "omi": {
+      "src": "../../../../../node_modules/omi/dist/omi.module.js",
+      "file": "omi.js",
+      "fileHash": "896a285c",
+      "needsInterop": false
+    },
+    "clsx": {
+      "src": "../../../../../node_modules/clsx/dist/clsx.mjs",
+      "file": "clsx.js",
+      "fileHash": "fcd9a919",
+      "needsInterop": false
+    },
+    "@highlightjs/vue-plugin": {
+      "src": "../../../../node_modules/@highlightjs/vue-plugin/dist/highlightjs-vue.esm.min.js",
+      "file": "@highlightjs_vue-plugin.js",
+      "fileHash": "945fc7c2",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-VIHA4DIF": {
+      "file": "chunk-VIHA4DIF.js"
+    },
+    "chunk-GD2PZ323": {
+      "file": "chunk-GD2PZ323.js"
+    },
+    "chunk-LW4I4DCF": {
+      "file": "chunk-LW4I4DCF.js"
+    },
+    "chunk-G3PMV62Z": {
+      "file": "chunk-G3PMV62Z.js"
+    }
+  }
+}

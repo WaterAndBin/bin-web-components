@@ -5,6 +5,8 @@ import container from 'markdown-it-container';
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'Bin-UI',
+  outDir: '../dist',
+  base: '/bin-web-components-docs/',
   description: 'A VitePress Site',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config

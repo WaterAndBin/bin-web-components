@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
-    "omi": "7.7",
+    "omi": "^7.7.7",
     "sass": "^1.83.0",
     "tailwind-merge": "^2.5.2"
   },
