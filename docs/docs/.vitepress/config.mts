@@ -29,6 +29,15 @@ export default defineConfig({
     }
   },
 
+  vite: {
+    // ssr: {
+    // external: ['omi', '@omiu/utils'] // 将 omi 排除在 SSR 打包之外
+    // },
+    build: {
+      ssr: false // 完全禁用 SSR（仅限测试，不推荐生产）
+    }
+  },
+
   vue: {
     template: {
       compilerOptions: {

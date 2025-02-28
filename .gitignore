@@ -11,7 +11,7 @@ node_modules
 dist
 dist-ssr
 *.local
-site/docs/.vitepress/cache
+docs/docs/.vitepress/cache
 test-ui/lib/
 
 # Editor directories and files

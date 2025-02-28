@@ -5,13 +5,14 @@
     "docs:preview": "vitepress preview docs"
   },
   "devDependencies": {
+    "jsdom": "^26.0.0",
     "vitepress": "^1.6.3"
   },
   "dependencies": {
-    "@highlightjs/vue-plugin": "^2.1.0",
     "@vue/compiler-sfc": "^3.5.13",
     "highlight.js": "^11.11.1",
     "markdown-it": "^14.1.0",
-    "markdown-it-container": "^4.0.0"
+    "markdown-it-container": "^4.0.0",
+    "omi": "^7.7.7"
   }
 }
